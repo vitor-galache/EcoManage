@@ -14,5 +14,10 @@ public class Email : ValueObject
             .IsNotNullOrWhiteSpace(Address,"Email.Address","O E-mail é obrigatório")
         );
     }
-    public string Address { get; set; }
+    public string Address { get; private set; }
+
+    public override string ToString()
+    {
+        return $"{Address}";
+    }
 }

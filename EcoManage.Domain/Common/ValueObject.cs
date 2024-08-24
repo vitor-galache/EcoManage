@@ -1,3 +1,4 @@
+
 using Flunt.Notifications;
 
 namespace EcoManage.Domain.Common;

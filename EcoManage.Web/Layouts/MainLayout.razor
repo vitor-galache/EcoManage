@@ -1,0 +1,59 @@
+﻿@inherits LayoutComponentBase
+<MudThemeProvider @ref="_mudThemeProvider" @bind-IsDarkMode ="_isDarkMode" Theme="Configuration.Theme"/>
+<MudSnackbarProvider/>
+
+<MudLayout>
+    <MudAppBar>
+        <MudIconButton
+            Icon="@Icons.Material.Filled.Menu"
+            OnClick="ToggleDrawer"
+            Color="Color.Inherit" Edge="Edge.Start"/>
+        <MudText Typo="Typo.h5" Style="appearance: menulist-button">Eco-Manage</MudText>
+        
+        <MudSpacer/>
+        <MudText Typo="Typo.caption">
+            <h1> Olá Usuário</h1>
+        </MudText>
+        <MudSwitch
+            Color="Color.Inherit"
+            Class="ma-4"
+            T="bool"
+            @bind-Value="_isDarkMode"
+            ThumbIcon="@Icons.Material.TwoTone.Lightbulb"/>
+    </MudAppBar>
+    <MudDrawer @bind-Open="@_isDrawerOpen">
+        <NavMenu/>
+    </MudDrawer>
+    <MudMainContent>
+        <MudContainer Class="mt-4">
+            @Body
+        </MudContainer>
+    </MudMainContent>
+</MudLayout>
+
+@code
+{
+    private bool _isDarkMode = true;
+    private bool _isDrawerOpen = true;
+    private MudThemeProvider _mudThemeProvider = null!;
+
+    protected override async Task OnAfterRenderAsync(bool firstRender)
+    {
+        if (firstRender)
+        {
+            _isDarkMode = await _mudThemeProvider.GetSystemPreference();
+            await _mudThemeProvider.WatchSystemPreference(OnSystemPreferenceChange);
+            StateHasChanged();
+        }
+    }
+
+    private Task OnSystemPreferenceChange(bool newValue)
+    {
+        _isDarkMode = newValue;
+        StateHasChanged();
+        return Task.CompletedTask;
+    }
+
+    private void ToggleDrawer() =>
+        _isDrawerOpen = !_isDrawerOpen;
+}

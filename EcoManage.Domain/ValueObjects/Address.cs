@@ -4,13 +4,15 @@ namespace EcoManage.Domain.ValueObjects;
 
 public class Address : ValueObject
 {
-    public Address(string street,string number,string zipCode)
+    public Address(string street,string number)
     {
         Street = street;
         Number = number;
-        ZipCode = zipCode;
     }
     public string Street { get; private set; } 
-    public string Number { get; private set; } 
-    public string ZipCode { get; private set; }
+    public string Number { get; private set; }
+    public override string ToString()
+    {
+        return $"{Street},{Number}";
+    }
 }

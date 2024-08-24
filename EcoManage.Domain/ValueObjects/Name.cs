@@ -15,8 +15,8 @@ public class Name : ValueObject
             .IsNotNullOrWhiteSpace(FirstName,"Name.FirstName","O nome não pode ser vazio")
             .IsNotNullOrWhiteSpace(LastName,"Name.LastName","O sobrenome não pode ser vazio"));
     }
-    public string FirstName { get; set; }
-    public string LastName { get; set; }
+    public string FirstName { get; private set; }
+    public string LastName { get; private set; }
 
 
     public override string ToString()

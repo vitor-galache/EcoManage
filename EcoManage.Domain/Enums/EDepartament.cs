@@ -1,9 +1,9 @@
 namespace EcoManage.Domain.Enums;
 
-public enum EDepartament
+public enum ESupplierType
 {
-    Financeiro = 1,
-    Tecnologia = 2,
-    Administracao = 3,
-    Operacional = 4
+    InsumosAgricolas = 1,
+    Equipamentos = 2,
+    Infraestrutura = 3,
+    Logistica = 4
 }
