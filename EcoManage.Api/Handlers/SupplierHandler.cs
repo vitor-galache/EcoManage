@@ -49,9 +49,24 @@ public class SupplierHandler(AppDbContext context) : ISupplierHandler
         #endregion
     }
 
-    public Task<PagedResponse<List<Supplier>>> GetAllAsync(GetAllSupplierRequest request)
+    public async Task<PagedResponse<List<Supplier>>> GetAllAsync(GetAllSupplierRequest request)
     {
-        throw new NotImplementedException();
+        try
+        {
+            var query = context.Suppliers.AsNoTracking().OrderBy(x => x.CompanyName);
+
+            var suppliers = await query
+                .Skip((request.PageNumber - 1) * request.PageSize)
+                .Take(request.PageSize)
+                .ToListAsync();
+
+            var count = await query.CountAsync();
+            return new PagedResponse<List<Supplier>>(suppliers, count, request.PageNumber, request.PageSize);
+        }
+        catch
+        {
+            return new PagedResponse<List<Supplier>>(null, 500, "Não foi possível obter fornecedores");
+        }
     }
 
     public async Task<Response<Supplier?>> GetByIdAsync(GetSupplierByIdRequest request)
@@ -75,7 +90,7 @@ public class SupplierHandler(AppDbContext context) : ISupplierHandler
             supplier.ChangeEmail(request.Email);
 
             supplier.ChangeContact(request.Contact);
-
+            
             if (supplier.Invalid)
                 return new Response<Supplier?>(null, 400, "Fornecedor inválido");
 

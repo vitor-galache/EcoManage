@@ -17,7 +17,6 @@ public class UpdateSupplierEndpoint : IEndpoint
     private static async Task<IResult> HandleAsync(ISupplierHandler handler,UpdateSupplierRequest request,long id)
     {
         request.Id = id;
-        
         var result = await handler.UpdateAsync(request);
         return result.IsSuccess
             ? TypedResults.Ok(result)

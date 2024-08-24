@@ -18,6 +18,7 @@ public static class Endpoint
             .WithTags("Suppliers")
             .MapEndpoint<CreateSupplierEndpoint>()
             .MapEndpoint<GetSupplierByIdEndpoint>()
+            .MapEndpoint<GetAllSupplierEndpoint>()
             .MapEndpoint<UpdateSupplierEndpoint>()
             .MapEndpoint<DeleteSupplierEndpoint>();
     }
