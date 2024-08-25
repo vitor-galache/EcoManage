@@ -1,3 +1,4 @@
+using System.Security.Claims;
 using EcoManage.Api.Common.Api;
 using EcoManage.Domain;
 using EcoManage.Domain.Entities;
@@ -14,12 +15,14 @@ public class GetAllSupplierEndpoint : IEndpoint
                 .WithName("Supplier: Get All")
                 .WithSummary("Obtem todos fornecedores cadastrados")
                 .Produces<PagedResponse<List<Supplier>?>>();
-        private static async Task<IResult> HandleAsync(ISupplierHandler handler, int pageSize = Configuration.DefaultPageSize, int pageNumber = Configuration.DefaultPageNumber)
+        private static async Task<IResult> HandleAsync(ISupplierHandler handler, ClaimsPrincipal user, int pageSize = Configuration.DefaultPageSize, int pageNumber = Configuration.DefaultPageNumber)
         {
-            var request = new GetAllSupplierRequest()
+            
+            var request = new GetAllSupplierRequest
             {
-               
+                
             };
+            
             var result = await handler.GetAllAsync(request);
             return result.IsSuccess
                 ? TypedResults.Ok(result)

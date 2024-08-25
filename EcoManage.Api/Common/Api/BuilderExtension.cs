@@ -1,7 +1,9 @@
 using EcoManage.Api.Data;
 using EcoManage.Api.Handlers;
+using EcoManage.Api.Models;
 using EcoManage.Domain;
 using EcoManage.Domain.Handlers;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 
 namespace EcoManage.Api.Common.Api;
@@ -18,8 +20,20 @@ public static class BuilderExtension
     public static void AddDbContexts(this WebApplicationBuilder builder)
     {
         builder.Services.AddDbContext<AppDbContext>(x => { x.UseSqlServer(Configuration.ConnectionString); });
+        builder.Services.AddIdentityCore<User>()
+            .AddRoles<IdentityRole<long>>()
+            .AddEntityFrameworkStores<AppDbContext>()
+            .AddApiEndpoints();
     }
 
+    public static void AddSecurity(this WebApplicationBuilder builder)
+    {
+        builder.Services
+            .AddAuthentication(IdentityConstants.ApplicationScheme)
+            .AddIdentityCookies();
+        
+        builder.Services.AddAuthorization();
+    }
     public static void AddServices(this WebApplicationBuilder builder)
     {
         builder.Services.AddTransient<ISupplierHandler, SupplierHandler>();
