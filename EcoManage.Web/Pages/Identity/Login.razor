@@ -1,4 +1,5 @@
 @page "/login"
+@inherits LoginPage
 @layout HeadlessLayout
 
 <PageTitle>EcoManage - Login</PageTitle>
@@ -11,22 +12,35 @@
             </div>
             <img src="" alt="">
 
-            <MudForm>
+            <EditForm Model="InputModel" OnValidSubmit="OnValidSubmitAsync">
+                <DataAnnotationsValidator/>
                 <MudTextField T="string" Label="E-mail"
                               InputType="InputType.Email"
+                              For="@(() => InputModel.Email)"
+                              @bind-Value = "InputModel.Email"
                               HelperText="Digite o email corporativo"/>
 
                 <MudTextField T="string" Label="Senha"
                               InputType="InputType.Password"
+                              For="@(() => InputModel.Password)"
+                              @bind-Value = "InputModel.Password"
                               HelperText="Digite sua senha"
                 />
-
-                <div class="d-flex mt-8">
-                    <MudButton ButtonType="ButtonType.Submit" Variant="Variant.Filled" Color="Color.Primary">ENTRAR</MudButton>
-                    <MudSpacer/>
-                    <MudButton Href="/forget-password">ESQUECI MINHA SENHA</MudButton>
-                </div>
-            </MudForm>
+                
+                @if (IsBusy)
+                {
+                <MudProgressCircular Color="Color.Primary" Indeterminate="true"/>
+                }
+                else
+                {
+                    <div class="d-flex mt-8">
+                        <MudButton ButtonType="ButtonType.Submit" Variant="Variant.Filled" Color="Color.Primary">ENTRAR</MudButton>
+                        <MudSpacer/>
+                        <MudButton Href="/forget-password">ESQUECI MINHA SENHA</MudButton>
+                    </div>
+                }
+             
+            </EditForm>
         </MudPaper>
     </MudItem>
 </MudGrid>

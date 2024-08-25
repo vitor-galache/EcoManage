@@ -4,6 +4,10 @@ namespace EcoManage.Web;
 
 public class Configuration
 {
+    public const string HttpClientName = "ecomanage";
+
+    public static string BackendUrl { get; set; } = "";
+    
     public static MudTheme Theme = new()
     {
         Typography = new Typography()

@@ -23,7 +23,8 @@ public static class Endpoint
 
         app.MapGroup("v1/identity")
             .WithTags("Identity")
-            .MapEndpoint<LogoutEndpoint>();
+            .MapEndpoint<LogoutEndpoint>()
+            .MapEndpoint<GetRolesEndpoint>();
         
         app.MapGroup("v1/suppliers")
             .WithTags("Suppliers")

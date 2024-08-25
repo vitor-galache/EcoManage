@@ -1,35 +1,48 @@
 ﻿@inherits LayoutComponentBase
 <MudThemeProvider @ref="_mudThemeProvider" @bind-IsDarkMode ="_isDarkMode" Theme="Configuration.Theme"/>
 <MudSnackbarProvider/>
+<MudPopoverProvider/>
+<MudDialogProvider/>
 
-<MudLayout>
-    <MudAppBar>
-        <MudIconButton
-            Icon="@Icons.Material.Filled.Menu"
-            OnClick="ToggleDrawer"
-            Color="Color.Inherit" Edge="Edge.Start"/>
-        <MudText Typo="Typo.h5" Style="appearance: menulist-button">Eco-Manage</MudText>
-        
-        <MudSpacer/>
-        <MudText Typo="Typo.caption">
-            <h1> Olá Usuário</h1>
-        </MudText>
-        <MudSwitch
-            Color="Color.Inherit"
-            Class="ma-4"
-            T="bool"
-            @bind-Value="_isDarkMode"
-            ThumbIcon="@Icons.Material.TwoTone.Lightbulb"/>
-    </MudAppBar>
-    <MudDrawer @bind-Open="@_isDrawerOpen">
-        <NavMenu/>
-    </MudDrawer>
-    <MudMainContent>
-        <MudContainer Class="mt-4">
-            @Body
-        </MudContainer>
-    </MudMainContent>
-</MudLayout>
+<AuthorizeView>
+    
+    <Authorized>
+        <MudLayout Class="fade-in">
+            <MudAppBar>
+                <MudIconButton
+                    Icon="@Icons.Material.Filled.Menu"
+                    OnClick="ToggleDrawer"
+                    Color="Color.Inherit" Edge="Edge.Start"/>
+                <MudText Typo="Typo.h5" Style="appearance: menulist-button">Eco-Manage</MudText>
+
+                <MudSpacer/>
+                <MudText Typo="Typo.caption">
+                    <h1> @context.User.Identity?.Name</h1>
+                </MudText>
+                <MudToggleIconButton
+                    Color="Color.Inherit"
+                    Class="ma-4"
+                    T="bool"
+                    @bind-Toggled="_isDarkMode"
+                    Icon="@Icons.Material.TwoTone.DarkMode"
+                    ToggledIcon="@Icons.Material.TwoTone.WbSunny"/>
+            </MudAppBar>
+            <MudDrawer @bind-Open="@_isDrawerOpen">
+                <NavMenu/>
+            </MudDrawer>
+            <MudMainContent>
+                <MudContainer Class="mt-4">
+                    @Body
+                </MudContainer>
+            </MudMainContent>
+        </MudLayout>
+    </Authorized>
+    
+    <NotAuthorized>
+        <LoginRedirect/>
+    </NotAuthorized>
+</AuthorizeView>
+
 
 @code
 {
