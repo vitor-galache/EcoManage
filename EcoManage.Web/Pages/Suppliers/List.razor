@@ -1,0 +1,18 @@
+@page "/fornecedores"
+@inherits ListSupplierPage
+
+
+<MudText Typo="Typo.h3" Class="d-flex center">Fornecedores</MudText>
+
+<MudDataGrid Items="@Suppliers" Filterable="false" Class="mt-4">
+    
+    <Columns>
+        <PropertyColumn Property="x=>x.Id" Title="#"></PropertyColumn>
+        <PropertyColumn Property="x=>x.CompanyName" Title="Fornecedor"></PropertyColumn>
+        <PropertyColumn Property="x=>x.Document.Number" Title="CNPJ"></PropertyColumn>
+        <PropertyColumn Property="x=>x.Email.Address" Title="E-MAIL"></PropertyColumn>
+        <PropertyColumn Property="x=>x.ZipCode" Title="CEP"></PropertyColumn>
+        </Columns>
+    
+</MudDataGrid>
+

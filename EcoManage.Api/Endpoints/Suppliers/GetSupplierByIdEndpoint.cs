@@ -1,5 +1,4 @@
 using EcoManage.Api.Common.Api;
-using EcoManage.Domain.Entities;
 using EcoManage.Domain.Handlers;
 using EcoManage.Domain.Requests.Supplier;
 using EcoManage.Domain.Responses;
@@ -12,7 +11,7 @@ public class GetSupplierByIdEndpoint : IEndpoint
         => app.MapGet("{id:long}", HandleAsync)
             .WithName("Supplier: Get By Id")
             .WithSummary("Obtem um fornecedor pelo ID")
-            .Produces<Response<Supplier?>>();
+            .Produces<Response<object?>>();
 
     private static async Task<IResult> HandleAsync(ISupplierHandler handler, long id)
     {

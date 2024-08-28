@@ -1,13 +1,13 @@
 ﻿@inherits LayoutComponentBase
-<MudThemeProvider @ref="_mudThemeProvider" @bind-IsDarkMode ="_isDarkMode" Theme="Configuration.Theme"/>
+<MudThemeProvider @ref="_mudThemeProvider" @bind-IsDarkMode="_isDarkMode" Theme="Configuration.Theme"/>
 <MudSnackbarProvider/>
 <MudPopoverProvider/>
 <MudDialogProvider/>
 
 <AuthorizeView>
-    
+
     <Authorized>
-        <MudLayout Class="fade-in">
+        <MudLayout>
             <MudAppBar>
                 <MudIconButton
                     Icon="@Icons.Material.Filled.Menu"
@@ -16,13 +16,12 @@
                 <MudText Typo="Typo.h5" Style="appearance: menulist-button">Eco-Manage</MudText>
 
                 <MudSpacer/>
-                <MudText Typo="Typo.caption">
-                    <h1> @context.User.Identity?.Name</h1>
+                <MudText Typo="Typo.subtitle1">
+                     @context.User.Identity?.Name
                 </MudText>
                 <MudToggleIconButton
                     Color="Color.Inherit"
                     Class="ma-4"
-                    T="bool"
                     @bind-Toggled="_isDarkMode"
                     Icon="@Icons.Material.TwoTone.DarkMode"
                     ToggledIcon="@Icons.Material.TwoTone.WbSunny"/>
@@ -37,7 +36,7 @@
             </MudMainContent>
         </MudLayout>
     </Authorized>
-    
+
     <NotAuthorized>
         <LoginRedirect/>
     </NotAuthorized>
@@ -67,6 +66,8 @@
         return Task.CompletedTask;
     }
 
-    private void ToggleDrawer() =>
-        _isDrawerOpen = !_isDrawerOpen;
+    private void ToggleDrawer()
+    => _isDrawerOpen = !_isDrawerOpen;
+    
+
 }

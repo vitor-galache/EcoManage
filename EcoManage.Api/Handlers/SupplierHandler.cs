@@ -53,7 +53,8 @@ public class SupplierHandler(AppDbContext context) : ISupplierHandler
     {
         try
         {
-            var query = context.Suppliers.AsNoTracking().OrderBy(x => x.CompanyName);
+            var query = context.Suppliers.AsNoTracking()
+                .OrderBy(x => x.CompanyName);
 
             var suppliers = await query
                 .Skip((request.PageNumber - 1) * request.PageSize)
@@ -71,7 +72,10 @@ public class SupplierHandler(AppDbContext context) : ISupplierHandler
 
     public async Task<Response<Supplier?>> GetByIdAsync(GetSupplierByIdRequest request)
     {
-        var supplier = await context.Suppliers.AsNoTracking().FirstOrDefaultAsync(x => x.Id == request.Id);
+        var supplier = await context.Suppliers
+            .AsNoTracking()
+            .FirstOrDefaultAsync(x=>x.Id == request.Id);
+
         return supplier is null
             ? new Response<Supplier?>(null, 404, "Fornecedor não encontrado")
             : new Response<Supplier?>(supplier);
@@ -90,7 +94,7 @@ public class SupplierHandler(AppDbContext context) : ISupplierHandler
             supplier.ChangeEmail(request.Email);
 
             supplier.ChangeContact(request.Contact);
-            
+
             if (supplier.Invalid)
                 return new Response<Supplier?>(null, 400, "Fornecedor inválido");
 

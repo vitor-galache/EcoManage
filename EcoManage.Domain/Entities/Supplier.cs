@@ -29,12 +29,8 @@ public class Supplier : Entity
         
     }
     public string CompanyName { get; private set; } = string.Empty;
-    [JsonIgnore]
     public Document Document { get; private set; } = null!;
-    [JsonIgnore]
     public Address Address { get; private set; } = null!;
-    
-    [JsonIgnore]
     public ZipCode ZipCode { get; private set; } = null!;
     public Email Email { get; private set; } = null!;
     public string? Contact { get; private set; }

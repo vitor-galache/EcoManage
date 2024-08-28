@@ -1,4 +1,6 @@
-
+.theme-transition {
+    transition: background-color 0.3s ease-in, color 0.3s ease-in;
+}
 
 #blazor-error-ui {
     background: lightyellow;
