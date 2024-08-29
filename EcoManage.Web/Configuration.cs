@@ -4,6 +4,7 @@ namespace EcoManage.Web;
 
 public class Configuration
 {
+    
     public const string HttpClientName = "ecomanage";
 
     public static string BackendUrl { get; set; } = "";
@@ -19,7 +20,7 @@ public class Configuration
         },
         PaletteLight = new PaletteLight
         {
-            Primary = "#1EFA2D",
+            Primary = "#659157",
             Secondary = Colors.LightGreen.Darken3,
             Background = "#FDF5E6",
             AppbarBackground = "#4F4F4F",
@@ -27,17 +28,19 @@ public class Configuration
             TextPrimary = Colors.Shades.Black,
             PrimaryContrastText = Colors.Shades.Black,
             DrawerText = Colors.Shades.Black,
-            DrawerBackground = Colors.LightGreen.Lighten4
+            DrawerBackground = Colors.LightGreen.Lighten4,
+            Info = "#69A2B0"
         },
         PaletteDark = new PaletteDark
         {
-            Primary = Colors.LightGreen.Accent3,
+            Primary = "#659157",
             Secondary = Colors.LightGreen.Darken3,
             Background = Colors.Gray.Darken4,
             AppbarBackground = Colors.Gray.Darken3,
             AppbarText = Colors.Shades.White,
             DrawerBackground = Colors.BlueGray.Darken2,
-            DrawerText = Colors.Shades.White
+            DrawerText = Colors.Shades.White,
+            Info = "#69A2B0"
         }
     };
 }

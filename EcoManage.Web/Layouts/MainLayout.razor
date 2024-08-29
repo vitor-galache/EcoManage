@@ -2,7 +2,7 @@
 <MudThemeProvider @ref="_mudThemeProvider" @bind-IsDarkMode="_isDarkMode" Theme="Configuration.Theme"/>
 <MudSnackbarProvider/>
 <MudPopoverProvider/>
-<MudDialogProvider/>
+<MudDialogProvider BackgroundClass="dialog-blur" MaxWidth="MaxWidth.Medium" Position="DialogPosition.Center" CloseOnEscapeKey="true"/>
 
 <AuthorizeView>
 
@@ -13,8 +13,8 @@
                     Icon="@Icons.Material.Filled.Menu"
                     OnClick="ToggleDrawer"
                     Color="Color.Inherit" Edge="Edge.Start"/>
-                <MudText Typo="Typo.h5" Style="appearance: menulist-button">Eco-Manage</MudText>
-
+                
+                <MudText Color="Color.Primary" Typo="Typo.h5" Style="appearance: menulist-button;font-weight:bold">Eco-Manage</MudText>
                 <MudSpacer/>
                 <MudText Typo="Typo.subtitle1">
                      @context.User.Identity?.Name

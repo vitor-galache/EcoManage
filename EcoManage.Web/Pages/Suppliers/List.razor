@@ -4,15 +4,48 @@
 
 <MudText Typo="Typo.h3" Class="d-flex center">Fornecedores</MudText>
 
-<MudDataGrid Items="@Suppliers" Filterable="false" Class="mt-4">
-    
-    <Columns>
-        <PropertyColumn Property="x=>x.Id" Title="#"></PropertyColumn>
-        <PropertyColumn Property="x=>x.CompanyName" Title="Fornecedor"></PropertyColumn>
-        <PropertyColumn Property="x=>x.Document.Number" Title="CNPJ"></PropertyColumn>
-        <PropertyColumn Property="x=>x.Email.Address" Title="E-MAIL"></PropertyColumn>
-        <PropertyColumn Property="x=>x.ZipCode" Title="CEP"></PropertyColumn>
+<div class="d-flex justify-end">
+
+    <MudButton Href="/fornecedores/adicionar" Variant="Variant.Filled" Class="pa-2" Size="Size.Medium" Color="Color.Inherit" StartIcon="@Icons.Material.TwoTone.AddBusiness">
+        Cadastrar Fornecedor
+    </MudButton>
+</div>
+
+
+    <MudDataGrid Items="@Suppliers" Filterable="false" Class="mt-4">
+
+        <Columns>
+
+            <PropertyColumn Property="x => x.Id" Title="#" Sortable="false"></PropertyColumn>
+            
+            <a><PropertyColumn Property="x => x.CompanyName" Title="Fornecedor"  Filterable="false" Sortable="false"></PropertyColumn></a>
+            
+            <PropertyColumn Title="CNPJ" Property="x => x.Document.ToString()" Filterable="false" Sortable="false"></PropertyColumn>
+
+            <PropertyColumn Property="x => x.Email.Address" Title="E-MAIL" Filterable="false" Sortable="false"></PropertyColumn>
+
+            <TemplateColumn Class="d-flex justify-end pa-8">
+                <CellTemplate>
+
+                    <MudStack Row Class="justify-end">
+                        
+                        <MudButton Variant="Variant.Text" StartIcon="@Icons.Material.TwoTone.Info" IconSize="Size.Small" Href="@($"/fornecedores/{context.Item.Id}")">
+                            Mais Detalhes
+                        </MudButton>
+                        
+                        <MudButton StartIcon="@Icons.Material.TwoTone.EditNote" Href="@($"/fornecedores/editar/{context.Item.Id}")" Color="Color.Info">
+                            Editar
+                        </MudButton>
+
+                        <MudButton StartIcon="@Icons.Material.TwoTone.DeleteForever" OnClick="() => OnDeleteButtonAsync(context.Item.Id,context.Item.CompanyName)" Color="Color.Error">
+                            Excluir
+                        </MudButton>
+
+                    </MudStack>
+                </CellTemplate>
+            </TemplateColumn>
+
         </Columns>
-    
-</MudDataGrid>
+
+    </MudDataGrid>
 

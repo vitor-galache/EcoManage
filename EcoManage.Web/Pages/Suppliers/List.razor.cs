@@ -20,6 +20,7 @@ public partial class ListSupplierPage : ComponentBase
 
     [Inject] public ISnackbar Snackbar { get; set; } = null!;
 
+    [Inject] public IDialogService DialogService { get; set; } = null!;
     [Inject] public ISupplierHandler Handler { get; set; } = null!;
 
     #endregion
@@ -50,6 +51,32 @@ public partial class ListSupplierPage : ComponentBase
     #endregion
 
     #region Methods
-
+    public async Task OnDeleteButtonAsync(long id, string companyName)
+    {
+        var result = await DialogService.ShowMessageBox( "ATENÇÃO",
+            $"Ao prosseguir o fornecedor {companyName} será excluído. Esta é uma ação irreversível! Deseja continuar?",
+            yesText: "EXCLUIR",
+            cancelText: "Cancelar");
+        
+        if (result is true)
+            await OnDeleteAsync(id, companyName);
+        
+        StateHasChanged();
+    }
+    
+    public async Task OnDeleteAsync(long id, string companyName)
+    {
+        try
+        {
+            var request = new DeleteSupplierRequest() { Id = id };
+            await Handler.DeleteAsync(request);
+            Suppliers.RemoveAll(x => x.Id == id);
+            Snackbar.Add($"Fornecedor {companyName} excluído com sucesso", Severity.Info);
+        }
+        catch (Exception ex)
+        {
+            Snackbar.Add(ex.Message, Severity.Error);
+        }
+    }
     #endregion
 }

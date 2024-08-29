@@ -17,9 +17,9 @@ public class SupplierHandler(AppDbContext context) : ISupplierHandler
         #region 01.Criando ValueObjects
 
         var name = request.CompanyName;
-        var document = new Document(request.DocumentNumber, EDocumentType.Cnpj);
+        var document = new Document(request.DocumentNumber.Replace(".","").Replace("/","").Replace("-",""), EDocumentType.Cnpj);
         var address = new Address(request.Street, request.Number);
-        var zipCode = new ZipCode(request.ZipCode);
+        var zipCode = new ZipCode(request.ZipCode.Replace("-",""));
         var email = new Email(request.Email);
         var contact = request.Contact;
         var supplier = new Supplier(name, document, address, zipCode, email, contact);
@@ -39,7 +39,7 @@ public class SupplierHandler(AppDbContext context) : ISupplierHandler
         {
             await context.Suppliers.AddAsync(supplier);
             await context.SaveChangesAsync();
-            return new Response<Supplier?>(supplier, 201, "Fornecedor criado com sucesso");
+            return new Response<Supplier?>(supplier, 201, "Fornecedor cadastrado com sucesso!");
         }
         catch
         {

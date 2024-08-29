@@ -1,33 +1,19 @@
-@page "/fornecedores/adicionar"
-@inherits CreateSupplierPage
+@page "/fornecedores/editar/{id:}"
+@inherits EditSupplierPage
 
-
+<h1>Editar Fornecedor</h1>
 
 <MudPaper Class="pa-8 mt-4 mb-2">
     
-    <MudText Class="d-flex justify-center" Typo="Typo.h5">
-        Cadastrar fornecedor
-    </MudText>
-    
     <EditForm Model="InputModel" OnValidSubmit="OnValidSubmitAsync">
-
-        @* <DataAnnotationsValidator/> *@
+        <DataAnnotationsValidator/> 
 
 
         <MudText Class="pa-1" Typo="Typo.h6">Dados:</MudText>
-
+        <MudTextField Class="mb-2 pa-2" Variant="Variant.Outlined" T="long" Disabled="true" Label="Id do Fornecedor" @bind-Value="InputModel.Id"/>
+        
         <MudTextField Class="mb-2 pa-2" Variant="Variant.Outlined" Label="Nome do Fornecedor" @bind-Value="InputModel.CompanyName" For="@(() => InputModel.CompanyName)"/>
-
-
-        <MudTextField Class="mb-2 pa-2" Variant="Variant.Outlined" Label="CNPJ" Mask="@(new PatternMask("00.000.000/0000-00"))" HelperText="Digite os números do CNPJ" @bind-Value="InputModel.DocumentNumber" For="@(() => InputModel.DocumentNumber)"/>
-
-        <MudText Class="pa-1" Typo="Typo.h6">Endereço:</MudText>
-        <MudTextField Class="mb-2 pa-2" Variant="Variant.Outlined" Label="Rua" @bind-Value="InputModel.Street" For="@(() => InputModel.Street)"/>
-
-        <MudTextField Class="mb-2 pa-2" Variant="Variant.Outlined" Label="Numero" @bind-Value="InputModel.Number" For="@(() => InputModel.Number)"/>
-
-        <MudTextField Class="mb-2 pa-2" Variant="Variant.Outlined" Label="CEP" Mask="@(new PatternMask("00000-000"))" @bind-Value="InputModel.ZipCode" For="@(() => InputModel.ZipCode)"/>
-
+        
         <MudText Class="pa-1" Typo="Typo.h6">Contato:</MudText>
         <MudTextField Class="mb-2 pa-2" Variant="Variant.Outlined" Label="E-mail" HelperText="Digite o e-mail do fornecedor" @bind-Value="InputModel.Email" For="@(() => InputModel.Email)"/>
 

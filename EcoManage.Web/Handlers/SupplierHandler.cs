@@ -22,7 +22,7 @@ public class SupplierHandler(IHttpClientFactory httpClientFactory) : ISupplierHa
            ?? new PagedResponse<List<Supplier>>(null, 400, "Não foi possivel obter fornecedores");
 
     public async Task<Response<Supplier?>> GetByIdAsync(GetSupplierByIdRequest request)
-        => await _client.GetFromJsonAsync<Response<Supplier?>>($"v1/supplier/{request.Id}")
+        => await _client.GetFromJsonAsync<Response<Supplier?>>($"v1/suppliers/{request.Id}")
            ?? new Response<Supplier?>(null, 400, "Não foi possivel obter fornecedor");
 
     public async Task<Response<Supplier?>> UpdateAsync(UpdateSupplierRequest request)
@@ -35,7 +35,7 @@ public class SupplierHandler(IHttpClientFactory httpClientFactory) : ISupplierHa
 
     public async Task<Response<Supplier?>> DeleteAsync(DeleteSupplierRequest request)
     {
-        var result = await _client.DeleteAsync($"v1/supplier/{request.Id}");
+        var result = await _client.DeleteAsync($"v1/suppliers/{request.Id}");
         
         return await result.Content.ReadFromJsonAsync<Response<Supplier?>>()
                ?? new Response<Supplier?>(null, 400, "Não foi possível excluir fornecedor");

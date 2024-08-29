@@ -34,6 +34,6 @@ public class Document : ValueObject
 
     public override string ToString()
     {
-        return $"{Number}";
+        return Convert.ToUInt64(Number).ToString(@"00\.000\.000\/0000\-00");
     }
 }
