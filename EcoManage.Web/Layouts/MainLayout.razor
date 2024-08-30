@@ -10,13 +10,13 @@
         <MudLayout>
             <MudAppBar>
                 <MudIconButton
-                    Icon="@Icons.Material.Filled.Menu"
+                    Icon="@(_isDrawerOpen ? Icons.Material.TwoTone.MenuOpen : Icons.Material.TwoTone.Menu)"
                     OnClick="ToggleDrawer"
                     Color="Color.Inherit" Edge="Edge.Start"/>
                 
-                <MudText Color="Color.Primary" Typo="Typo.h5" Style="appearance: menulist-button;font-weight:bold">Eco-Manage</MudText>
+                <MudText Color="Color.Primary" Typo="Typo.h5" Style="appearance: menulist-button;font-weight:bold" >Eco-Manage</MudText> <MudIcon Icon="@Icons.Material.TwoTone.Spa" Color="Color.Primary" Size="Size.Large" Class="pl-1 align-center"/>
                 <MudSpacer/>
-                <MudText Typo="Typo.subtitle1">
+                <MudText Typo="Typo.caption">
                      @context.User.Identity?.Name
                 </MudText>
                 <MudToggleIconButton

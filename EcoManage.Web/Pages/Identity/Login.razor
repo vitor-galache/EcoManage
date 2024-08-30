@@ -1,8 +1,8 @@
-@page "/login"
+@page "/entrar"
 @inherits LoginPage
 @layout HeadlessLayout
 
-<PageTitle>EcoManage - Login</PageTitle>
+<PageTitle>Login | EcoManage</PageTitle>
 
 <MudGrid Justify="Justify.Center">
     <MudItem xs="12" sm="12" md="8" lg="6" xl="6" xxl="6">
@@ -10,8 +10,7 @@
             <div class="d-flex justify-center pb-8 pt-8">
                 <img src="imgs/eco-manage-logo-removebg-preview.png" alt="Dima-Controle-Financeiro" width="250">
             </div>
-            <img src="" alt="">
-
+            
             <EditForm Model="InputModel" OnValidSubmit="OnValidSubmitAsync">
                 <DataAnnotationsValidator/>
                 <MudTextField T="string" Label="E-mail"

@@ -1,0 +1,35 @@
+@page "/sair"
+@inherits LogoutPage
+@layout HeadlessLayout
+
+<PageTitle>Logout | EcoManage</PageTitle>
+<MudText Color="Color.Primary" Typo="Typo.h1" Align="Align.Center">
+    Saindo...
+</MudText>
+
+<MudGrid Justify="Justify.Center">
+
+    <MudItem xs="12" sm="12" md="8" lg="6" xl="6" xxl="6">
+
+        <MudPaper Class="mud-width-full pa-8">
+            <div class="d-flex justify-center pb-8 pt-8">
+                <img src="imgs/eco-manage-logo-removebg-preview.png" alt="Dima-Controle-Financeiro" width="250">
+            </div>
+
+            <MudText Typo="Typo.h5" Color="Color.Error" Align="Align.Center">
+                Sua sessão foi encerrada
+            </MudText>
+
+            <MudSpacer/>
+            
+            <div class="d-flex justify-center pa-5">
+                
+                <MudButton Style="font-weight: bolder" EndIcon="@Icons.Material.TwoTone.Login" IconColor="Color.Info" Href="/" Color="Color.Info" Size="Size.Large" Variant="Variant.Text">
+                    Realizar login novamente
+                </MudButton>
+            </div>
+            
+        </MudPaper>
+
+    </MudItem>
+</MudGrid>

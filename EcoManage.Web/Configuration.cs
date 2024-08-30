@@ -13,11 +13,16 @@ public class Configuration
     {
         Typography = new Typography()
         {
+            H5 = new ()
+            {
+                FontFamily = ["Lora","serif"]
+            },
             Default = new Default
             {
                 FontFamily = ["Nunito", "sans-serif"]
             }
         },
+        
         PaletteLight = new PaletteLight
         {
             Primary = "#659157",
