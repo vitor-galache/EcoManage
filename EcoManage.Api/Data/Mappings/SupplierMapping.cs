@@ -22,7 +22,6 @@ public class SupplierMapping : IEntityTypeConfiguration<Supplier>
             .HasMaxLength(255)
             .IsRequired();
         
-        builder.Ignore(x => x.Notifications);
         
         builder.Property(x => x.Email)
             .HasColumnName("Email")
@@ -35,7 +34,7 @@ public class SupplierMapping : IEntityTypeConfiguration<Supplier>
 
         builder.OwnsOne(x => x.Document, document =>
         {
-            document.Ignore(x => x.Notifications);
+            
 
             document.Property(n => n.Number)
                 .HasColumnName("Document")
@@ -52,7 +51,7 @@ public class SupplierMapping : IEntityTypeConfiguration<Supplier>
         
         builder.OwnsOne(x => x.Address, address =>
         {
-            address.Ignore(x => x.Notifications);
+            
             address.Property(p => p.Street)
                 .HasColumnName("Street")
                 .HasColumnType("NVARCHAR")
@@ -65,12 +64,9 @@ public class SupplierMapping : IEntityTypeConfiguration<Supplier>
                 .HasMaxLength(20)
                 .IsRequired();
         });
-    
         
         builder.OwnsOne(x => x.ZipCode, zipCode =>
         {
-            zipCode.Ignore(x => x.Notifications);
-
             zipCode.Property(c => c.Code)
                 .HasColumnName("ZipCode")
                 .HasColumnType("VARCHAR")

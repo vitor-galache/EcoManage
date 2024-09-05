@@ -24,4 +24,8 @@
     <ProjectReference Include="..\EcoManage.Domain\EcoManage.Domain.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="Handlers\" />
+  </ItemGroup>
+
 </Project>

@@ -9,7 +9,7 @@ namespace EcoManage.Web.Pages.Suppliers;
 public partial class ListSupplierPage : ComponentBase
 {
     #region Properties
-
+    
     public bool IsBusy { get; set; }
 
     public List<Supplier> Suppliers { get; set; } = [];
@@ -53,6 +53,7 @@ public partial class ListSupplierPage : ComponentBase
     #region Methods
     public async Task OnDeleteButtonAsync(long id, string companyName)
     {
+        
         var result = await DialogService.ShowMessageBox( "ATENÇÃO",
             $"Ao prosseguir o fornecedor {companyName} será excluído. Esta é uma ação irreversível! Deseja continuar?",
             yesText: "EXCLUIR",
