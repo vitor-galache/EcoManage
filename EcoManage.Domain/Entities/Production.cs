@@ -36,12 +36,16 @@ public class Production
         Status = EProductionStatus.CropLoss;
     }
     
-    void ToCultivation()
+    public void ToCultivation()
     {
         Status = EProductionStatus.Cultivation;
     }
 
-    void FinishingProduction()
+    public void ToHarvesting()
+    {
+        Status = EProductionStatus.Harvesting;
+    }
+    public void Finish()
     {
         EndDate = DateTime.Now;
         Status = EProductionStatus.Finished;

@@ -1,5 +1,7 @@
 using EcoManage.Api.Common.Api;
 using EcoManage.Api.Endpoints.Identity;
+using EcoManage.Api.Endpoints.Productions;
+using EcoManage.Api.Endpoints.Products;
 using EcoManage.Api.Endpoints.Suppliers;
 using EcoManage.Api.Models;
 
@@ -15,8 +17,7 @@ public static class Endpoint
             .WithTags("HealthCheck")
             .MapGet("/", () => new { message = "OK" });
 
-
-
+        
         app.MapGroup("v1/identity")
             .WithTags("Identity")
             .MapIdentityApi<User>();
@@ -34,6 +35,24 @@ public static class Endpoint
             .MapEndpoint<GetAllSupplierEndpoint>()
             .MapEndpoint<UpdateSupplierEndpoint>()
             .MapEndpoint<DeleteSupplierEndpoint>();
+        
+        app.MapGroup("v1/products")
+            .WithTags("Products")
+            .MapEndpoint<CreateProductEndpoint>()
+            .MapEndpoint<GetAllProductsEndpoint>()
+            .MapEndpoint<GetProductBySlugEndpoint>()
+            .MapEndpoint<UpdateProductEndpoint>()
+            .MapEndpoint<InactivateProductEndpoint>();
+
+        app.MapGroup("v1/productions")
+            .WithTags("Productions")
+            .MapEndpoint<CreateProductionEndpoint>()
+            .MapEndpoint<GetProductionByNumberEndpoint>()
+            .MapEndpoint<GetAllProductionsInCultivationEndpoint>()
+            .MapEndpoint<UpdateProductionToCultivationEndpoint>()
+            .MapEndpoint<UpdateProductionToHarvestEndpoint>()
+            .MapEndpoint<FinishProductionEndpoint>()
+            .MapEndpoint<CancelProductionEndpoint>();
     }
     
     private static IEndpointRouteBuilder MapEndpoint<TEndpoint>(this IEndpointRouteBuilder app)

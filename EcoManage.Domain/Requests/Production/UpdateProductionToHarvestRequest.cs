@@ -1,6 +1,6 @@
 namespace EcoManage.Domain.Requests.Production;
 
-public class FinishingProductionRequest
+public class UpdateProductionToHarvestRequest : Request
 {
     public long Id { get; set; }
 }

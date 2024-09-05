@@ -13,7 +13,7 @@ public class ProductHandler(AppDbContext context) : IProductHandler
     {
         try
         {
-            var product = new Product(request.Title,request.Slug,request.Description);
+            var product = new Product(request.Title,request.Description);
             
             await context.Products.AddAsync(product);
             await context.SaveChangesAsync();
@@ -44,7 +44,9 @@ public class ProductHandler(AppDbContext context) : IProductHandler
     {
         try
         {
-            var query = context.Products.AsNoTracking().OrderBy(x => x.Title);
+            var query = context.Products.AsNoTracking()
+                .Where(x=>x.IsActive)
+                .OrderBy(x => x.Title);
 
             var products = await query
                 .Skip((request.PageNumber - 1) * request.PageSize)
@@ -67,10 +69,8 @@ public class ProductHandler(AppDbContext context) : IProductHandler
             product = await context.Products.FirstOrDefaultAsync(x=>x.Id == request.Id);
             if (product is null)
                 return new Response<Product?>(null, 404, "Produto não encontrado");
-
-            context.Attach(product);
             
-            product.ChangeInfo(request.Title,request.Slug,request.Description);
+            product.ChangeInfo(request.Title,request.Description);
 
             context.Products.Update(product);
             await context.SaveChangesAsync();
@@ -82,7 +82,7 @@ public class ProductHandler(AppDbContext context) : IProductHandler
         }
     }
 
-    public async Task<Response<Product?>> InactiveAsync(InactiveProductRequest request)
+    public async Task<Response<Product?>> InactiveAsync(InactivateProductRequest request)
     {
         Product? product;
         try
@@ -92,8 +92,6 @@ public class ProductHandler(AppDbContext context) : IProductHandler
             
             if (product is null)
                 return new Response<Product?>(null, 404, "Produto não encontrado");
-            
-            context.Attach(product);
             
             product.Inactivate();
             context.Products.Update(product);

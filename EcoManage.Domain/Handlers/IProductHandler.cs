@@ -10,5 +10,5 @@ public interface IProductHandler
     Task<Response<Product?>> GetBySlugAsync(GetProductBySlugRequest request);
     Task<PagedResponse<List<Product>?>> GetAllAsync(GetAllProductsRequest request);
     Task<Response<Product?>> UpdateAsync(UpdateProductRequest request);
-    Task<Response<Product?>> InactiveAsync(InactiveProductRequest request);
+    Task<Response<Product?>> InactiveAsync(InactivateProductRequest request);
 }

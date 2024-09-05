@@ -1,13 +1,15 @@
+using EcoManage.Domain.Common;
+
 namespace EcoManage.Domain.Entities;
 
 public class Product
 {
 
-    public Product(string title,string slug,string description)
+    public Product(string title,string description)
     {
         Title = title;
-        Slug = slug;
         Description = description;
+        Slug = SlugGenerator.GenerateSlug(title);
     }
     
     public long Id { get; init; }
@@ -20,11 +22,11 @@ public class Product
     {
         IsActive = false;
     }
-    public void ChangeInfo(string title,string slug,string description)
+    public void ChangeInfo(string newTitle,string newDescription)
     {
-        Title = title;
-        Slug = slug;
-        Description = description;
+        Title = newTitle;
+        Description = newDescription;
+        Slug = SlugGenerator.GenerateSlug(newTitle);
     }
     
 }

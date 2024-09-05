@@ -1,6 +1,6 @@
 namespace EcoManage.Domain.Requests.Product;
 
-public class InactiveProductRequest : Request
+public class InactivateProductRequest : Request
 {
     public long Id { get; set; }
 }
