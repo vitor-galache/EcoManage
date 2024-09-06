@@ -10,7 +10,7 @@ namespace EcoManage.Desktop
         [STAThread]
         static void Main()
         {
-            DesktopConfiguration.ApiUrl = ConfigurationManager.AppSettings["ApiUrl"];   
+            DesktopConfiguration.ApiUrl = ConfigurationManager.AppSettings["ApiUrl"] ?? string.Empty;   
             // To customize application configuration such as set high DPI settings or default font,
             // see https://aka.ms/applicationconfiguration.
             ApplicationConfiguration.Initialize();

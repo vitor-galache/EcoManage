@@ -6,7 +6,8 @@ namespace EcoManage.Domain.Handlers;
 
 public interface IProductionHandler
 {
-    Task<Response<Production?>> CreateAsync(CreateProductionRequest request);
+    Task<Response<Production?>> CreateProductionProgrammedAsync(CreateProductionProgrammedRequest request);
+    Task<Response<Production?>> CreateProductionUnexpectedAsync(CreateProductionUnexpectedRequest request);
     Task<Response<Production?>> CancelAsync(CancelProductionRequest request);
     Task<Response<Production?>> GetByNumberAsync(GetProductionByNumberRequest request);
     Task<Response<Production?>> ToHarvestAsync(UpdateProductionToHarvestRequest request);

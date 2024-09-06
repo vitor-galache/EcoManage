@@ -14,7 +14,7 @@ public class GetAllProductionsInCultivationEndpoint : IEndpoint
         => app.MapGet("/", HandleAsync)
             .WithName("Productions: Get All In Cultivation")
             .WithSummary("Obtem todas produções na fase de cultivo")
-            .WithOrder(3)
+            .WithOrder(4)
             .Produces<PagedResponse<List<Production>?>>();
     private static async Task<IResult> HandleAsync(IProductionHandler handler,
         [FromQuery]int pageNumber = Configuration.DefaultPageNumber,

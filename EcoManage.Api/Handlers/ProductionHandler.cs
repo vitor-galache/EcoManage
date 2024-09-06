@@ -10,15 +10,14 @@ namespace EcoManage.Api.Handlers;
 
 public class ProductionHandler(AppDbContext context) : IProductionHandler
 {
-    public async Task<Response<Production?>> CreateAsync(CreateProductionRequest request)
+    public async Task<Response<Production?>> CreateProductionProgrammedAsync(CreateProductionProgrammedRequest request)
     {
         try
         {
-            var production =
-                new Production(request.Title, request.ProductId, request.QuantityInKg, request.HarvestType);
+            var production = ProductionProgrammed.Factories.Create(request.Title, request.ProductId, request.QuantityInKg,request.EndDate);
             await context.Productions.AddAsync(production);
             await context.SaveChangesAsync();
-            return new Response<Production?>(production, 201, $"Produção {production.Number} cadastrada com sucesso!");
+            return new Response<Production?>(production, 201, $"Produção ({production.Number}) agendada com sucesso!");
         }
         catch
         {
@@ -26,6 +25,21 @@ public class ProductionHandler(AppDbContext context) : IProductionHandler
         }
     }
 
+    public async Task<Response<Production?>> CreateProductionUnexpectedAsync(CreateProductionUnexpectedRequest request)
+    {
+        try
+        {
+            var production = ProductionUnexpected.Factories.Create(request.Title,request.ProductId,request.QuantityInKg);
+            await context.Productions.AddAsync(production);
+            await context.SaveChangesAsync();
+            return new Response<Production?>(production, 201,
+                $"Produção({production.Number}) sem colheita prevista cadastrada com sucesso!");
+        }
+        catch
+        {
+            return new Response<Production?>(null, 500, "Erro ao cadastrar produção");
+        }
+    }
     public async Task<Response<Production?>> CancelAsync(CancelProductionRequest request)
     {
         Production? production;

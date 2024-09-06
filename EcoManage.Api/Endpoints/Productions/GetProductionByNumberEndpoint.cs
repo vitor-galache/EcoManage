@@ -12,7 +12,7 @@ public class GetProductionByNumberEndpoint : IEndpoint
         => app.MapGet("/{number}", HandleAsync)
             .WithName("Productions: Get By Number")
             .WithSummary("Obtem uma produção pelo número")
-            .WithOrder(2)
+            .WithOrder(3)
             .Produces<Response<Production?>>();
     
     private static async Task<IResult> HandleAsync(IProductionHandler handler,string number)

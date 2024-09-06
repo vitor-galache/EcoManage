@@ -4,6 +4,7 @@ using EcoManage.Api.Endpoints.Productions;
 using EcoManage.Api.Endpoints.Products;
 using EcoManage.Api.Endpoints.Suppliers;
 using EcoManage.Api.Models;
+using EcoManage.Domain.Requests.Production;
 
 namespace EcoManage.Api.Endpoints;
 
@@ -46,7 +47,8 @@ public static class Endpoint
 
         app.MapGroup("v1/productions")
             .WithTags("Productions")
-            .MapEndpoint<CreateProductionEndpoint>()
+            .MapEndpoint<CreateProductionProgrammedEndpoint>()
+            .MapEndpoint<CreateProductionUnexpectedEndpoint>()
             .MapEndpoint<GetProductionByNumberEndpoint>()
             .MapEndpoint<GetAllProductionsInCultivationEndpoint>()
             .MapEndpoint<UpdateProductionToCultivationEndpoint>()

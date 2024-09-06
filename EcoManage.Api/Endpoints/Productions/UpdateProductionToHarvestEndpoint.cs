@@ -12,7 +12,7 @@ public class UpdateProductionToHarvestEndpoint : IEndpoint
         => app.MapPut("/{id}/to-harvest", HandleAsync)
             .WithName("Productions: To Harvest")
             .WithSummary("Atualiza o status de uma produção em cultivo para colheita")
-            .WithOrder(5)
+            .WithOrder(6)
             .Produces<Response<Production?>>();
     private static async Task<IResult> HandleAsync(IProductionHandler handler,long id)
     {
