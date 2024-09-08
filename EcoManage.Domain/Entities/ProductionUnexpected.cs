@@ -1,3 +1,4 @@
+using EcoManage.Domain.Common;
 using EcoManage.Domain.Enums;
 
 namespace EcoManage.Domain.Entities;
@@ -11,7 +12,7 @@ public class ProductionUnexpected : Production
             return new ProductionUnexpected
             {
                 Title = title,
-                Status = (EProductionStatus)0,
+                Status = default,
                 HarvestType = EHarvestType.Unexpected,
                 StartDate = default,
                 EndDate = null

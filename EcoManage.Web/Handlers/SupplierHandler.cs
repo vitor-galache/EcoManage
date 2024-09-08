@@ -14,7 +14,7 @@ public class SupplierHandler(IHttpClientFactory httpClientFactory) : ISupplierHa
     {
         var result = await _client.PostAsJsonAsync("v1/suppliers", request);
         return await result.Content.ReadFromJsonAsync<Response<Supplier?>>()
-               ?? new Response<Supplier?>(null, 400, "Falha ao criar categoria");
+               ?? new Response<Supplier?>(null, 400, "Falha ao cadastrar fornecedor");
     }
 
     public async Task<PagedResponse<List<Supplier>>> GetAllAsync(GetAllSupplierRequest request)

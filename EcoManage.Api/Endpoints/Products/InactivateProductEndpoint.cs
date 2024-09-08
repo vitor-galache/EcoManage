@@ -12,7 +12,7 @@ public class InactivateProductEndpoint : IEndpoint
         => app.MapPut("/{id}/inactivate", HandleAsync)
             .WithName("Products: Inactivate")
             .WithSummary("Inativa um produto cadastrado")
-            .WithOrder(5)
+            .WithOrder(6)
             .Produces<Response<Product?>>();
     private static async Task<IResult> HandleAsync(IProductHandler handler,long id)
     {

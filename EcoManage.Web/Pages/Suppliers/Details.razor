@@ -8,25 +8,25 @@
     </MudText>
     
     <MudDivider Class="my-6"/>
-    <MudForm>
+    <MudForm ReadOnly="true">
         
         <MudText Class="pa-1" Typo="Typo.h6">Dados:</MudText>
 
-        <MudTextField Class="mb-2 pa-2" T="string" ReadOnly="true" Variant="Variant.Outlined" Label="ID" Mask="@(new PatternMask("00.000.000/0000-00"))" Value="(Supplier?.Data?.Id).ToString()"/>
-        <MudTextField Class="mb-2 pa-2" T="string" ReadOnly="true" Variant="Variant.Outlined" Label="CNPJ" Mask="@(new PatternMask("00.000.000/0000-00"))" Value="Supplier?.Data?.Document.Number"/>
+        <MudTextField Class="mb-2 pa-2" T="string" Variant="Variant.Outlined" Label="ID" Mask="@(new PatternMask("00.000.000/0000-00"))" Value="(Supplier?.Data?.Id).ToString()"/>
+        <MudTextField Class="mb-2 pa-2" T="string" Variant="Variant.Outlined" Label="CNPJ" Mask="@(new PatternMask("00.000.000/0000-00"))" Value="Supplier?.Data?.Document.Number"/>
         
         <MudDivider Class="my-4"/>
         
         <MudText Class="pa-1" Typo="Typo.h6">Endereço:</MudText>
-        <MudTextField Class="mb-2 pa-2" ReadOnly="true" Value="Supplier?.Data?.Address.Street" Variant="Variant.Outlined" Label="Rua"/>
-        <MudTextField Class="mb-2 pa-2" ReadOnly="true" Value="Supplier?.Data?.Address.Number" Variant="Variant.Outlined" Label="Numero"/>
-        <MudTextField Class="mb-2 pa-2" ReadOnly="true" Variant="Variant.Outlined" Label="CEP" Mask="@(new PatternMask("00000-000"))" Value="Supplier?.Data?.ZipCode.Code"/>
+        <MudTextField Class="mb-2 pa-2" Value="Supplier?.Data?.Address.Street" Variant="Variant.Outlined" Label="Rua"/>
+        <MudTextField Class="mb-2 pa-2" Value="Supplier?.Data?.Address.Number" Variant="Variant.Outlined" Label="Numero"/>
+        <MudTextField Class="mb-2 pa-2" Variant="Variant.Outlined" Label="CEP" Mask="@(new PatternMask("00000-000"))" Value="Supplier?.Data?.ZipCode.Code"/>
         
         <MudDivider Class="my-4"/>
         
         <MudText Class="pa-1" Typo="Typo.h6">Contato:</MudText>
-        <MudTextField Class="mb-2 pa-2" ReadOnly="true" Variant="Variant.Outlined" Label="E-mail" Value="Supplier?.Data?.Email"/>
-        <MudTextField Class="mb-2 pa-2" ReadOnly="true" Variant="Variant.Outlined" Label="Contato" Lines="3" Value="Supplier?.Data?.Contact"/>
+        <MudTextField Class="mb-2 pa-2" Variant="Variant.Outlined" Label="E-mail" Value="Supplier?.Data?.Email"/>
+        <MudTextField Class="mb-2 pa-2" Variant="Variant.Outlined" Label="Contato" Lines="3" Value="Supplier?.Data?.Contact"/>
 
     </MudForm>
 

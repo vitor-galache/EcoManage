@@ -1,5 +1,6 @@
 using EcoManage.Api.Common.Api;
 using EcoManage.Domain;
+using EcoManage.Domain.Common;
 using EcoManage.Domain.Entities;
 using EcoManage.Domain.Handlers;
 using EcoManage.Domain.Requests.Production;
@@ -14,7 +15,7 @@ public class GetAllProductionsInCultivationEndpoint : IEndpoint
         => app.MapGet("/", HandleAsync)
             .WithName("Productions: Get All In Cultivation")
             .WithSummary("Obtem todas produções na fase de cultivo")
-            .WithOrder(4)
+            .WithOrder(5)
             .Produces<PagedResponse<List<Production>?>>();
     private static async Task<IResult> HandleAsync(IProductionHandler handler,
         [FromQuery]int pageNumber = Configuration.DefaultPageNumber,

@@ -1,14 +1,10 @@
+using EcoManage.Domain.Entities;
 using EcoManage.Domain.Enums;
 
-namespace EcoManage.Domain.Entities;
+namespace EcoManage.Domain.Common;
 
 public abstract class Production
 {
-    protected Production()
-    {
-        
-    }
-    
     public long Id { get; init; }
     public string Number { get; init; } = Guid.NewGuid().ToString("N")[..8];
     public string Title { get; protected set; } = string.Empty;

@@ -11,27 +11,25 @@
     
     <EditForm Model="InputModel" OnValidSubmit="OnValidSubmitAsync">
 
-        @* <DataAnnotationsValidator/> *@
+        <DataAnnotationsValidator/>
+        
+        <MudText Color="Color.Primary" Class="pa-1" Typo="Typo.h6">Dados:</MudText>
+        
+        
+        <MudTextField Class="mb-2 pa-2" OnlyValidateIfDirty="true" Variant="Variant.Outlined" Label="Nome do Fornecedor" @bind-Value="InputModel.CompanyName" For="@(() => InputModel.CompanyName)"/>
+        <MudTextField Class="mb-2 pa-2" OnlyValidateIfDirty="true" Variant="Variant.Outlined" Label="CNPJ" Mask="@(new PatternMask("00.000.000/0000-00"))" HelperText="Digite os números do CNPJ" @bind-Value="InputModel.DocumentNumber" For="@(() => InputModel.DocumentNumber)"/>
 
+        <MudText Color="Color.Primary" Class="pa-1" Typo="Typo.h6" >Endereço:</MudText>
+        <MudTextField Class="mb-2 pa-2" OnlyValidateIfDirty="true" Variant="Variant.Outlined" Label="Rua" @bind-Value="InputModel.Street" For="@(() => InputModel.Street)"/>
 
-        <MudText Class="pa-1" Typo="Typo.h6">Dados:</MudText>
-
-        <MudTextField Class="mb-2 pa-2" Variant="Variant.Outlined" Label="Nome do Fornecedor" @bind-Value="InputModel.CompanyName" For="@(() => InputModel.CompanyName)"/>
-
-
-        <MudTextField Class="mb-2 pa-2" Variant="Variant.Outlined" Label="CNPJ" Mask="@(new PatternMask("00.000.000/0000-00"))" HelperText="Digite os números do CNPJ" @bind-Value="InputModel.DocumentNumber" For="@(() => InputModel.DocumentNumber)"/>
-
-        <MudText Class="pa-1" Typo="Typo.h6">Endereço:</MudText>
-        <MudTextField Class="mb-2 pa-2" Variant="Variant.Outlined" Label="Rua" @bind-Value="InputModel.Street" For="@(() => InputModel.Street)"/>
-
-        <MudTextField Class="mb-2 pa-2" Variant="Variant.Outlined" Label="Numero" @bind-Value="InputModel.Number" For="@(() => InputModel.Number)"/>
+        <MudTextField Class="mb-2 pa-2" OnlyValidateIfDirty="true" Variant="Variant.Outlined" Label="Numero" @bind-Value="InputModel.Number" For="@(() => InputModel.Number)"/>
 
         <MudTextField Class="mb-2 pa-2" Variant="Variant.Outlined" Label="CEP" Mask="@(new PatternMask("00000-000"))" @bind-Value="InputModel.ZipCode" For="@(() => InputModel.ZipCode)"/>
 
-        <MudText Class="pa-1" Typo="Typo.h6">Contato:</MudText>
-        <MudTextField Class="mb-2 pa-2" Variant="Variant.Outlined" Label="E-mail" HelperText="Digite o e-mail do fornecedor" @bind-Value="InputModel.Email" For="@(() => InputModel.Email)"/>
+        <MudText Color="Color.Primary" Class="pa-1" Typo="Typo.h6">Contato:</MudText>
+        <MudTextField Class="mb-2 pa-2" OnlyValidateIfDirty="true" Variant="Variant.Outlined" Label="E-mail" HelperText="Digite o e-mail do fornecedor" @bind-Value="InputModel.Email" For="@(() => InputModel.Email)"/>
 
-        <MudTextField Class="mb-2 pa-2" Variant="Variant.Outlined" Label="Contato" Lines="3" HelperText="Digite outra forma de contato com o fornecedor" @bind-Value="InputModel.Contact" For="@(() => InputModel.Contact)"/>
+        <MudTextField Class="mb-2 pa-2" OnlyValidateIfDirty="true" Variant="Variant.Outlined" Label="Contato" Lines="3" HelperText="Digite outra forma de contato com o fornecedor" @bind-Value="InputModel.Contact" For="@(() => InputModel.Contact)"/>
 
         <div class="d-flex justify-center">
 

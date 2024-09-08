@@ -19,7 +19,6 @@ public partial class ListSupplierPage : ComponentBase
     #region Services
 
     [Inject] public ISnackbar Snackbar { get; set; } = null!;
-
     [Inject] public IDialogService DialogService { get; set; } = null!;
     [Inject] public ISupplierHandler Handler { get; set; } = null!;
 
@@ -38,9 +37,9 @@ public partial class ListSupplierPage : ComponentBase
             if (result.IsSuccess)
                 Suppliers = result.Data ?? [];
         }
-        catch (Exception ex)
+        catch
         {
-            Snackbar.Add(ex.Message, Severity.Error);
+            Snackbar.Add("Não foi possível carregar fornecedores", Severity.Error);
         }
         finally
         {
@@ -56,7 +55,7 @@ public partial class ListSupplierPage : ComponentBase
         
         var result = await DialogService.ShowMessageBox( "ATENÇÃO",
             $"Ao prosseguir o fornecedor {companyName} será excluído. Esta é uma ação irreversível! Deseja continuar?",
-            yesText: "EXCLUIR",
+            yesText: "EXCLUIR FORNECEDOR",
             cancelText: "Cancelar");
         
         if (result is true)

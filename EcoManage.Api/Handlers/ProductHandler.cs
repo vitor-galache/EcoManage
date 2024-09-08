@@ -25,6 +25,21 @@ public class ProductHandler(AppDbContext context) : IProductHandler
         }
     }
 
+    public async Task<Response<Product?>> GetByIdAsync(GetProductByIdRequest request)
+    {
+        try
+        {
+            var product = await context.Products.AsNoTracking().FirstOrDefaultAsync(x => x.Id == request.Id);
+            return product is null 
+                ? new Response<Product?>(null, 404, "Produto não encontrado") 
+                : new Response<Product?>(product);
+        }
+        catch
+        {
+            return new Response<Product?>(null, 500, "Não foi possível obter o produto");
+        }
+    }
+
     public async Task<Response<Product?>> GetBySlugAsync(GetProductBySlugRequest request)
     {
         try
@@ -46,7 +61,7 @@ public class ProductHandler(AppDbContext context) : IProductHandler
         {
             var query = context.Products.AsNoTracking()
                 .Where(x=>x.IsActive)
-                .OrderBy(x => x.Title);
+                .OrderBy(x => x.Id);
 
             var products = await query
                 .Skip((request.PageNumber - 1) * request.PageSize)

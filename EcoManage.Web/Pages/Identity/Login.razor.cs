@@ -47,7 +47,6 @@ public partial class LoginPage : ComponentBase
     public async Task OnValidSubmitAsync()
     {
         IsBusy = true;
-        await Task.Delay(500);
         try
         {
             var result = await Handler.LoginAsync(InputModel);

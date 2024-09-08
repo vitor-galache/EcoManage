@@ -1,4 +1,5 @@
 using EcoManage.Api.Common.Api;
+using EcoManage.Domain.Common;
 using EcoManage.Domain.Entities;
 using EcoManage.Domain.Handlers;
 using EcoManage.Domain.Requests.Production;
@@ -12,7 +13,7 @@ public class CancelProductionEndpoint : IEndpoint
         => app.MapPut("/{id}/cancel", HandleAsync)
             .WithName("Productions: Cancel (CropLoss)")
             .WithSummary("Cancelar uma produção por quebra")
-            .WithOrder(8)
+            .WithOrder(9)
             .Produces<Response<Production?>>();
     private static async Task<IResult> HandleAsync(IProductionHandler handler,long id)
     {

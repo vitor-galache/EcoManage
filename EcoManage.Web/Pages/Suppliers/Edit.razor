@@ -1,4 +1,4 @@
-@page "/fornecedores/editar/{id:}"
+@page "/fornecedores/editar/{id}"
 @inherits EditSupplierPage
 <PageTitle>Editar Fornecedor | EcoManage</PageTitle>
 <h1>Editar Fornecedor</h1>
@@ -10,14 +10,14 @@
 
 
         <MudText Class="pa-1" Typo="Typo.h6">Dados:</MudText>
-        <MudTextField Class="mb-2 pa-2" Variant="Variant.Outlined" T="long" Disabled="true" Label="Id do Fornecedor" @bind-Value="InputModel.Id"/>
+        <MudTextField Class="mb-2 pa-2" OnlyValidateIfDirty="true" Variant="Variant.Outlined" T="long" Disabled="true" Label="Id do Fornecedor" @bind-Value="InputModel.Id"/>
         
-        <MudTextField Class="mb-2 pa-2" Variant="Variant.Outlined" Label="Nome do Fornecedor" @bind-Value="InputModel.CompanyName" For="@(() => InputModel.CompanyName)"/>
+        <MudTextField Class="mb-2 pa-2" OnlyValidateIfDirty="true" Variant="Variant.Outlined" Label="Nome do Fornecedor" @bind-Value="InputModel.CompanyName" For="@(() => InputModel.CompanyName)"/>
         
         <MudText Class="pa-1" Typo="Typo.h6">Contato:</MudText>
-        <MudTextField Class="mb-2 pa-2" Variant="Variant.Outlined" Label="E-mail" HelperText="Digite o e-mail do fornecedor" @bind-Value="InputModel.Email" For="@(() => InputModel.Email)"/>
+        <MudTextField Class="mb-2 pa-2" OnlyValidateIfDirty="true" Variant="Variant.Outlined" Label="E-mail" HelperText="Digite o e-mail do fornecedor" @bind-Value="InputModel.Email" For="@(() => InputModel.Email)"/>
 
-        <MudTextField Class="mb-2 pa-2" Variant="Variant.Outlined" Label="Contato" Lines="3" HelperText="Digite outra forma de contato com o fornecedor" @bind-Value="InputModel.Contact" For="@(() => InputModel.Contact)"/>
+        <MudTextField Class="mb-2 pa-2" OnlyValidateIfDirty="true" Variant="Variant.Outlined" Label="Contato" Lines="3" HelperText="Digite outra forma de contato com o fornecedor" @bind-Value="InputModel.Contact" For="@(() => InputModel.Contact)"/>
 
         <div class="d-flex justify-center">
 

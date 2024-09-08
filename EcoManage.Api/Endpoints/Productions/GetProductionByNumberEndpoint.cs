@@ -1,4 +1,5 @@
 using EcoManage.Api.Common.Api;
+using EcoManage.Domain.Common;
 using EcoManage.Domain.Entities;
 using EcoManage.Domain.Handlers;
 using EcoManage.Domain.Requests.Production;
@@ -12,7 +13,7 @@ public class GetProductionByNumberEndpoint : IEndpoint
         => app.MapGet("/{number}", HandleAsync)
             .WithName("Productions: Get By Number")
             .WithSummary("Obtem uma produção pelo número")
-            .WithOrder(3)
+            .WithOrder(4)
             .Produces<Response<Production?>>();
     
     private static async Task<IResult> HandleAsync(IProductionHandler handler,string number)

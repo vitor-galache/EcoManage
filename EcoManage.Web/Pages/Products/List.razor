@@ -1,0 +1,60 @@
+@page "/produtos"
+@inherits ListProductsPage
+
+<PageTitle> Produtos | EcoManage</PageTitle>
+
+<MudText Typo="Typo.h3" Class="d-flex center">Produtos</MudText>
+
+<div class="d-flex justify-end">
+
+    <MudButton Href="/produtos/adicionar" Variant="Variant.Filled" Class="pa-2" Size="Size.Medium" Color="Color.Primary" StartIcon="@Icons.Material.TwoTone.Add">
+        Cadastrar Produto
+    </MudButton>
+</div>
+
+@if (IsBusy)
+{
+<MudPaper Class="pa-8 mt-4">
+    <MudSkeleton Height="55px"/>
+    <MudSkeleton Height="110px"/>
+    <MudSkeleton Height="55px"/>
+    <MudSkeleton Height="110px"/>
+    <MudSkeleton Height="55px"/>
+</MudPaper>
+}
+
+else
+{
+    <MudDataGrid Items="@Products" Filterable="false" Class="mt-4">
+
+        <Columns>
+
+            <PropertyColumn Property="x => x.Id" Title="#" Sortable="true"></PropertyColumn>
+            <PropertyColumn Property="x => x.Title" Title="Produto" Filterable="false" Sortable="false"></PropertyColumn>
+            
+            <TemplateColumn Class="d-flex justify-end pa-8">
+                <CellTemplate>
+
+                    <MudStack Row Class="justify-end">
+                        
+                        <MudButton Variant="Variant.Text" StartIcon="@Icons.Material.TwoTone.Info" IconSize="Size.Small" Href="@($"/produtos/{context.Item.Id}")">
+                            Mais Detalhes
+                        </MudButton>
+                        
+                        <MudButton StartIcon="@Icons.Material.TwoTone.EditNote" Href="@($"/produtos/editar/{context.Item.Id}")" Color="Color.Info">
+                            Editar
+                        </MudButton>
+
+                        <MudButton StartIcon="@Icons.Material.TwoTone.Block"  OnClick="@(async () => await OnInactivateButtonAsync(context.Item.Id,context.Item.Title))" Color="Color.Warning">
+                            Inativar
+                        </MudButton>
+                        
+                    </MudStack>
+                </CellTemplate>
+            </TemplateColumn>
+
+        </Columns>
+
+    </MudDataGrid>
+}
+

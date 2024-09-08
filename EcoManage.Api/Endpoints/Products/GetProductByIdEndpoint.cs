@@ -6,20 +6,20 @@ using EcoManage.Domain.Responses;
 
 namespace EcoManage.Api.Endpoints.Products;
 
-public class GetProductBySlugEndpoint : IEndpoint
+public class GetProductByIdEndpoint : IEndpoint
 {
     public static void Map(IEndpointRouteBuilder app)
-        => app.MapGet("/{slug}", HandleAsync)
-            .WithName("Products : Get By Slug")
-            .WithSummary("Obtem um produto pelo slug")
-            .WithOrder(4)
+        => app.MapGet("/{id}", HandleAsync)
+            .WithName("Products : Get By Id")
+            .WithSummary("Obtem um produto pelo id")
+            .WithOrder(3)
             .Produces<Response<Product?>>();
     
-    private static async Task<IResult> HandleAsync(IProductHandler handler, string slug)
+    private static async Task<IResult> HandleAsync(IProductHandler handler, long id)
     {
-        var request = new GetProductBySlugRequest { Slug = slug };
+        var request = new GetProductByIdRequest { Id = id };
 
-        var result = await handler.GetBySlugAsync(request);
+        var result = await handler.GetByIdAsync(request);
 
         return result.IsSuccess
             ? TypedResults.Ok(result)

@@ -41,6 +41,7 @@ public static class Endpoint
             .WithTags("Products")
             .MapEndpoint<CreateProductEndpoint>()
             .MapEndpoint<GetAllProductsEndpoint>()
+            .MapEndpoint<GetProductByIdEndpoint>()
             .MapEndpoint<GetProductBySlugEndpoint>()
             .MapEndpoint<UpdateProductEndpoint>()
             .MapEndpoint<InactivateProductEndpoint>();
@@ -49,6 +50,7 @@ public static class Endpoint
             .WithTags("Productions")
             .MapEndpoint<CreateProductionProgrammedEndpoint>()
             .MapEndpoint<CreateProductionUnexpectedEndpoint>()
+            .MapEndpoint<GetProductionByIdEndpoint>()
             .MapEndpoint<GetProductionByNumberEndpoint>()
             .MapEndpoint<GetAllProductionsInCultivationEndpoint>()
             .MapEndpoint<UpdateProductionToCultivationEndpoint>()

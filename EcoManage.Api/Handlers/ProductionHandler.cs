@@ -1,4 +1,5 @@
 using EcoManage.Api.Data;
+using EcoManage.Domain.Common;
 using EcoManage.Domain.Entities;
 using EcoManage.Domain.Enums;
 using EcoManage.Domain.Handlers;
@@ -15,6 +16,7 @@ public class ProductionHandler(AppDbContext context) : IProductionHandler
         try
         {
             var production = ProductionProgrammed.Factories.Create(request.Title, request.ProductId, request.QuantityInKg,request.EndDate);
+            
             await context.Productions.AddAsync(production);
             await context.SaveChangesAsync();
             return new Response<Production?>(production, 201, $"Produção ({production.Number}) agendada com sucesso!");
@@ -82,6 +84,23 @@ public class ProductionHandler(AppDbContext context) : IProductionHandler
             return new Response<Production?>(null, 500, "Erro ao cancelar produção");
         }
 
+    }
+
+    public async Task<Response<Production?>> GetByIdAsync(GetProductionByIdRequest request)
+    {
+        try
+        {
+            var production = await context.Productions.AsNoTracking().Include(x => x.Product)
+                .FirstOrDefaultAsync(x => x.Id == request.Id);
+
+            return production is null
+                ? new Response<Production?>(null, 404, "Produção não encontrada")
+                : new Response<Production?>(production);
+        }
+        catch
+        {
+            return new Response<Production?>(null, 400, "Falha ao obter produção");
+        }
     }
 
     public async Task<Response<Production?>> GetByNumberAsync(GetProductionByNumberRequest request)

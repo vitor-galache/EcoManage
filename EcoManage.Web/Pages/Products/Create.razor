@@ -1,0 +1,35 @@
+@page "/produtos/adicionar"
+@inherits CreateProductPage
+
+<PageTitle>Cadastrar Produto | EcoManage</PageTitle>
+
+<MudGrid Class="d-flex justify-center align-center" Style="height: 90vh;">
+    <MudItem xs="12" sm="12" md="8" lg="6" xl="6" xxl="6">
+        <MudPaper Class="pa-10 mud-width-full" Elevation="10">
+
+            <MudText Class="d-flex justify-center mb-4 pa-3" Typo="Typo.h5" Style="font-weight: bold">
+                Cadastrar Produto
+            </MudText>
+
+            <EditForm Model="InputModel" OnValidSubmit="OnValidSubmitAsync">
+
+                <DataAnnotationsValidator/>
+
+                <MudTextField Class="pa-2" Adornment="Adornment.End" AdornmentIcon="@Icons.Material.TwoTone.Edit" OnlyValidateIfDirty="true" Variant="Variant.Outlined" Label="Nome do Produto" @bind-Value="InputModel.Title" For="@(() => InputModel.Title)"/>
+
+                <MudTextField Class="pa-2" Adornment="Adornment.End" AdornmentIcon="@Icons.Material.TwoTone.Description" OnlyValidateIfDirty="true" Variant="Variant.Outlined" Label="Descrição Do Produto" @bind-Value="InputModel.Description" Lines="5" For="@(() => InputModel.Description)"/>
+
+                <div class="d-flex justify-center">
+
+                    <MudButton Class="mt-5 pa-2" Size="Size.Medium" FullWidth="true" Variant="Variant.Filled" ButtonType="ButtonType.Submit" Color="Color.Primary" StartIcon="@Icons.Material.TwoTone.Inventory2">
+                        Salvar Produto
+                    </MudButton>
+
+                </div>
+                
+            </EditForm>
+
+        </MudPaper>
+    </MudItem>
+</MudGrid>
+   

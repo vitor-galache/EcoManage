@@ -21,6 +21,8 @@ builder.Services.AddScoped(x => (ICookieAuthenticationStateProvider)x.GetRequire
 
 builder.Services.AddTransient<IAccountHandler, AccountHandler>();
 builder.Services.AddTransient<ISupplierHandler, SupplierHandler>();
+builder.Services.AddTransient<IProductHandler, ProductHandler>();
+
 builder.Services.AddMudServices();
 
 builder.Services.AddHttpClient(Configuration.HttpClientName, opt =>

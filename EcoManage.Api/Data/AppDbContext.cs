@@ -1,5 +1,6 @@
 using System.Reflection;
 using EcoManage.Api.Models;
+using EcoManage.Domain.Common;
 using EcoManage.Domain.Entities;
 using Flunt.Notifications;
 using Microsoft.AspNetCore.Identity;

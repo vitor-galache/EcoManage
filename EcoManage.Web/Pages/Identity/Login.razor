@@ -4,45 +4,53 @@
 
 <PageTitle>Login | EcoManage</PageTitle>
 
-<MudGrid Justify="Justify.Center">
-    <MudItem xs="12" sm="12" md="8" lg="6" xl="6" xxl="6">
-        <MudPaper Class="mud-width-full pa-8">
-            <div class="d-flex justify-center pb-8 pt-8">
-                <img src="imgs/eco-manage-logo-removebg-preview.png" alt="Dima-Controle-Financeiro" width="250">
-            </div>
-            
-            <EditForm Model="InputModel" OnValidSubmit="OnValidSubmitAsync">
-                <DataAnnotationsValidator/>
-                <MudTextField T="string" Label="E-mail"
-                              InputType="InputType.Email"
-                              For="@(() => InputModel.Email)"
-                              @bind-Value = "InputModel.Email"
-                              HelperText="Digite o email corporativo"/>
+    <MudGrid Justify="Justify.Center" Class="d-flex justify-center align-center" Style="height: 90vh;">
+        <MudItem xs="12" sm="12" md="8" lg="6" xl="6" xxl="6">
+            <MudPaper Class="mud-width-full pa-8" Elevation="10">
+                <div class="d-flex justify-center pb-8 pt-8">
+                    <img src="imgs/eco-manage-logo-removebg-preview.png" alt="EcoManage-Controle-Fazenda-Urbana" width="250">
+                </div>
 
-                <MudTextField T="string" Label="Senha"
-                              InputType="InputType.Password"
-                              For="@(() => InputModel.Password)"
-                              @bind-Value = "InputModel.Password"
-                              HelperText="Digite sua senha"
-                />
-                
-                @if (IsBusy)
-                {
+                <EditForm Model="InputModel" OnValidSubmit="OnValidSubmitAsync" >
+                    <DataAnnotationsValidator/>
+
+                    <MudTextField T="string" Label="E-mail"
+                                  Variant="Variant.Outlined"
+                                  Class="pa-2"
+                                  InputType="InputType.Email"
+                                  For="@(() => InputModel.Email)"
+                                  @bind-Value = "InputModel.Email"
+                                  HelperText="Digite o email corporativo"
+                                  OnlyValidateIfDirty="true"/>
+
+                    <MudTextField T="string" Label="Senha"
+                                  Variant="Variant.Outlined"
+                                  Class="pa-2"
+                                  InputType="InputType.Password"
+                                  For="@(() => InputModel.Password)"
+                                  @bind-Value = "InputModel.Password"
+                                  HelperText="Digite sua senha"
+                                  OnlyValidateIfDirty="true"
+                    />
+
+                    @if (IsBusy)
+                    {
                     <div class="d-flex justify-center">
                         <MudProgressCircular Color="Color.Primary" Indeterminate="true"/>
                     </div>
-                }
-                else
-                {
+                    }
+                    else
+                    {
                     <div class="d-flex mt-8">
                         <MudButton ButtonType="ButtonType.Submit" Variant="Variant.Filled" Color="Color.Primary">ENTRAR</MudButton>
                         <MudSpacer/>
                         <MudButton Href="/forget-password">ESQUECI MINHA SENHA</MudButton>
                     </div>
-                }
-             
-            </EditForm>
-        </MudPaper>
-    </MudItem>
-</MudGrid>
+                    }
+
+                </EditForm>
+            </MudPaper>
+        </MudItem>
+    </MudGrid>
+
 

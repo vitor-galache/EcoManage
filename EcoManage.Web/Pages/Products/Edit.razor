@@ -1,0 +1,27 @@
+@page "/produtos/editar/{id}"
+@inherits EditProductPage
+
+<MudPaper Class="pa-8 mt-4 mb-2">
+    
+    <EditForm Model="InputModel" OnValidSubmit="OnValidSubmitAsync">
+        <DataAnnotationsValidator/> 
+
+
+        <MudText Class="pa-1" Typo="Typo.h6">Editar Produto:</MudText>
+        <MudTextField Class="mb-2 pa-2" OnlyValidateIfDirty="true" Variant="Variant.Outlined" T="long" Disabled="true" Label="Id do Produto" @bind-Value="InputModel.Id"/>
+        
+        <MudTextField Class="mb-2 pa-2" OnlyValidateIfDirty="true" Variant="Variant.Outlined" Label="Novo nome do produto" @bind-Value="InputModel.Title" For="@(() => InputModel.Title)"/>
+        
+        <MudTextField Class="mb-2 pa-2" OnlyValidateIfDirty="true" Variant="Variant.Outlined" Label="Nova Descrição" HelperText="Digite uma breve descrição do produto" @bind-Value="InputModel.Description" For="@(() => InputModel.Description)"/>
+        
+        <div class="d-flex justify-center">
+
+            <MudButton Class="mt-5" Size="Size.Medium" Variant="Variant.Outlined" ButtonType="ButtonType.Submit" Color="Color.Surface" StartIcon="@Icons.Material.TwoTone.Update">
+                Atualizar Produto
+            </MudButton>
+
+        </div>
+
+    </EditForm>
+    
+</MudPaper>
