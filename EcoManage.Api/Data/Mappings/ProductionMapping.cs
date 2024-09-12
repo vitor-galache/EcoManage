@@ -46,16 +46,12 @@ public class ProductionMapping : IEntityTypeConfiguration<Production>
 
         builder.Property(x => x.QuantityInKg)
             .IsRequired()
-            .HasColumnType("DECIMAL");
+            .HasColumnType("DECIMAL(18,2)");
 
         builder.HasOne(x => x.Product)
             .WithMany();
 
         builder.HasIndex(x => x.Number,"IX_Production_Number")
             .IsUnique();
-
-        builder.HasDiscriminator<EHarvestType>("HarvestType")
-            .HasValue<ProductionProgrammed>(EHarvestType.Programmed)
-            .HasValue<ProductionUnexpected>(EHarvestType.Unexpected);
     }
 }

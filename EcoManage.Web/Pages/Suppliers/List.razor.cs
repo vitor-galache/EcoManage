@@ -43,7 +43,7 @@ public partial class ListSupplierPage : ComponentBase
         }
         finally
         {
-            IsBusy = true;
+            IsBusy = false;
         }
     }
 

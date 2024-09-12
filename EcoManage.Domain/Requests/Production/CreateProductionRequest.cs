@@ -3,18 +3,19 @@ using EcoManage.Domain.Enums;
 
 namespace EcoManage.Domain.Requests.Production;
 
-public class CreateProductionProgrammedRequest : Request
+public class CreateProductionRequest : Request
 {
     [Required (ErrorMessage = "Titulo obrigatório")]
     public string Title { get; set; } = string.Empty;
     
-    [Required]
+    [Required (ErrorMessage = "Produto inválido")]
     public long ProductId { get; set; }
+
+    [Required (ErrorMessage = "Tipo de colheita inválido")]
+    public EHarvestType HarvestType { get; set; } 
     
-    [Required]
+    [Required (ErrorMessage = "Digite um número")]
     public decimal QuantityInKg { get; set; }
-    
-    [Required (ErrorMessage = "Data inválida")]
-    public DateTime EndDate { get; set; }
-    
+
+    public DateTime? EndDate { get; set; } 
 }

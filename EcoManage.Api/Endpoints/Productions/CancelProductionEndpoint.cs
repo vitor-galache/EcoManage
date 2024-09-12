@@ -13,7 +13,7 @@ public class CancelProductionEndpoint : IEndpoint
         => app.MapPut("/{id}/cancel", HandleAsync)
             .WithName("Productions: Cancel (CropLoss)")
             .WithSummary("Cancelar uma produção por quebra")
-            .WithOrder(9)
+            .WithOrder(8)
             .Produces<Response<Production?>>();
     private static async Task<IResult> HandleAsync(IProductionHandler handler,long id)
     {

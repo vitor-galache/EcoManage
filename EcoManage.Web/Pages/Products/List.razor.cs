@@ -74,6 +74,7 @@ public partial class ListProductsPage : ComponentBase
         {
             var request = new InactivateProductRequest() { Id = id };
             await Handler.InactiveAsync(request);
+            Products.RemoveAll(x => x.Id == id);
             Snackbar.Add($"Produto {productName} inativado com sucesso", Severity.Info);
         }
         catch (Exception ex)

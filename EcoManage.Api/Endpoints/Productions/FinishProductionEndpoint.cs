@@ -13,7 +13,7 @@ public class FinishProductionEndpoint: IEndpoint
         => app.MapPut("/{id}/finish", HandleAsync)
             .WithName("Productions: Finish")
             .WithSummary("Finaliza uma produção")
-            .WithOrder(8)
+            .WithOrder(7)
             .Produces<Response<Production?>>();
     private static async Task<IResult> HandleAsync(IProductionHandler handler,long id)
     {

@@ -64,7 +64,7 @@ public partial class EditProductPage : ComponentBase
         }
         catch
         {
-            Snackbar.Add("Não foi possível atualizar o produto", Severity.Error);
+            Snackbar.Add("Não foi possível obter o produto", Severity.Error);
         }
         finally
         {

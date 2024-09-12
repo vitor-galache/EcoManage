@@ -1,0 +1,55 @@
+@page "/producoes"
+@using EcoManage.Domain.Entities
+@inherits ListProductionsPage
+
+
+<PageTitle> Produções | EcoManage</PageTitle>
+
+<MudText Typo="Typo.h3" Class="d-flex center">Produções</MudText><MudIcon Icon="@Icons.Material.TwoTone.Grass" Color="Color.Primary" Class="pl-1 align-center" Size="Size.Large"></MudIcon>
+
+<div class="d-flex justify-end">
+
+    <MudButton Href="/producoes/cadastrar" Variant="Variant.Filled" Class="pa-2" Size="Size.Medium" Color="Color.Info" StartIcon="@Icons.Material.TwoTone.Add">
+        Cadastrar Nova Produção
+    </MudButton>
+</div>
+
+
+    <MudDataGrid T="Production" Items="@Productions" Filterable="false" Class="mt-4">
+
+        <Columns>
+            <PropertyColumn Property="x => x.Title" Title="Título" Filterable="false" Sortable="false"></PropertyColumn>
+            <PropertyColumn Title="Produto" Property="x => x.Product.Slug" Filterable="false" Sortable="false"></PropertyColumn>
+            <PropertyColumn Title="Início" Property="x => x.StartDate" Format="dd/MM/yyyy" Filterable="false" Sortable="false"></PropertyColumn>
+            <TemplateColumn Title="Progresso" Filterable="false" Sortable="false">
+                <CellTemplate>
+                    @{
+                        double progessValue = context.Item.Status switch
+                        {
+                            EProductionStatus.Plantio => 25,
+                            EProductionStatus.Cultivo => 50,
+                            EProductionStatus.Colheita => 80,
+                            EProductionStatus.Finalizada => 100,
+                            _ => 0
+                        };}
+                    <MudProgressLinear Class="my-3" Striped="true" Size="Size.Large" Value="@progessValue" Color="Color.Primary"></MudProgressLinear>
+                    <MudText Typo="Typo.caption">@context.Item.Status.ToString()</MudText>
+                </CellTemplate>
+            </TemplateColumn>
+            
+            <TemplateColumn Class="d-flex justify-end pa-8">
+                <CellTemplate>
+
+                    <MudStack Row Class="justify-end">
+                        
+                        <MudButton StartIcon="@Icons.Material.TwoTone.ChangeCircle" Href="@($"/fornecedores/editar/{context.Item.Id}")" Color="Color.Info">
+                            Atualizar Status
+                        </MudButton>
+                        
+                    </MudStack>
+                </CellTemplate>
+            </TemplateColumn>
+
+        </Columns>
+
+    </MudDataGrid>

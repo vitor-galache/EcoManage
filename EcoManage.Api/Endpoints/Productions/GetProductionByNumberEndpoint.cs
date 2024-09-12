@@ -13,7 +13,7 @@ public class GetProductionByNumberEndpoint : IEndpoint
         => app.MapGet("/{number}", HandleAsync)
             .WithName("Productions: Get By Number")
             .WithSummary("Obtem uma produção pelo número")
-            .WithOrder(4)
+            .WithOrder(3)
             .Produces<Response<Production?>>();
     
     private static async Task<IResult> HandleAsync(IProductionHandler handler,string number)
@@ -21,7 +21,7 @@ public class GetProductionByNumberEndpoint : IEndpoint
         var request = new GetProductionByNumberRequest { Number = number};
 
         var result = await handler.GetByNumberAsync(request);
-
+        
         return result.IsSuccess
             ? TypedResults.Ok(result)
             : TypedResults.BadRequest(result);

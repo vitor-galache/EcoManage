@@ -13,6 +13,11 @@ public class Configuration
     {
         Typography = new Typography()
         {
+            H3 = new ()
+            {
+                FontFamily = ["Lora","serif"]
+            },
+            
             H5 = new ()
             {
                 FontFamily = ["Lora","serif"]

@@ -9,7 +9,7 @@ namespace EcoManage.Api.Endpoints.Products;
 public class GetProductByIdEndpoint : IEndpoint
 {
     public static void Map(IEndpointRouteBuilder app)
-        => app.MapGet("/{id}", HandleAsync)
+        => app.MapGet("/{id:long}", HandleAsync)
             .WithName("Products : Get By Id")
             .WithSummary("Obtem um produto pelo id")
             .WithOrder(3)

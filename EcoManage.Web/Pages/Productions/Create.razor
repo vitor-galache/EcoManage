@@ -1,0 +1,65 @@
+@page "/producoes/cadastrar"
+@inherits CreateProductionPage
+
+
+
+
+<MudGrid Class="d-flex justify-center align-center" Style="height: 90vh;">
+    
+    <MudItem xs="12" sm="12" md="8" lg="6" xxl="6">
+        <MudPaper Outlined="true" Class="pa-15 mud-width-full" Elevation="15">
+            <MudText Color="Color.Info" Typo="Typo.h5" Align="Align.Center" Class="mb-2 mt-1" Style="font-weight: bold">Nova Produção</MudText>
+            <EditForm Model="@InputModel" OnValidSubmit="@OnValidSubmitAsync">
+                <DataAnnotationsValidator/>
+
+                <MudTextField Label="Título"
+                              Class="pa-5"
+                              OnlyValidateIfDirty="true"
+                              Variant="Variant.Outlined"
+                              HelperText="Campo obrigatório"
+                              @bind-Value="InputModel.Title"
+                              For="@(() => InputModel.Title)"/>
+
+                <MudTextField Label="Quanto será produzido?"
+                              Class="pa-5"
+                              HelperText="Informe a quantidade em KG"
+                              Variant="Variant.Outlined"
+                              OnlyValidateIfDirty="true"
+                              T="decimal"
+                              Adornment="Adornment.End"
+                              AdornmentText="KG"
+                              Format="N2"
+                              Placeholder=""
+                              @bind-Value="InputModel.QuantityInKg"
+                              For="@(() => InputModel.QuantityInKg)"/>
+
+
+                <MudSelect Variant="Variant.Outlined" Class="pa-5" T="EHarvestType"  Label="Tipo de colheita" AnchorOrigin="Origin.BottomCenter" @bind-Value="InputModel.HarvestType">
+                    <MudSelectItem Class="pa-2" T="EHarvestType" Value="EHarvestType.Programmed">Programada</MudSelectItem>
+                    <MudSelectItem Class="pa-2" T="EHarvestType" Value="EHarvestType.Unexpected">Imprevista</MudSelectItem>
+                </MudSelect>
+
+                @if (InputModel.HarvestType == EHarvestType.Programmed)
+                {
+                <MudDatePicker Class="pa-5" Label="Quando?"
+                               @bind-Date = "@InputModel.EndDate"
+                               HelperText="Selecione a data prevista para o fim da produção"
+                />
+                }
+
+                <MudSelect Variant="Variant.Outlined" T="long" Class="pa-5" Label="Produto" @bind-Value="InputModel.ProductId" AnchorOrigin="Origin.BottomCenter">
+                    <MudSelectItem T="long" Value="0" Disabled="true">Selecione o produto</MudSelectItem>
+                    @foreach (var product in Products)
+                    {
+                        <MudSelectItem Class="pa-2" T="long" Value="@product.Id">
+                            @product.Title
+                        </MudSelectItem>
+                    }
+                </MudSelect>
+                
+                <MudButton ButtonType="ButtonType.Submit" Variant="Variant.Outlined" Color="Color.Info" Class="mt-5 pa-2" FullWidth="true" StartIcon="@Icons.Material.Rounded.AddTask">Cadastrar Produção</MudButton>
+            </EditForm>
+
+        </MudPaper>
+    </MudItem>
+</MudGrid>

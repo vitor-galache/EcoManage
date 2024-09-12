@@ -1,5 +1,6 @@
 using EcoManage.Api.Common.Api;
 using EcoManage.Domain.Common;
+using EcoManage.Domain.Entities;
 using EcoManage.Domain.Handlers;
 using EcoManage.Domain.Requests.Production;
 using EcoManage.Domain.Responses;
@@ -9,10 +10,10 @@ namespace EcoManage.Api.Endpoints.Productions;
 public class GetProductionByIdEndpoint : IEndpoint
 {
     public static void Map(IEndpointRouteBuilder app)
-        => app.MapGet("/{id}", HandleAsync)
+        => app.MapGet("/{id:long}", HandleAsync)
             .WithName("Productions: Get By Id")
             .WithSummary("Obtem uma produção pelo id")
-            .WithOrder(3)
+            .WithOrder(2)
             .Produces<Response<Production?>>();
     
     private static async Task<IResult> HandleAsync(IProductionHandler handler,long id)

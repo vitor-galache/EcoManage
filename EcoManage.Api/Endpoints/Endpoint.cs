@@ -48,11 +48,10 @@ public static class Endpoint
 
         app.MapGroup("v1/productions")
             .WithTags("Productions")
-            .MapEndpoint<CreateProductionProgrammedEndpoint>()
-            .MapEndpoint<CreateProductionUnexpectedEndpoint>()
+            .MapEndpoint<CreateProductionEndpoint>()
             .MapEndpoint<GetProductionByIdEndpoint>()
             .MapEndpoint<GetProductionByNumberEndpoint>()
-            .MapEndpoint<GetAllProductionsInCultivationEndpoint>()
+            .MapEndpoint<GetAllProductionsEndpoint>()
             .MapEndpoint<UpdateProductionToCultivationEndpoint>()
             .MapEndpoint<UpdateProductionToHarvestEndpoint>()
             .MapEndpoint<FinishProductionEndpoint>()

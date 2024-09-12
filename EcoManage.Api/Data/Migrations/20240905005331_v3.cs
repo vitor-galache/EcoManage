@@ -40,7 +40,7 @@ namespace EcoManage.Api.Migrations
                     StartDate = table.Column<DateTime>(type: "DATETIME2", nullable: false),
                     EndDate = table.Column<DateTime>(type: "DATETIME2", nullable: true),
                     ProductId = table.Column<long>(type: "bigint", nullable: false),
-                    QuantityInKg = table.Column<decimal>(type: "DECIMAL(18,0)", nullable: false)
+                    QuantityInKg = table.Column<decimal>(type: "DECIMAL(18,2)", nullable: false)
                 },
                 constraints: table =>
                 {
