@@ -24,7 +24,7 @@ namespace EcoManage.Desktop
             InitializeComponent();
         }
 
-        private CookieContainer cookieContainer = new CookieContainer();
+        public static CookieContainer cookieContainer = new CookieContainer();
 
         private async void btnLogin_Click(object sender, EventArgs e)
         {

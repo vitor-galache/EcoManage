@@ -43,7 +43,7 @@ public class Production
     public long Id { get; init; }
     public string Number { get; init; } = Guid.NewGuid().ToString("N")[..8];
     public string Title { get; private set; } = string.Empty;
-    public EProductionStatus Status { get; private set; } = EProductionStatus.Plantio;
+    public EProductionStatus Status { get; private set; } = EProductionStatus.Planting;
     public EHarvestType HarvestType { get; private set; }  
     
     public DateTime StartDate { get; init; } = DateTime.UtcNow;
@@ -59,22 +59,22 @@ public class Production
     public void Cancel()
     {
         EndDate = DateTime.Now;
-        Status = EProductionStatus.Cancelada;
+        Status = EProductionStatus.CropLoss;
     }
     
     public void ToCultivation()
     {
-        Status = EProductionStatus.Cultivo;
+        Status = EProductionStatus.Cultivation;
     }
 
     public void ToHarvesting()
     {
-        Status = EProductionStatus.Colheita;
+        Status = EProductionStatus.Harvesting;
     }
     public void Finish()
     {
         EndDate = DateTime.Now;
-        Status = EProductionStatus.Finalizada;
+        Status = EProductionStatus.Finished;
     }
     
     #endregion

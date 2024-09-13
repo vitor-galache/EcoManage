@@ -1,0 +1,24 @@
+@inherits ProductionStatusComponent
+
+@switch (Status)
+{
+    case EProductionStatus.Planting:
+        <MudProgressLinear Class="my-3"  Size="Size.Large" Value="25" Color="Color.Primary"></MudProgressLinear>
+        <MudChip Variant="Variant.Outlined" Class="d-flex align-center justify-content-center" Size="Size.Medium" T="string" Color="Color.Primary" Typo="Typo.caption">Em Plantio</MudChip>
+        break;
+        
+    case EProductionStatus.Cultivation:
+        <MudProgressLinear Class="my-3" Size="Size.Large" Value="50" Color="Color.Primary"></MudProgressLinear>
+        <MudChip Variant="Variant.Outlined" Class="d-flex align-center justify-content-center" Size="Size.Medium" T="string" Color="Color.Secondary" Typo="Typo.caption">Cultivando</MudChip>
+        break;
+        
+    case EProductionStatus.Harvesting:
+        <MudProgressLinear Class="my-3" Size="Size.Large" Value="75" Color="Color.Primary"></MudProgressLinear>
+        <MudChip Variant="Variant.Outlined" Class="d-flex align-center justify-content-center" Size="Size.Medium" T="string" Color="Color.Warning" Typo="Typo.caption">Colhendo</MudChip>
+        break;;
+        
+    case EProductionStatus.Finished:
+        <MudProgressLinear Class="my-3" Size="Size.Large" Value="100" Color="Color.Primary"></MudProgressLinear>
+        <MudChip Variant="Variant.Outlined" Class="d-flex align-center justify-content-center" Size="Size.Medium" T="string" Color="Color.Success" Typo="Typo.caption">Produção Finalizada</MudChip>
+        break;
+}

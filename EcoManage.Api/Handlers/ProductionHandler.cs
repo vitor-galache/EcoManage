@@ -56,19 +56,19 @@ public class ProductionHandler(AppDbContext context) : IProductionHandler
 
             switch (production.Status)
             {
-                case EProductionStatus.Plantio:
+                case EProductionStatus.Planting:
                     break;
 
-                case EProductionStatus.Cultivo:
+                case EProductionStatus.Cultivation:
                     break;
 
-                case EProductionStatus.Colheita:
+                case EProductionStatus.Harvesting:
                     break;
 
-                case EProductionStatus.Cancelada:
+                case EProductionStatus.CropLoss:
                     return new Response<Production?>(production, 400, "Esta produção já foi cancelada");
 
-                case EProductionStatus.Finalizada:
+                case EProductionStatus.Finished:
                     return new Response<Production?>(production, 400,
                         "Está produção já foi finalizada e não pode ser cancelada");
 
@@ -133,20 +133,20 @@ public class ProductionHandler(AppDbContext context) : IProductionHandler
 
             switch (production.Status)
             {
-                case EProductionStatus.Plantio:
+                case EProductionStatus.Planting:
                     return new Response<Production?>(production, 400,
                         "Está produção esta na fase de plantio e não pode ir para colheita");
 
-                case EProductionStatus.Cultivo:
+                case EProductionStatus.Cultivation:
                     break;
 
-                case EProductionStatus.Colheita:
+                case EProductionStatus.Harvesting:
                     return new Response<Production?>(production, 400, "Esta produção já está na fase de colheita");
 
-                case EProductionStatus.Cancelada:
+                case EProductionStatus.CropLoss:
                     return new Response<Production?>(production, 400, "Esta produção já foi cancelada");
 
-                case EProductionStatus.Finalizada:
+                case EProductionStatus.Finished:
                     return new Response<Production?>(production, 400,
                         "Está produção já foi finalizada e não pode ser colhida");
 
@@ -177,19 +177,19 @@ public class ProductionHandler(AppDbContext context) : IProductionHandler
 
             switch (production.Status)
             {
-                case EProductionStatus.Plantio:
+                case EProductionStatus.Planting:
                     break;
 
-                case EProductionStatus.Cultivo:
+                case EProductionStatus.Cultivation:
                     return new Response<Production?>(production, 400, "Esta produção já está na fase de cultivo");
 
-                case EProductionStatus.Colheita:
+                case EProductionStatus.Harvesting:
                     return new Response<Production?>(production, 400, "Esta produção já está na fase de colheita");
 
-                case EProductionStatus.Cancelada:
+                case EProductionStatus.CropLoss:
                     return new Response<Production?>(production, 400, "Esta produção já foi cancelada");
 
-                case EProductionStatus.Finalizada:
+                case EProductionStatus.Finished:
                     return new Response<Production?>(production, 400,
                         "Está produção já foi finalizada");
 
@@ -244,22 +244,22 @@ public class ProductionHandler(AppDbContext context) : IProductionHandler
 
             switch (production.Status)
             {
-                case EProductionStatus.Plantio:
+                case EProductionStatus.Planting:
                     return new Response<Production?>(production, 400,
                         "Esta produção está na fase de plantio e não pode ser finalizada");
 
-                case EProductionStatus.Cultivo:
+                case EProductionStatus.Cultivation:
                     return new Response<Production?>(production, 400,
                         "Esta produção está na fase de cultivo e não pode ser finalizada");
 
-                case EProductionStatus.Colheita:
+                case EProductionStatus.Harvesting:
                     break;
 
-                case EProductionStatus.Cancelada:
+                case EProductionStatus.CropLoss:
                     return new Response<Production?>(production, 400,
                         "Esta produção já foi cancelada e não pode ser finalizada");
 
-                case EProductionStatus.Finalizada:
+                case EProductionStatus.Finished:
                     return new Response<Production?>(production, 400,
                         "Está produção já foi finalizada");
 
