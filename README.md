@@ -44,8 +44,9 @@ Dentro da API foi utilizado o ORM EntityFramework para o acesso a dados.
 
 A API expõe diversos endpoints para manipulação de dados relacionados a autenticação, controle de produtos,fornecedores e produção.
 
-**EndPoints Principais**
+**Detalhes dos Endpoints**
 
+Para ver a documentação completa da API com todos os detalhes e exemplos de uso, [clique aqui](https://github.com/vitor-galache/EcoManage/wiki/EcoManage.API).
 
 ### Aplicação Web (EcoManage.Web)
 
