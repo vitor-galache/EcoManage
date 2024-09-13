@@ -40,6 +40,20 @@ Dentro da API foi utilizado o ORM EntityFramework para o acesso a dados.
 
 - Apenas o projeto da API possui conexão direta com o banco de dados, garantindo assim a segurança de todos dados de produção e de fornecedores.
 
-   
+#### EndPoints
+
+A API expõe diversos endpoints para manipulação de dados relacionados a autenticação, controle de produtos,fornecedores e produção.
+
+**EndPoints Principais**
+
+
+### Aplicação Web (EcoManage.Web)
+
+A camada de front-end foi implementada utilizando Blazor WebAssembly (WASM). A aplicação Blazor consome a API, sendo responsável pela interação do usuário com os dados.
+
+Vale ressaltar que foi utilizada a biblioteca MudBlazor, que possui suporte a diversos componentes e customização que possibilitaram que a aplicação web ficasse atrativa e agradavel ao olhos. 
+
+**Segue abaixo um video de demonstração da aplicação web em execução:**
+
 https://github.com/user-attachments/assets/b8f3cdfb-541d-48ec-9e1d-ef898af342fa
 
