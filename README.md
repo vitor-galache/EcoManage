@@ -2,7 +2,7 @@
 
 <b>O EcoManage é um sistema integrado para controle de operações de uma fazenda urbana </b>
 
-O EcoManage foi desenvolvido com o objetivo de proporcionar uma solução completa para gestão de fornecedores, produtos,produção e relatórios. 
+O projeto foi desenvolvido com o objetivo de proporcionar uma solução completa para gestão de fornecedores, produtos,produção e relatórios. 
 
 Este sistema foi concebido como parte de um Projeto Integrado Multidisciplinar para o curso de Análise e Desenvolvimento de Sistemas.
 
