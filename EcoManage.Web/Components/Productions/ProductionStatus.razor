@@ -14,11 +14,11 @@
         
     case EProductionStatus.Harvesting:
         <MudProgressLinear Class="my-3" Size="Size.Large" Value="75" Color="Color.Primary"></MudProgressLinear>
-        <MudChip Variant="Variant.Outlined" Class="d-flex align-center justify-content-center" Size="Size.Medium" T="string" Color="Color.Warning" Typo="Typo.caption">Colhendo</MudChip>
+        <MudChip Variant="Variant.Outlined"  Class="d-flex align-center justify-content-center" Size="Size.Medium" T="string" Color="Color.Warning" Typo="Typo.caption">Colhendo</MudChip>
         break;;
         
     case EProductionStatus.Finished:
         <MudProgressLinear Class="my-3" Size="Size.Large" Value="100" Color="Color.Primary"></MudProgressLinear>
-        <MudChip Variant="Variant.Outlined" Class="d-flex align-center justify-content-center" Size="Size.Medium" T="string" Color="Color.Success" Typo="Typo.caption">Produção Finalizada</MudChip>
+        <MudChip Variant="Variant.Outlined" Icon="@Icons.Material.TwoTone.Check" Class="d-flex align-center justify-content-center" Size="Size.Medium" T="string" Color="Color.Success" Typo="Typo.caption">Produção Finalizada</MudChip>
         break;
 }

@@ -1,7 +1,6 @@
 using EcoManage.Domain.Entities;
 using EcoManage.Domain.Handlers;
 using EcoManage.Domain.Requests.Supplier;
-using EcoManage.Domain.Responses;
 using Microsoft.AspNetCore.Components;
 using MudBlazor;
 
@@ -14,7 +13,7 @@ public partial class DetailsSupplierPage : ComponentBase
     [Parameter] public string Id { get; set; } = string.Empty;
     public bool IsBusy { get; set; }
 
-    public Response<Supplier?>? Supplier { get; set; } 
+    public Supplier Supplier { get; set; } = null!;
     
     #endregion
 
@@ -47,12 +46,9 @@ public partial class DetailsSupplierPage : ComponentBase
         if (request is null)
             return;
         
-        Supplier = await Handler.GetByIdAsync(request);
+        var result = await Handler.GetByIdAsync(request);
+        Supplier = result.Data!;
 
-        if (Supplier.Data is null)
-        {
-            Snackbar.Add("Não foi possivel carregar fornecedor", Severity.Info);
-        }
     }
 
     #endregion

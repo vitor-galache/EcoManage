@@ -41,7 +41,7 @@
 
                 @if (InputModel.HarvestType == EHarvestType.Programmed)
                 {
-                <MudDatePicker Class="pa-5" Label="Quando?"
+                <MudDatePicker MinDate="DateTime.UtcNow" Class="pa-5" Label="Quando?"
                                @bind-Date = "@InputModel.EndDate"
                                HelperText="Selecione a data prevista para o fim da produção"
                 />

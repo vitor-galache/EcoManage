@@ -63,13 +63,16 @@ public partial class CreateProductionPage : ComponentBase
         try
         {
             var result = await ProductionHandler.CreateProductionAsync(InputModel);
+         
             if (result.IsSuccess)
             {
                 Snackbar.Add($"Produção {result.Data?.Number} cadastrada com sucesso!", Severity.Success);
                 NavigationManager.NavigateTo("/producoes");
             }
             else
+            {
                 Snackbar.Add(result.Message, Severity.Error);
+            }
         }
         catch (Exception ex)
         {
@@ -77,7 +80,7 @@ public partial class CreateProductionPage : ComponentBase
         }
         finally
         {
-            IsBusy = true;
+            IsBusy = false;
         }
     }
     

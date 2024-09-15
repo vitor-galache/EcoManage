@@ -35,6 +35,12 @@ public class ProductionHandler(AppDbContext context) : IProductionHandler
                     return new Response<Production?>(null, 400, "Tipo de colheita inválido");
             }
 
+            if (production.Invalid)
+            {
+                var errors = string.Join(", ", production.Notifications.Select(n => n.Message));
+                return new Response<Production?>(null,400,errors);
+            }
+            
             await context.Productions.AddAsync(production);
             await context.SaveChangesAsync();
             return new Response<Production?>(production, 201, $"Produção ({production.Number}) cadastrada com sucesso!");

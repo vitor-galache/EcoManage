@@ -1,0 +1,36 @@
+@inherits ProductionActionsComponent
+
+@switch (Production.Status)
+{
+    case EProductionStatus.Planting:
+        <MudButton Class="mb-4" Size="Size.Large" EndIcon="@Icons.Material.TwoTone.Refresh" FullWidth="true" Color="Color.Info" Variant="Variant.Outlined">
+            Atualizar Status Para Cultivo
+        </MudButton>
+        
+        <MudButton FullWidth="true" Size="Size.Large" Color="Color.Error" Variant="Variant.Outlined">
+            CANCELAR PRODUÇÃO
+        </MudButton>
+        break;
+
+    case EProductionStatus.Cultivation:
+        <MudButton Class="mb-4" Size="Size.Large" EndIcon="@Icons.Material.TwoTone.Refresh" FullWidth="true" Color="Color.Info" Variant="Variant.Filled">
+            ATUALIZAR STATUS PARA COLHEITA
+        </MudButton>
+        
+        <MudButton FullWidth="true" Size="Size.Large" Color="Color.Error" Variant="Variant.Outlined">
+            CANCELAR PRODUÇÃO
+        </MudButton>
+        break;
+        
+        case EProductionStatus.Harvesting:
+        <MudButton Class="mb-4" FullWidth="true" EndIcon="@Icons.Material.TwoTone.Check" Size="Size.Large" Color="Color.Success" Variant="Variant.Outlined">
+            FINALIZAR PRODUÇÃO
+        </MudButton>        
+        
+        <MudButton FullWidth="true" Size="Size.Large" EndIcon="@Icons.Material.TwoTone.Block" Color="Color.Error" Variant="Variant.Outlined">
+            CANCELAR PRODUÇÃO
+        </MudButton>
+        break;
+        
+        
+}

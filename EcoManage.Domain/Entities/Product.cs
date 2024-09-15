@@ -1,9 +1,8 @@
-using System.Text.Json.Serialization;
 using EcoManage.Domain.Common;
 
 namespace EcoManage.Domain.Entities;
 
-public class Product
+public class Product 
 {
     public Product(string title,string description)
     {
