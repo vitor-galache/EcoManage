@@ -20,7 +20,7 @@ public class UpdateProductionToCultivationEndpoint : IEndpoint
     {
         var request = new UpdateProductionToCultivationRequest { Id = id };
 
-        var result = await handler.UpdateToCultivationAsync(request);
+        var result = await handler.ToCultivationAsync(request);
 
         return result.IsSuccess
             ? TypedResults.Ok(result)

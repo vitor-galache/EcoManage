@@ -56,7 +56,9 @@ public class ProductionHandler(AppDbContext context) : IProductionHandler
         Production? production;
         try
         {
-            production = await context.Productions.FirstOrDefaultAsync(x => x.Id == request.Id);
+            production = await context.Productions
+                .Include(x=>x.Product)
+                .FirstOrDefaultAsync(x => x.Id == request.Id);
             if (production is null)
                 return new Response<Production?>(null, 404, "Produção não encontrada");
 
@@ -133,7 +135,10 @@ public class ProductionHandler(AppDbContext context) : IProductionHandler
         Production? production;
         try
         {
-            production = await context.Productions.FirstOrDefaultAsync(x => x.Id == request.Id);
+            production = await context.Productions.
+                Include(x=>x.Product)
+                .FirstOrDefaultAsync(x => x.Id == request.Id);
+            
             if (production is null)
                 return new Response<Production?>(null, 404, "Produção não encontrada");
 
@@ -172,12 +177,14 @@ public class ProductionHandler(AppDbContext context) : IProductionHandler
         }
     }
 
-    public async Task<Response<Production?>> UpdateToCultivationAsync(UpdateProductionToCultivationRequest request)
+    public async Task<Response<Production?>> ToCultivationAsync(UpdateProductionToCultivationRequest request)
     {
         Production? production;
         try
         {
-            production = await context.Productions.FirstOrDefaultAsync(x => x.Id == request.Id);
+            production = await context.Productions
+                .Include(x=>x.Product)
+                .FirstOrDefaultAsync(x => x.Id == request.Id);
             if (production is null)
                 return new Response<Production?>(null, 404, "Produção não encontrada");
 
@@ -243,7 +250,9 @@ public class ProductionHandler(AppDbContext context) : IProductionHandler
         Production? production;
         try
         {
-            production = await context.Productions.FirstOrDefaultAsync(x => x.Id == request.Id);
+            production = await context.Productions
+                .Include(x=>x.Product)
+                .FirstOrDefaultAsync(x => x.Id == request.Id);
 
             if (production is null)
                 return new Response<Production?>(null, 404, "Produção não encontrada");

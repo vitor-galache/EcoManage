@@ -12,7 +12,7 @@ public interface IProductionHandler
     Task<Response<Production?>> GetByIdAsync(GetProductionByIdRequest request);
     Task<Response<Production?>> GetByNumberAsync(GetProductionByNumberRequest request);
     Task<Response<Production?>> ToHarvestAsync(UpdateProductionToHarvestRequest request);
-    Task<Response<Production?>> UpdateToCultivationAsync(UpdateProductionToCultivationRequest request);
+    Task<Response<Production?>> ToCultivationAsync(UpdateProductionToCultivationRequest request);
     
     Task<PagedResponse<List<Production>?>> GetAllAsync(GetAllProductionsRequest request);
 

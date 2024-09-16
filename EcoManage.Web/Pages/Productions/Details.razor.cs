@@ -49,4 +49,14 @@ public partial class DetailsProductionPage : ComponentBase
 
     #endregion
 
+    #region Public Methods
+
+    public void RefreshState(Production production)
+    {
+        Production = production;
+        StateHasChanged();
+    }
+
+    #endregion
+
 }

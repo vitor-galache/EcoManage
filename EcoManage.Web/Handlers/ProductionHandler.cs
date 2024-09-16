@@ -46,7 +46,7 @@ public class ProductionHandler(IHttpClientFactory httpClientFactory)
                ?? new Response<Production?>(null, 400, "Não foi possível atualizar status para colheita");
     }
 
-    public async Task<Response<Production?>> UpdateToCultivationAsync(UpdateProductionToCultivationRequest request)
+    public async Task<Response<Production?>> ToCultivationAsync(UpdateProductionToCultivationRequest request)
     {
         var result = await _client.PutAsJsonAsync($"v1/productions/{request.Id}/to-cultivation", request);
 
