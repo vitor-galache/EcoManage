@@ -1,0 +1,37 @@
+@page "/produtos/{slug}"
+@inherits DetailsProductPage
+
+@if (Product is not null)
+{
+    <MudGrid Class="d-flex justify-center align-center" Style="height: 90vh;">
+        <MudItem xs="12" sm="12" md="8" lg="6" xl="6" xxl="6">
+            <MudPaper Class="pa-10 mud-width-full" Elevation="10">
+
+                <MudText Class="d-flex justify-center mb-4 pa-3" Typo="Typo.h5" Style="font-weight: bold">
+                    Detalhes (@Product.Slug)
+                </MudText>
+
+                <MudForm Model="Product">
+                
+                    <MudTextField ReadOnly="true" Class="pa-2" Adornment="Adornment.End" AdornmentIcon="@Icons.Material.TwoTone.Edit" Variant="Variant.Outlined" Label="Nome do Produto" Value="Product.Title"/>
+
+                    <MudTextField ReadOnly="true" Class="pa-2" Adornment="Adornment.End" AdornmentIcon="@Icons.Material.TwoTone.Edit" Variant="Variant.Outlined" Label="Slug do Produto" Value="Product.Slug"/>
+
+                    <MudTextField ReadOnly="true" Class="pa-2" Adornment="Adornment.End" AdornmentIcon="@Icons.Material.TwoTone.Description" OnlyValidateIfDirty="true" Variant="Variant.Outlined" Label="Descrição Do Produto"  Lines="5" Value="Product.Description"/>
+                    
+                </MudForm>
+
+            </MudPaper>
+        </MudItem>
+    </MudGrid>
+}
+
+else
+{
+    <MudSkeleton Animation="Animation.Wave" Height="30px"/>
+    <MudSkeleton Animation="Animation.Wave" Height="30px"/>
+    <MudSkeleton Animation="Animation.Wave" Height="30px"/>
+    <MudSkeleton Animation="Animation.Wave" Height="30px"/>
+}
+
+

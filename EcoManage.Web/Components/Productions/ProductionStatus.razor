@@ -19,6 +19,15 @@
         
     case EProductionStatus.Finished:
         <MudProgressLinear Class="my-3" Size="Size.Large" Value="100" Color="Color.Primary"></MudProgressLinear>
-        <MudChip Variant="Variant.Outlined" Class="d-flex align-center justify-content-center" Size="Size.Medium" T="string" Color="Color.Success" Typo="Typo.caption">Produção Finalizada</MudChip>
+        <MudChip Variant="Variant.Outlined" Icon="@Icons.Material.TwoTone.Check" Class="d-flex align-center justify-content-center" Size="Size.Medium" T="string" Color="Color.Success" Typo="Typo.caption">Produção Finalizada</MudChip>
+        break;
+        
+    case EProductionStatus.CropLoss:
+        <MudProgressLinear Class="my-3" Size="Size.Large" Value="100" Color="Color.Error"></MudProgressLinear>
+        <MudChip Variant="Variant.Outlined" Icon="@Icons.Material.TwoTone.Delete" Class="d-flex align-center justify-content-center" Size="Size.Medium" T="string" Color="Color.Error" Typo="Typo.caption">Produção Perdida</MudChip>
+        break;
+    
+    default:
+        <MudText>Não foi possível obter status</MudText>
         break;
 }

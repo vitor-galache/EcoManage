@@ -1,6 +1,4 @@
-using System.Text.Json;
-using System.Text.Json.Serialization;
-using EcoManage.Domain.Common;
+using System.Globalization;
 using EcoManage.Domain.Handlers;
 using Microsoft.AspNetCore.Components.Web;
 using Microsoft.AspNetCore.Components.WebAssembly.Hosting;
@@ -16,6 +14,9 @@ Configuration.BackendUrl = builder.Configuration.GetValue<string>("BackendUrl") 
 builder.RootComponents.Add<App>("#app");
 builder.RootComponents.Add<HeadOutlet>("head::after");
 
+builder.Services.AddLocalization();
+CultureInfo.DefaultThreadCurrentCulture = new CultureInfo("pt-BR");
+CultureInfo.DefaultThreadCurrentUICulture = new CultureInfo("pt-BR");
 
 builder.Services.AddScoped<CookieHandler>();
 builder.Services.AddAuthorizationCore();
@@ -32,6 +33,7 @@ builder.Services.AddTransient<IProductionHandler, ProductionHandler>();
 builder.Services.AddMudServices(config =>
 {
     config.SnackbarConfiguration.SnackbarVariant = Variant.Outlined;
+    config.SnackbarConfiguration.PositionClass = Defaults.Classes.Position.TopCenter;
 });
 
 builder.Services.AddHttpClient(Configuration.HttpClientName, opt =>

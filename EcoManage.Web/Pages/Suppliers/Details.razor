@@ -1,33 +1,46 @@
 @page "/fornecedores/{id}"
 @inherits DetailsSupplierPage
 <PageTitle>Detalhes Fornecedor | EcoManage</PageTitle>
-<MudPaper Class="pa-8 mt-4 mb-2">
 
-    <MudText Class="d-flex justify-center" Style="font-weight: bold" Typo="Typo.h5">
-         @Supplier?.Data?.CompanyName
-    </MudText>
+@if (Supplier is not null)
+{
+    <MudPaper Class="pa-8 mt-4 mb-2">
+
+        <MudText Class="d-flex justify-center" Style="font-weight: bold" Typo="Typo.h5">
+            @Supplier.CompanyName
+        </MudText>
     
-    <MudDivider Class="my-6"/>
-    <MudForm ReadOnly="true">
+        <MudDivider Class="my-6"/>
+        <MudForm ReadOnly="true">
         
-        <MudText Class="pa-1" Typo="Typo.h6">Dados:</MudText>
+            <MudText Class="pa-1" Typo="Typo.h6">Dados:</MudText>
 
-        <MudTextField Class="mb-2 pa-2" T="string" Variant="Variant.Outlined" Label="ID" Mask="@(new PatternMask("00.000.000/0000-00"))" Value="(Supplier?.Data?.Id).ToString()"/>
-        <MudTextField Class="mb-2 pa-2" T="string" Variant="Variant.Outlined" Label="CNPJ" Mask="@(new PatternMask("00.000.000/0000-00"))" Value="Supplier?.Data?.Document.Number"/>
+            <MudTextField Class="mb-2 pa-2" T="string" Variant="Variant.Outlined" Label="ID" Mask="@(new PatternMask("00.000.000/0000-00"))" Value="Supplier.Id.ToString()"/>
+            <MudTextField Class="mb-2 pa-2" T="string" Variant="Variant.Outlined" Label="CNPJ" Mask="@(new PatternMask("00.000.000/0000-00"))" Value="Supplier?.Document.Number"/>
         
-        <MudDivider Class="my-4"/>
+            <MudDivider Class="my-4"/>
         
-        <MudText Class="pa-1" Typo="Typo.h6">Endereço:</MudText>
-        <MudTextField Class="mb-2 pa-2" Value="Supplier?.Data?.Address.Street" Variant="Variant.Outlined" Label="Rua"/>
-        <MudTextField Class="mb-2 pa-2" Value="Supplier?.Data?.Address.Number" Variant="Variant.Outlined" Label="Numero"/>
-        <MudTextField Class="mb-2 pa-2" Variant="Variant.Outlined" Label="CEP" Mask="@(new PatternMask("00000-000"))" Value="Supplier?.Data?.ZipCode.Code"/>
+            <MudText Class="pa-1" Typo="Typo.h6">Endereço:</MudText>
+            <MudTextField Class="mb-2 pa-2" Value="Supplier?.Address.Street" Variant="Variant.Outlined" Label="Rua"/>
+            <MudTextField Class="mb-2 pa-2" Value="Supplier?.Address.Number" Variant="Variant.Outlined" Label="Numero"/>
+            <MudTextField Class="mb-2 pa-2" Variant="Variant.Outlined" Label="CEP" Mask="@(new PatternMask("00000-000"))" Value="Supplier?.ZipCode.Code"/>
         
-        <MudDivider Class="my-4"/>
+            <MudDivider Class="my-4"/>
         
-        <MudText Class="pa-1" Typo="Typo.h6">Contato:</MudText>
-        <MudTextField Class="mb-2 pa-2" Variant="Variant.Outlined" Label="E-mail" Value="Supplier?.Data?.Email"/>
-        <MudTextField Class="mb-2 pa-2" Variant="Variant.Outlined" Label="Contato" Lines="3" Value="Supplier?.Data?.Contact"/>
+            <MudText Class="pa-1" Typo="Typo.h6">Contato:</MudText>
+            <MudTextField Class="mb-2 pa-2" Variant="Variant.Outlined" Label="E-mail" Value="Supplier?.Email"/>
+            <MudTextField Class="mb-2 pa-2" Variant="Variant.Outlined" Label="Contato" Lines="3" Value="Supplier?.Contact"/>
 
-    </MudForm>
+        </MudForm>
 
-</MudPaper>
+    </MudPaper>
+    
+    
+}
+else
+{
+    <MudSkeleton Animation="Animation.Wave" Height="30px"/>
+    <MudSkeleton Animation="Animation.Wave" Height="30px"/>
+    <MudSkeleton Animation="Animation.Wave" Height="30px"/>
+    <MudSkeleton Animation="Animation.Wave" Height="30px"/>
+}

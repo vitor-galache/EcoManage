@@ -11,11 +11,12 @@ public class CreateProductionRequest : Request
     [Required (ErrorMessage = "Produto inválido")]
     public long ProductId { get; set; }
 
-    [Required (ErrorMessage = "Tipo de colheita inválido")]
-    public EHarvestType HarvestType { get; set; } 
+    [Required(ErrorMessage = "Tipo de colheita inválido")]
+    public EHarvestType HarvestType { get; set; } = EHarvestType.Programmed;
     
     [Required (ErrorMessage = "Digite um número")]
     public decimal QuantityInKg { get; set; }
-
+    
+    [Required (ErrorMessage = "Insira a data prevista para conclusão")]
     public DateTime? EndDate { get; set; } 
 }

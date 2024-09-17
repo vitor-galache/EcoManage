@@ -35,6 +35,12 @@ public class ProductionHandler(AppDbContext context) : IProductionHandler
                     return new Response<Production?>(null, 400, "Tipo de colheita inválido");
             }
 
+            if (production.Invalid)
+            {
+                var errors = string.Join(", ", production.Notifications.Select(n => n.Message));
+                return new Response<Production?>(null,400,errors);
+            }
+            
             await context.Productions.AddAsync(production);
             await context.SaveChangesAsync();
             return new Response<Production?>(production, 201, $"Produção ({production.Number}) cadastrada com sucesso!");
@@ -50,7 +56,9 @@ public class ProductionHandler(AppDbContext context) : IProductionHandler
         Production? production;
         try
         {
-            production = await context.Productions.FirstOrDefaultAsync(x => x.Id == request.Id);
+            production = await context.Productions
+                .Include(x=>x.Product)
+                .FirstOrDefaultAsync(x => x.Id == request.Id);
             if (production is null)
                 return new Response<Production?>(null, 404, "Produção não encontrada");
 
@@ -127,7 +135,10 @@ public class ProductionHandler(AppDbContext context) : IProductionHandler
         Production? production;
         try
         {
-            production = await context.Productions.FirstOrDefaultAsync(x => x.Id == request.Id);
+            production = await context.Productions.
+                Include(x=>x.Product)
+                .FirstOrDefaultAsync(x => x.Id == request.Id);
+            
             if (production is null)
                 return new Response<Production?>(null, 404, "Produção não encontrada");
 
@@ -166,12 +177,14 @@ public class ProductionHandler(AppDbContext context) : IProductionHandler
         }
     }
 
-    public async Task<Response<Production?>> UpdateToCultivationAsync(UpdateProductionToCultivationRequest request)
+    public async Task<Response<Production?>> ToCultivationAsync(UpdateProductionToCultivationRequest request)
     {
         Production? production;
         try
         {
-            production = await context.Productions.FirstOrDefaultAsync(x => x.Id == request.Id);
+            production = await context.Productions
+                .Include(x=>x.Product)
+                .FirstOrDefaultAsync(x => x.Id == request.Id);
             if (production is null)
                 return new Response<Production?>(null, 404, "Produção não encontrada");
 
@@ -237,7 +250,9 @@ public class ProductionHandler(AppDbContext context) : IProductionHandler
         Production? production;
         try
         {
-            production = await context.Productions.FirstOrDefaultAsync(x => x.Id == request.Id);
+            production = await context.Productions
+                .Include(x=>x.Product)
+                .FirstOrDefaultAsync(x => x.Id == request.Id);
 
             if (production is null)
                 return new Response<Production?>(null, 404, "Produção não encontrada");

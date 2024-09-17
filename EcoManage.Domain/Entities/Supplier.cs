@@ -20,7 +20,7 @@ public class Supplier : Entity
             .IsTrue(Address.Valid,"Supplier.Address","Endereço inválido")
             .IsTrue(Email.Valid,"Supplier.Email","E-mail inválido")
             .IsTrue(ZipCode.Valid,"Supplier.ZipCode","Cep Inválido")
-            .AreEquals(Document.Type,EDocumentType.Cnpj,"Supplier.Document","Um fornecedor precisa ter um cnpj"));
+            .AreEquals(Document.Type,EDocumentType.Cnpj,"Supplier.Document","Um fornecedor deve ter um CNPJ"));
     }
 
     private Supplier()
