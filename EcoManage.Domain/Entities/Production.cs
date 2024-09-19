@@ -43,6 +43,7 @@ public class Production : Entity
 
     private Production()
     {
+        
     }
 
     private bool EndDateValidation(DateTime? endDate)

@@ -1,7 +1,7 @@
 using EcoManage.Domain.Enums;
 using EcoManage.Domain.ValueObjects;
 
-namespace EcoManage.Tests.ValueObjects;
+namespace EcoManage.Tests.DomainTests.ValueObjects;
 
 [TestClass]
 public class DocumentTests

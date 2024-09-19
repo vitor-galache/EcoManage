@@ -9,8 +9,7 @@ public class ZipCode : ValueObject
     {
         Code = code;
         AddNotifications(new Contract().Requires()
-            .HasMinLen(Code,8,"ZipCode.Number","CEP INVÁLIDO")
-            .HasMaxLen(Code,8,"ZipCode.Number","CEP INVÁLIDO"));
+            .HasLen(Code,8,"ZipCode.Number","CEP INVÁLIDO"));
     }
 
     public string Code { get; set; } 
