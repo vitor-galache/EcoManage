@@ -10,4 +10,8 @@
     <PackageReference Include="Flunt" Version="1.0.3" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="Common\Extensions\" />
+  </ItemGroup>
+
 </Project>

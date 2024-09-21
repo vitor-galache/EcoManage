@@ -41,6 +41,7 @@ public class Production : Entity
         HarvestType = EHarvestType.Unexpected;
     }
 
+    //EF Constructor
     private Production()
     {
         
