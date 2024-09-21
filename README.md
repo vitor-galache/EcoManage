@@ -1,4 +1,5 @@
 # EcoManage
+![Logo](https://github.com/user-attachments/assets/3d0442e7-5a17-441d-bbea-3adee8627213)
 
 <b>O EcoManage é um sistema integrado para controle de operações de uma fazenda urbana </b>
 
