@@ -2,6 +2,7 @@ using EcoManage.Api.Common.Api;
 using EcoManage.Api.Endpoints.Identity;
 using EcoManage.Api.Endpoints.Productions;
 using EcoManage.Api.Endpoints.Products;
+using EcoManage.Api.Endpoints.Reports;
 using EcoManage.Api.Endpoints.Suppliers;
 using EcoManage.Api.Models;
 using EcoManage.Domain.Requests.Production;
@@ -56,6 +57,11 @@ public static class Endpoint
             .MapEndpoint<UpdateProductionToHarvestEndpoint>()
             .MapEndpoint<FinishProductionEndpoint>()
             .MapEndpoint<CancelProductionEndpoint>();
+
+        app.MapGroup("v1/reports")
+            .WithTags("Reports")
+            .MapEndpoint<GetProductionsByPeriodEndpoint>()
+            .MapEndpoint<GetTotalProductsEndpoint>();
     }
     
     private static IEndpointRouteBuilder MapEndpoint<TEndpoint>(this IEndpointRouteBuilder app)
