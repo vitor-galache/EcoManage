@@ -1,10 +1,33 @@
 ﻿@page "/"
-@using System.Security.Claims
 
 <PageTitle>Home | EcoManage</PageTitle>
 
 <MudText Typo="Typo.h5" Color="Color.Primary">
-    Bem vindo ao EcoManage 
+    Bem vindo ao EcoManage
 </MudText>
-
 Sistema de Controle de Fazenda Urbana
+
+<MudGrid Justify="Justify.Center" Class="pa-3 mt-2">
+    
+    <MudItem lg="6" md="12"  xs="12" Class="d-flex flex-column">
+        <MudCard Square="true" Elevation="75" Class="pa-8 flex-grow-1">
+            <MudCardHeader>
+                <MudText Typo="Typo.h5" Color="Color.Inherit" Style="font-weight: bold">Produtos mais produzidos</MudText>
+            </MudCardHeader>
+            <MudCardContent>
+                <TotalProductsChart/>
+            </MudCardContent>
+        </MudCard>
+    </MudItem>
+
+    <MudItem lg="6" md="12"  xs="12" Class="d-flex flex-column">
+        <MudCard Elevation="50" Square="true" Class="pa-8 flex-grow-1">
+            <MudCardHeader>
+                <MudText Typo="Typo.h5" Color="Color.Inherit" Style="font-weight: bold">Produções agendadas por mês</MudText>
+            </MudCardHeader>
+            <MudCardContent>
+                <ProductionsByPeriodChart/>
+            </MudCardContent>
+        </MudCard>
+    </MudItem>
+</MudGrid>
