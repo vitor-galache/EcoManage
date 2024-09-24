@@ -54,3 +54,6 @@ Para ver a documentação completa da API com todos os detalhes e exemplos de us
 A camada de front-end foi implementada utilizando Blazor WebAssembly (WASM). A aplicação Blazor consome a API, sendo responsável pela interação do usuário com os dados.
 
 Vale ressaltar que foi utilizada a biblioteca MudBlazor, que possui suporte a diversos componentes e customização que possibilitaram que a aplicação web ficasse atrativa e agradavel ao olhos. 
+
+https://github.com/user-attachments/assets/40d1b3bb-b20c-49a0-b6e4-8c34fb849fd1
+
