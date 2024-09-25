@@ -45,7 +45,7 @@ namespace EcoManage.Desktop.Handlers
                 }
                 catch
                 {
-                    var result = new PagedResponse<List<Supplier>?>(null, 400, "Não foi possivel obter fornecedores");
+                    var result = new PagedResponse<List<Supplier>>(null, 400, "Não foi possivel obter fornecedores");
                     MessageBox.Show(result.Message);
                     return result;
                 }
