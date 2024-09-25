@@ -2,6 +2,7 @@ using System.Reflection;
 using EcoManage.Api.Models;
 using EcoManage.Domain.Common;
 using EcoManage.Domain.Entities;
+using EcoManage.Domain.Entities.Productions;
 using EcoManage.Domain.Entities.Reports;
 using Flunt.Notifications;
 using Microsoft.AspNetCore.Identity;

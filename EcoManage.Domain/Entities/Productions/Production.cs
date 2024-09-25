@@ -2,7 +2,7 @@ using System.Text.Json.Serialization;
 using EcoManage.Domain.Common;
 using EcoManage.Domain.Enums;
 
-namespace EcoManage.Domain.Entities.Production;
+namespace EcoManage.Domain.Entities.Productions;
 
 [JsonPolymorphic(TypeDiscriminatorPropertyName = "HarvestType")]
 [JsonDerivedType(typeof(ProductionProgrammed),"Programmed")]

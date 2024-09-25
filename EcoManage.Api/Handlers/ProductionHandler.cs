@@ -1,5 +1,6 @@
 using EcoManage.Api.Data;
 using EcoManage.Domain.Entities;
+using EcoManage.Domain.Entities.Productions;
 using EcoManage.Domain.Enums;
 using EcoManage.Domain.Handlers;
 using EcoManage.Domain.Requests.Production;
@@ -22,13 +23,13 @@ public class ProductionHandler(AppDbContext context) : IProductionHandler
             switch (request.HarvestType)
             {
                 case EHarvestType.Programmed:
-                    production =  new Production(request.Title, product,
+                    production =  ProductionProgrammed.Factories.Create(request.Title, product,
                         request.QuantityInKg,request.EndDate);
                     break;
                 
                 case EHarvestType.Unexpected:
                     production =
-                        new Production(request.Title, product, request.QuantityInKg);
+                        ProductionUnexpected.Factories.Create(request.Title, product, request.QuantityInKg);
                     break;
                 
                 default:

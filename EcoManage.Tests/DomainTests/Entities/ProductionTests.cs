@@ -1,4 +1,5 @@
 using EcoManage.Domain.Entities;
+using EcoManage.Domain.Entities.Productions;
 using EcoManage.Domain.Enums;
 
 namespace EcoManage.Tests.DomainTests.Entities;
@@ -15,7 +16,7 @@ public class ProductionTests
         var quantityInKg = 50.000m;
         var endDate = DateTime.UtcNow.AddMonths(6);
         
-        var productionProgrammed = new Production(title,product,quantityInKg,endDate);
+        var productionProgrammed = ProductionProgrammed.Factories.Create(title,product,quantityInKg,endDate);
         Assert.AreEqual(productionProgrammed.Valid,true);
     }
 
@@ -26,7 +27,7 @@ public class ProductionTests
         var product = new Product("Produto Teste","Descrição de Produto Teste");
         var quantityInKg = 50.000m;
 
-        var productionUnexpected = new Production(title,product,quantityInKg);
+        var productionUnexpected = ProductionUnexpected.Factories.Create(title,product,quantityInKg);
         Assert.AreEqual(productionUnexpected.Valid,true);
     }
 
@@ -37,7 +38,7 @@ public class ProductionTests
         var product = new Product("Produto Teste","Descrição de Produto Teste");
         var quantityInKg = 50.000m;
 
-        var productionUnexpected = new Production(title,product,quantityInKg);
+        var productionUnexpected = ProductionUnexpected.Factories.Create(title,product,quantityInKg);
         Assert.AreEqual(productionUnexpected.Status,EProductionStatus.Planting);
     }
     
@@ -48,7 +49,7 @@ public class ProductionTests
         var product = new Product("Produto Teste","Descrição de Produto Teste");
         var quantityInKg = 50.000m;
 
-        var productionUnexpected = new Production(title,product,quantityInKg);
+        var productionUnexpected = ProductionUnexpected.Factories.Create(title,product,quantityInKg);
         productionUnexpected.ToCultivation();
         
         Assert.AreEqual(productionUnexpected.Status,EProductionStatus.Cultivation);
@@ -61,7 +62,7 @@ public class ProductionTests
         var product = new Product("Produto Teste","Descrição de Produto Teste");
         var quantityInKg = 50.000m;
 
-        var productionUnexpected = new Production(title,product,quantityInKg);
+        var productionUnexpected = ProductionUnexpected.Factories.Create(title,product,quantityInKg);
         productionUnexpected.ToHarvesting();
         
         Assert.AreEqual(productionUnexpected.Status,EProductionStatus.Harvesting);
@@ -74,7 +75,7 @@ public class ProductionTests
         var product = new Product("Produto Teste","Descrição de Produto Teste");
         var quantityInKg = 50.000m;
 
-        var productionUnexpected = new Production(title,product,quantityInKg);
+        var productionUnexpected = ProductionUnexpected.Factories.Create(title,product,quantityInKg);
         productionUnexpected.Finish();
         
         Assert.AreEqual(productionUnexpected.Status,EProductionStatus.Finished);
@@ -87,7 +88,7 @@ public class ProductionTests
         var product = new Product("Produto Teste","Descrição de Produto Teste");
         var quantityInKg = 50.000m;
 
-        var productionUnexpected = new Production(title,product,quantityInKg);
+        var productionUnexpected = ProductionUnexpected.Factories.Create(title,product,quantityInKg);
         productionUnexpected.Cancel();
         
         Assert.AreEqual(productionUnexpected.Status,EProductionStatus.CropLoss);
