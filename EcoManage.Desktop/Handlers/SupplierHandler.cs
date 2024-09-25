@@ -14,14 +14,25 @@ namespace EcoManage.Desktop.Handlers
     public class SupplierHandler : ISupplierHandler
     {
 
-        public Task<Response<Supplier?>> CreateAsync(CreateSupplierRequest request)
+        public async Task<Response<Supplier?>> CreateAsync(CreateSupplierRequest request)
         {
-            throw new NotImplementedException();
+            using (HttpClient client = new HttpClient())
+            {
+                var result = await client.PostAsJsonAsync($"{DesktopConfiguration.ApiUrl}v1/suppliers", request);
+                return await result.Content.ReadFromJsonAsync<Response<Supplier?>>()
+                       ?? new Response<Supplier?>(null, 400, "Falha ao cadastrar fornecedor");
+            }
         }
 
-        public Task<Response<Supplier?>> DeleteAsync(DeleteSupplierRequest request)
+        public async Task<Response<Supplier?>> DeleteAsync(DeleteSupplierRequest request)
         {
-            throw new NotImplementedException();
+            using (var client = new HttpClient())
+            {
+                var result = await client.DeleteAsync($"{DesktopConfiguration.ApiUrl}v1/suppliers/{request.Id}");
+
+                return await result.Content.ReadFromJsonAsync<Response<Supplier?>>()
+                       ?? new Response<Supplier?>(null, 400, "Não foi possível excluir fornecedor");
+            }
         }
 
         public async Task<PagedResponse<List<Supplier>>> GetAllAsync(GetAllSupplierRequest request)
@@ -30,25 +41,43 @@ namespace EcoManage.Desktop.Handlers
             {
                 try
                 {
-                    return await client.GetFromJsonAsync<PagedResponse<List<Supplier>>>(DesktopConfiguration.ApiUrl + "v1/suppliers");
+                    return await client.GetFromJsonAsync<PagedResponse<List<Supplier>?>>(DesktopConfiguration.ApiUrl + "v1/suppliers");
                 }
                 catch
                 {
                     var result = new PagedResponse<List<Supplier>>(null, 400, "Não foi possivel obter fornecedores");
                     MessageBox.Show(result.Message);
                     return result;
-                } 
+                }
             }
         }
 
-        public Task<Response<Supplier?>> GetByIdAsync(GetSupplierByIdRequest request)
+        public async Task<Response<Supplier?>> GetByIdAsync(GetSupplierByIdRequest request)
         {
-            throw new NotImplementedException();
+            using (HttpClient client = new HttpClient())
+            {
+                try
+                {
+                    return await client.GetFromJsonAsync<Response<Supplier?>>(DesktopConfiguration.ApiUrl + "v1/suppliers/" + request.Id);
+                }
+                catch
+                {
+                    var result = new Response<Supplier?>(null, 400, "Não foi possivel obter fornecedores");
+                    MessageBox.Show(result.Message);
+                    return result;
+                }
+            }
         }
 
-        public Task<Response<Supplier?>> UpdateAsync(UpdateSupplierRequest request)
+        public async Task<Response<Supplier?>> UpdateAsync(UpdateSupplierRequest request)
         {
-            throw new NotImplementedException();
+            using (HttpClient client = new HttpClient())
+            {
+                var result = await client.PutAsJsonAsync($"{DesktopConfiguration.ApiUrl}v1/suppliers/{request.Id}", request);
+
+                return await result.Content.ReadFromJsonAsync<Response<Supplier?>>()
+                       ?? new Response<Supplier?>(null, 400, "Não foi possível atualizar fornecedor");
+            }
         }
     }
 }

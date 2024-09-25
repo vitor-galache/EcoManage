@@ -2,8 +2,10 @@ using EcoManage.Domain.Entities;
 using EcoManage.Domain.Enums;
 using EcoManage.Domain.ValueObjects;
 
-namespace EcoManage.Tests.Entities;
+namespace EcoManage.Tests.DomainTests.Entities;
+
 [TestClass]
+[TestCategory("Suppliers")]
 public class SupplierTests
 {
     [TestMethod]

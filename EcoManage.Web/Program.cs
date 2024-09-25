@@ -29,6 +29,7 @@ builder.Services.AddTransient<IAccountHandler, AccountHandler>();
 builder.Services.AddTransient<ISupplierHandler, SupplierHandler>();
 builder.Services.AddTransient<IProductHandler, ProductHandler>();
 builder.Services.AddTransient<IProductionHandler, ProductionHandler>();
+builder.Services.AddTransient<IReportHandler, ReportHandler>();
 
 builder.Services.AddMudServices(config =>
 {

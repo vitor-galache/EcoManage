@@ -37,18 +37,20 @@ else
 
                     <MudStack Row Class="justify-end">
                         
-                        <MudButton Variant="Variant.Text" StartIcon="@Icons.Material.TwoTone.Info" IconSize="Size.Small" Href="@($"/produtos/{context.Item.Slug}")">
-                            Mais Detalhes
-                        </MudButton>
-                        
-                        <MudButton StartIcon="@Icons.Material.TwoTone.EditNote" Href="@($"/produtos/editar/{context.Item.Id}")" Color="Color.Info">
-                            Editar
-                        </MudButton>
+                        <MudButtonGroup Class="pa-1" OverrideStyles="false" Variant="Variant.Outlined">
+                            <MudButton Class="ml-2" Variant="Variant.Outlined" StartIcon="@Icons.Material.TwoTone.Info" IconSize="Size.Small" Href="@($"/produtos/{context.Item.Slug}")">
+                                Mais Detalhes
+                            </MudButton>
 
-                        <MudButton StartIcon="@Icons.Material.TwoTone.Block"  OnClick="@(async () => await OnInactivateButtonAsync(context.Item.Id,context.Item.Title))" Color="Color.Warning">
-                            Inativar
-                        </MudButton>
-                        
+                            <MudButton Variant="Variant.Outlined" StartIcon="@Icons.Material.TwoTone.EditNote" Href="@($"/produtos/editar/{context.Item.Id}")" Color="Color.Info">
+                                Editar
+                            </MudButton>
+
+                            <MudButton Variant="Variant.Outlined" StartIcon="@Icons.Material.TwoTone.Block" OnClick="@(async () => await OnInactivateButtonAsync(context.Item.Id, context.Item.Title))" Color="Color.Warning">
+                                Inativar
+                            </MudButton>
+                        </MudButtonGroup>
+                      
                     </MudStack>
                 </CellTemplate>
             </TemplateColumn>

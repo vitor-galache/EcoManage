@@ -1,6 +1,7 @@
 using EcoManage.Api.Common.Api;
 using EcoManage.Domain;
 using EcoManage.Domain.Entities;
+using EcoManage.Domain.Entities.Productions;
 using EcoManage.Domain.Handlers;
 using EcoManage.Domain.Requests.Production;
 using EcoManage.Domain.Responses;

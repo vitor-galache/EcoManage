@@ -1,3 +1,5 @@
+using EcoManage.Desktop.Suppliers;
+
 namespace EcoManage.Desktop
 {
     public partial class FormPrincipal : Form
@@ -7,9 +9,10 @@ namespace EcoManage.Desktop
             InitializeComponent();
         }
 
-        private void label1_Click(object sender, EventArgs e)
+        private void listarFornecedoresToolStripMenuItem_Click(object sender, EventArgs e)
         {
-
+            FormListSuppliers formListSuppliers = new FormListSuppliers();
+            formListSuppliers.ShowDialog();
         }
 
         private void btnSair_menu_Click(object sender, EventArgs e)

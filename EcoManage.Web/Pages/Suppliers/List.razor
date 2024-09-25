@@ -13,39 +13,47 @@
 </div>
 
 
-    <MudDataGrid Items="@Suppliers" Filterable="false" Class="mt-4">
+<MudDataGrid Items="@Suppliers" Filterable="false" Class="mt-4">
 
-        <Columns>
+    <Columns>
 
-            <PropertyColumn Property="x => x.Id" Title="#" Sortable="false"></PropertyColumn>
-            <PropertyColumn Property="x => x.CompanyName" Title="Fornecedor" Filterable="false" Sortable="false"></PropertyColumn>
-            
-            <PropertyColumn Title="CNPJ" Property="x => x.Document.ToString()" Filterable="false" Sortable="false"></PropertyColumn>
+        <PropertyColumn Property="x => x.Id" Title="#" Sortable="false"></PropertyColumn>
+        <PropertyColumn Property="x => x.CompanyName" Title="Fornecedor" Filterable="false" Sortable="false"></PropertyColumn>
 
-            <PropertyColumn Property="x => x.Email.Address" Title="E-MAIL" Filterable="false" Sortable="false"></PropertyColumn>
+        <PropertyColumn Title="CNPJ" Property="x => x.Document.ToString()" Filterable="false" Sortable="false"></PropertyColumn>
 
-            <TemplateColumn Class="d-flex justify-end pa-8">
-                <CellTemplate>
+        <PropertyColumn Property="x => x.Email.Address" Title="E-MAIL" Filterable="false" Sortable="false"></PropertyColumn>
 
-                    <MudStack Row Class="justify-end">
-                        
-                        <MudButton Variant="Variant.Text" StartIcon="@Icons.Material.TwoTone.Info" IconSize="Size.Small" Href="@($"/fornecedores/{context.Item.Id}")">
-                            Mais Detalhes
-                        </MudButton>
-                        
-                        <MudButton StartIcon="@Icons.Material.TwoTone.EditNote" Href="@($"/fornecedores/editar/{context.Item.Id}")" Color="Color.Info">
-                            Editar
-                        </MudButton>
-                        
-                        <MudButton StartIcon="@Icons.Material.TwoTone.DeleteForever" OnClick="() => OnDeleteButtonAsync(context.Item.Id,context.Item.CompanyName)" Color="Color.Error">
-                            Excluir
-                        </MudButton>
+        <TemplateColumn Class="d-flex justify-end pa-8">
+            <CellTemplate>
 
-                    </MudStack>
-                </CellTemplate>
-            </TemplateColumn>
+                <MudStack Row Class="justify-end">
 
-        </Columns>
+                    <MudButton Variant="Variant.Text" StartIcon="@Icons.Material.TwoTone.Info" IconSize="Size.Small" Href="@($"/fornecedores/{context.Item.Id}")">
+                        Mais Detalhes
+                    </MudButton>
 
-    </MudDataGrid>
+                    <MudButton StartIcon="@Icons.Material.TwoTone.EditNote" Href="@($"/fornecedores/editar/{context.Item.Id}")" Color="Color.Info">
+                        Editar
+                    </MudButton>
 
+                    <AuthorizeView Context="authContext" Roles="admin">
+                        <Authorized>
+                            <MudButton StartIcon="@Icons.Material.TwoTone.DeleteForever" OnClick="() => OnDeleteButtonAsync(context.Item.Id, context.Item.CompanyName)" Color="Color.Error">
+                                Excluir
+                            </MudButton>
+                        </Authorized>
+                        <NotAuthorized>
+                            <MudButton Disabled="true" StartIcon="@Icons.Material.TwoTone.DeleteForever" Color="Color.Error">
+                                Excluir
+                            </MudButton>
+                        </NotAuthorized>
+                    </AuthorizeView>
+
+                </MudStack>
+            </CellTemplate>
+        </TemplateColumn>
+
+    </Columns>
+
+</MudDataGrid>

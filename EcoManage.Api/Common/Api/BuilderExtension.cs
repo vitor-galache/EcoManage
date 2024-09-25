@@ -39,6 +39,7 @@ public static class BuilderExtension
         builder.Services.AddTransient<ISupplierHandler, SupplierHandler>();
         builder.Services.AddTransient<IProductHandler,ProductHandler>();
         builder.Services.AddTransient<IProductionHandler, ProductionHandler>();
+        builder.Services.AddTransient<IReportHandler, ReportHandler>();
     } 
     
     public static void AddDocumentation(this WebApplicationBuilder builder)

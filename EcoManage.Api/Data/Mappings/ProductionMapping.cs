@@ -1,5 +1,5 @@
-using EcoManage.Domain.Common;
 using EcoManage.Domain.Entities;
+using EcoManage.Domain.Entities.Productions;
 using EcoManage.Domain.Enums;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
@@ -53,5 +53,9 @@ public class ProductionMapping : IEntityTypeConfiguration<Production>
 
         builder.HasIndex(x => x.Number,"IX_Production_Number")
             .IsUnique();
+
+        builder.HasDiscriminator<EHarvestType>("HarvestType")
+            .HasValue<ProductionProgrammed>(EHarvestType.Programmed)
+            .HasValue<ProductionUnexpected>(EHarvestType.Unexpected);
     }
 }

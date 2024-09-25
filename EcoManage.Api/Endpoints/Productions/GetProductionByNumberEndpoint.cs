@@ -1,10 +1,8 @@
 using EcoManage.Api.Common.Api;
-using EcoManage.Domain.Common;
-using EcoManage.Domain.Entities;
-using EcoManage.Domain.Handlers;
+using EcoManage.Domain.Entities.Productions;
 using EcoManage.Domain.Requests.Production;
+using EcoManage.Domain.Handlers;
 using EcoManage.Domain.Responses;
-
 namespace EcoManage.Api.Endpoints.Productions;
 
 public class GetProductionByNumberEndpoint : IEndpoint

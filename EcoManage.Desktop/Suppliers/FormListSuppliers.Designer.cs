@@ -35,9 +35,9 @@
             // 
             // dataGridViewSuppliers
             // 
-            resources.ApplyResources(dataGridViewSuppliers, "dataGridViewSuppliers");
             dataGridViewSuppliers.BackgroundColor = Color.FromArgb(117, 117, 117);
             dataGridViewSuppliers.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            resources.ApplyResources(dataGridViewSuppliers, "dataGridViewSuppliers");
             dataGridViewSuppliers.Name = "dataGridViewSuppliers";
             // 
             // FormListSuppliers
