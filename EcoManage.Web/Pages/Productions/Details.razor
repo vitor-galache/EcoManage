@@ -12,27 +12,31 @@
     <MudText Typo="Typo.h6">Data de inicio:</MudText>
     <MudText Typo="Typo.subtitle2">@Production.StartDate.ToString("dd/MM/yyyy")</MudText>
     <br>
-    
+
     <MudText Typo="Typo.h6">Data prevista para conclusão:</MudText>
     <MudText Typo="Typo.subtitle2">@(Production.EndDate is null ? "Imprevista" : Production.EndDate?.ToString("dd/MM/yyyy"))</MudText>
     <br>
-    
+
     <MudText Typo="Typo.h6">Produto:</MudText>
     <MudText Typo="Typo.subtitle2">@Production.Product.Title</MudText>
     <br>
-    
-    
-    <MudText Typo="Typo.h6">Quantidade Produzida:</MudText>
+
+
+    <MudText Typo="Typo.h6">Quantidade:</MudText>
     <MudText Typo="Typo.subtitle2">@Production.QuantityInKg.ToString("N2") KG</MudText>
     <br>
+
     
-    <MudText Typo="Typo.h6">Estágio:</MudText>
-    <ProductionStatus Status="Production.Status"/>
+    @if (Production.Status != EProductionStatus.CropLoss)
+    {
+        <MudText Typo="Typo.h6">Estágio:</MudText>
+        <ProductionStatus Status="Production.Status"/>
+    }
     <br>
     <br>
     <br>
     <br>
-     
+
     <CascadingValue Value="this">
         <ProductionActions Production="Production"/>
     </CascadingValue>
