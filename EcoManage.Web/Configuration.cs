@@ -2,7 +2,7 @@ using MudBlazor;
 
 namespace EcoManage.Web;
 
-public class Configuration
+public static class Configuration
 {
     
     public const string HttpClientName = "ecomanage";
