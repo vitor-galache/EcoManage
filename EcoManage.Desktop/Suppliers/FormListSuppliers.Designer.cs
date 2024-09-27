@@ -30,7 +30,10 @@
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FormListSuppliers));
             dataGridViewSuppliers = new DataGridView();
+            btn_Fechar = new PictureBox();
+            lbl_CadastrarFornecedor = new Label();
             ((System.ComponentModel.ISupportInitialize)dataGridViewSuppliers).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)btn_Fechar).BeginInit();
             SuspendLayout();
             // 
             // dataGridViewSuppliers
@@ -40,22 +43,40 @@
             resources.ApplyResources(dataGridViewSuppliers, "dataGridViewSuppliers");
             dataGridViewSuppliers.Name = "dataGridViewSuppliers";
             // 
+            // btn_Fechar
+            // 
+            resources.ApplyResources(btn_Fechar, "btn_Fechar");
+            btn_Fechar.Name = "btn_Fechar";
+            btn_Fechar.TabStop = false;
+            btn_Fechar.Click += btn_Fechar_Click;
+            // 
+            // lbl_CadastrarFornecedor
+            // 
+            resources.ApplyResources(lbl_CadastrarFornecedor, "lbl_CadastrarFornecedor");
+            lbl_CadastrarFornecedor.Name = "lbl_CadastrarFornecedor";
+            // 
             // FormListSuppliers
             // 
             resources.ApplyResources(this, "$this");
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.FromArgb(84, 110, 122);
+            Controls.Add(lbl_CadastrarFornecedor);
+            Controls.Add(btn_Fechar);
             Controls.Add(dataGridViewSuppliers);
             FormBorderStyle = FormBorderStyle.None;
             Name = "FormListSuppliers";
             Opacity = 0.9D;
             Load += FormListSuppliers_Load;
             ((System.ComponentModel.ISupportInitialize)dataGridViewSuppliers).EndInit();
+            ((System.ComponentModel.ISupportInitialize)btn_Fechar).EndInit();
             ResumeLayout(false);
+            PerformLayout();
         }
 
         #endregion
 
         private DataGridView dataGridViewSuppliers;
+        private PictureBox btn_Fechar;
+        private Label lbl_CadastrarFornecedor;
     }
 }

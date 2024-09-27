@@ -44,10 +44,17 @@ namespace EcoManage.Desktop.Suppliers
 
             foreach (var supplier in _suppliers)
             {
-                dataGridViewSuppliers.Rows.Add(supplier.CompanyName,supplier.Email);
+                dataGridViewSuppliers.Rows.Add(supplier.CompanyName, supplier.Email);
             }
             dataGridViewSuppliers.Columns["Email"].Width = 200;
             dataGridViewSuppliers.Columns["Email"].Width = 350;
+        }
+
+        private void btn_Fechar_Click(object sender, EventArgs e)
+        {
+            this.Close();
+            FormPrincipal formPrincipal = new FormPrincipal();
+            formPrincipal.Show();
         }
     }
 }

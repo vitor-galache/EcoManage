@@ -12,6 +12,7 @@ namespace EcoManage.Desktop
         private void listarFornecedoresToolStripMenuItem_Click(object sender, EventArgs e)
         {
             FormListSuppliers formListSuppliers = new FormListSuppliers();
+            this.Hide();
             formListSuppliers.ShowDialog();
         }
 
@@ -23,6 +24,12 @@ namespace EcoManage.Desktop
             {
                 Application.Exit();
             }
+        }
+
+        private void toolStripMenuItem1_Click(object sender, EventArgs e)
+        {
+            FormCreateSupplier formCreateSupplier = new FormCreateSupplier();
+            formCreateSupplier.ShowDialog();
         }
     }
 }

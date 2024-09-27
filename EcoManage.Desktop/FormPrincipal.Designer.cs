@@ -53,6 +53,7 @@
             toolStripMenuItem1.Name = "toolStripMenuItem1";
             toolStripMenuItem1.Size = new Size(239, 24);
             toolStripMenuItem1.Text = "Cadastrar";
+            toolStripMenuItem1.Click += toolStripMenuItem1_Click;
             // 
             // ediitarToolStripMenuItem
             // 
