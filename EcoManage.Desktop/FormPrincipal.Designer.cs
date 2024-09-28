@@ -30,7 +30,6 @@
         {
             fornecedoresToolStripMenuItem = new ToolStripMenuItem();
             toolStripMenuItem1 = new ToolStripMenuItem();
-            ediitarToolStripMenuItem = new ToolStripMenuItem();
             listarFornecedoresToolStripMenuItem = new ToolStripMenuItem();
             excluirToolStripMenuItem = new ToolStripMenuItem();
             btnSair_menu = new ToolStripMenuItem();
@@ -40,7 +39,7 @@
             // 
             // fornecedoresToolStripMenuItem
             // 
-            fornecedoresToolStripMenuItem.DropDownItems.AddRange(new ToolStripItem[] { toolStripMenuItem1, ediitarToolStripMenuItem, listarFornecedoresToolStripMenuItem, excluirToolStripMenuItem });
+            fornecedoresToolStripMenuItem.DropDownItems.AddRange(new ToolStripItem[] { toolStripMenuItem1, listarFornecedoresToolStripMenuItem, excluirToolStripMenuItem });
             fornecedoresToolStripMenuItem.Font = new Font("Microsoft Sans Serif", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
             fornecedoresToolStripMenuItem.ForeColor = Color.LightGray;
             fornecedoresToolStripMenuItem.Name = "fornecedoresToolStripMenuItem";
@@ -54,12 +53,6 @@
             toolStripMenuItem1.Size = new Size(239, 24);
             toolStripMenuItem1.Text = "Cadastrar";
             toolStripMenuItem1.Click += toolStripMenuItem1_Click;
-            // 
-            // ediitarToolStripMenuItem
-            // 
-            ediitarToolStripMenuItem.Name = "ediitarToolStripMenuItem";
-            ediitarToolStripMenuItem.Size = new Size(239, 24);
-            ediitarToolStripMenuItem.Text = "Editar";
             // 
             // listarFornecedoresToolStripMenuItem
             // 
@@ -118,7 +111,6 @@
 
         private ToolStripMenuItem fornecedoresToolStripMenuItem;
         private ToolStripMenuItem toolStripMenuItem1;
-        private ToolStripMenuItem ediitarToolStripMenuItem;
         private ToolStripMenuItem listarFornecedoresToolStripMenuItem;
         private ToolStripMenuItem excluirToolStripMenuItem;
         private ToolStripMenuItem btnSair_menu;

@@ -87,7 +87,7 @@
             // 
             // txt_CompanyName
             // 
-            txt_CompanyName.Location = new Point(247, 116);
+            txt_CompanyName.Location = new Point(247, 102);
             txt_CompanyName.Name = "txt_CompanyName";
             txt_CompanyName.Size = new Size(293, 23);
             txt_CompanyName.TabIndex = 19;
