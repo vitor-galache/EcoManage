@@ -41,7 +41,7 @@
 
                 @if (InputModel.HarvestType == EHarvestType.Programmed)
                 {
-                <MudDatePicker Editable="true" Mask="@(new DateMask("dd/MM/yyyy"))" OpenTo="OpenTo.Month" DateFormat="dd/MM/yyy" MinDate="DateTime.UtcNow" Class="pa-5" Label="Data de Conclusão"
+                <MudDatePicker Editable="true" Mask="@(new DateMask("dd/MM/yyyy"))" OpenTo="OpenTo.Month" DateFormat="dd/MM/yyy" MinDate="@(DateTime.UtcNow.AddDays(15))" Class="pa-5" Label="Data de Conclusão"
                                @bind-Date = "@InputModel.EndDate"
                 />
                 }

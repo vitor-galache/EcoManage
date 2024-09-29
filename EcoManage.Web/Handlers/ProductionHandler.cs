@@ -13,10 +13,10 @@ public class ProductionHandler(IHttpClientFactory httpClientFactory)
 
     public async Task<Response<Production?>> CreateProductionAsync(CreateProductionRequest request)
     {
-        var result = await _client.PostAsJsonAsync("v1/productions", request);
+        var response = await _client.PostAsJsonAsync("v1/productions", request);
+        var result = await response.Content.ReadFromJsonAsync<Response<Production?>>()?? new Response<Production?>(null,400,"Não foi possível processar a resposta");
 
-        return await result.Content.ReadFromJsonAsync<Response<Production?>>()
-               ?? new Response<Production?>(null, 400, "Não foi possível cadastrar produção");
+        return response.IsSuccessStatusCode ? result : new Response<Production?>(null, 400, result.Message);
     }
 
     public async Task<Response<Production?>> CancelAsync(CancelProductionRequest request)
