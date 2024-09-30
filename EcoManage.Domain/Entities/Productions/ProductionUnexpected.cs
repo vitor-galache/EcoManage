@@ -5,10 +5,22 @@ namespace EcoManage.Domain.Entities.Productions;
 
 public class ProductionUnexpected : Production
 {
-    public ProductionUnexpected()
+    private ProductionUnexpected()
     {
         
     }
+
+    private ProductionUnexpected(string title, Product product, decimal quantityInKg)
+    {
+        Title = title;
+        HarvestType = EHarvestType.Unexpected;
+        EndDate = null;
+        Product = product;
+        QuantityInKg = quantityInKg;
+        if (QuantityInKg<=0)
+            AddNotification("Production.QuantityInKg","A quantidade não pode ser menor que 0");
+    }
+    
     [JsonConstructor]
     private ProductionUnexpected(string title, Product product, long productId, decimal quantityInKg, DateTime? endDate,
         DateTime startDate, EHarvestType harvestType, EProductionStatus status)
@@ -22,18 +34,16 @@ public class ProductionUnexpected : Production
         Status = status;
         HarvestType = harvestType;
     }
+
+    #region Factories
+
     public static class Factories
     {
         public static ProductionUnexpected Create(string title, Product product, decimal quantityInKg)
         {
-            return new ProductionUnexpected
-            {
-                Title = title,
-                HarvestType = EHarvestType.Unexpected,
-                EndDate = null,
-                Product = product,
-                QuantityInKg = quantityInKg
-            };
+            return new ProductionUnexpected(title,product,quantityInKg);
         }
     }
+
+    #endregion
 }

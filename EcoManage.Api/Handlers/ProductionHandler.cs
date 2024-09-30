@@ -21,9 +21,6 @@ public class ProductionHandler(AppDbContext context) : IProductionHandler
             if (product is null)
                 return new Response<Production?>(null, 400, "Produto inválido");
             
-            if (request.QuantityInKg<=0)
-                return new Response<Production?>(null, 400, "A quantidade  produzida não pode ser negativa");
-            
             switch (request.HarvestType)
             {
                 case EHarvestType.Programmed:
