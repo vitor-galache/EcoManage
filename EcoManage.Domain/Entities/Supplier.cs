@@ -48,5 +48,6 @@ public class Supplier : Entity
     public void ChangeEmail(string newAddress)
     {
         Email = new Email(newAddress);
+        AddNotifications(new Contract().Requires().IsTrue(Email.Valid, "Supplier.Email", "Email Inválido"));
     }
 }
