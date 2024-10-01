@@ -18,9 +18,10 @@ namespace EcoManage.Desktop.Handlers
         {
             using (HttpClient client = new HttpClient())
             {
-                var result = await client.PostAsJsonAsync($"{DesktopConfiguration.ApiUrl}v1/suppliers", request);
-                return await result.Content.ReadFromJsonAsync<Response<Supplier?>>()
-                       ?? new Response<Supplier?>(null, 400, "Falha ao cadastrar fornecedor");
+                var response = await client.PostAsJsonAsync($"{DesktopConfiguration.ApiUrl}v1/suppliers", request);
+                var result = await response.Content.ReadFromJsonAsync<Response<Supplier?>>()
+                       ?? new Response<Supplier?>(null, 400, "Não foi possível processar a resposta");
+                return response.IsSuccessStatusCode ? result : new Response<Supplier?>(null,400,result.Message);
             }
         }
 

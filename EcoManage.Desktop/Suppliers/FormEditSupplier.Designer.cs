@@ -30,12 +30,14 @@
         {
             btn_AtualizarFornecedor = new Button();
             txt_Contact = new TextBox();
-            txt_Email = new TextBox();
             lbl_Contact = new Label();
-            lbl_Email = new Label();
             txt_CompanyName = new TextBox();
             lbl_CompanyName = new Label();
             lbl_EditarFornecedor = new Label();
+            txt_Email = new TextBox();
+            lbl_Email = new Label();
+            btn_Voltar = new PictureBox();
+            ((System.ComponentModel.ISupportInitialize)btn_Voltar).BeginInit();
             SuspendLayout();
             // 
             // btn_AtualizarFornecedor
@@ -51,6 +53,7 @@
             btn_AtualizarFornecedor.TabIndex = 32;
             btn_AtualizarFornecedor.Text = "Atualizar Fornecedor";
             btn_AtualizarFornecedor.UseVisualStyleBackColor = false;
+            btn_AtualizarFornecedor.Click += btn_AtualizarFornecedor_Click;
             // 
             // txt_Contact
             // 
@@ -60,13 +63,6 @@
             txt_Contact.Size = new Size(293, 143);
             txt_Contact.TabIndex = 31;
             // 
-            // txt_Email
-            // 
-            txt_Email.Location = new Point(247, 160);
-            txt_Email.Name = "txt_Email";
-            txt_Email.Size = new Size(293, 23);
-            txt_Email.TabIndex = 30;
-            // 
             // lbl_Contact
             // 
             lbl_Contact.AutoSize = true;
@@ -75,15 +71,6 @@
             lbl_Contact.Size = new Size(114, 15);
             lbl_Contact.TabIndex = 26;
             lbl_Contact.Text = "Contato Alternativo:";
-            // 
-            // lbl_Email
-            // 
-            lbl_Email.AutoSize = true;
-            lbl_Email.Location = new Point(247, 142);
-            lbl_Email.Name = "lbl_Email";
-            lbl_Email.Size = new Size(119, 15);
-            lbl_Email.TabIndex = 25;
-            lbl_Email.Text = "Email do Fornecedor:";
             // 
             // txt_CompanyName
             // 
@@ -111,23 +98,53 @@
             lbl_EditarFornecedor.TabIndex = 17;
             lbl_EditarFornecedor.Text = "Editar Fornecedor";
             // 
+            // txt_Email
+            // 
+            txt_Email.Location = new Point(247, 154);
+            txt_Email.Name = "txt_Email";
+            txt_Email.Size = new Size(293, 23);
+            txt_Email.TabIndex = 33;
+            // 
+            // lbl_Email
+            // 
+            lbl_Email.AutoSize = true;
+            lbl_Email.Location = new Point(247, 136);
+            lbl_Email.Name = "lbl_Email";
+            lbl_Email.Size = new Size(119, 15);
+            lbl_Email.TabIndex = 34;
+            lbl_Email.Text = "Email do Fornecedor:";
+            // 
+            // btn_Voltar
+            // 
+            btn_Voltar.Image = Properties.Resources.seta_voltar;
+            btn_Voltar.Location = new Point(12, 9);
+            btn_Voltar.Name = "btn_Voltar";
+            btn_Voltar.Size = new Size(31, 28);
+            btn_Voltar.SizeMode = PictureBoxSizeMode.Zoom;
+            btn_Voltar.TabIndex = 35;
+            btn_Voltar.TabStop = false;
+            btn_Voltar.Click += btn_Voltar_Click;
+            // 
             // FormEditSupplier
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.FromArgb(117, 117, 117);
             ClientSize = new Size(800, 450);
+            Controls.Add(btn_Voltar);
+            Controls.Add(lbl_Email);
+            Controls.Add(txt_Email);
             Controls.Add(btn_AtualizarFornecedor);
             Controls.Add(txt_Contact);
-            Controls.Add(txt_Email);
             Controls.Add(lbl_Contact);
-            Controls.Add(lbl_Email);
             Controls.Add(txt_CompanyName);
             Controls.Add(lbl_CompanyName);
             Controls.Add(lbl_EditarFornecedor);
             FormBorderStyle = FormBorderStyle.None;
             Name = "FormEditSupplier";
+            StartPosition = FormStartPosition.CenterScreen;
             Text = "FormEditSupplier";
+            ((System.ComponentModel.ISupportInitialize)btn_Voltar).EndInit();
             ResumeLayout(false);
             PerformLayout();
         }
@@ -135,11 +152,12 @@
         #endregion
         private Button btn_AtualizarFornecedor;
         private TextBox txt_Contact;
-        private TextBox txt_Email;
         private Label lbl_Contact;
-        private Label lbl_Email;
         private TextBox txt_CompanyName;
         private Label lbl_CompanyName;
         private Label lbl_EditarFornecedor;
+        private TextBox txt_Email;
+        private Label lbl_Email;
+        private PictureBox btn_Voltar;
     }
 }

@@ -30,10 +30,10 @@
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FormListSuppliers));
             dataGridViewSuppliers = new DataGridView();
-            btn_Fechar = new PictureBox();
             lbl_CadastrarFornecedor = new Label();
+            btn_Voltar = new PictureBox();
             ((System.ComponentModel.ISupportInitialize)dataGridViewSuppliers).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)btn_Fechar).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)btn_Voltar).BeginInit();
             SuspendLayout();
             // 
             // dataGridViewSuppliers
@@ -42,33 +42,35 @@
             dataGridViewSuppliers.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             resources.ApplyResources(dataGridViewSuppliers, "dataGridViewSuppliers");
             dataGridViewSuppliers.Name = "dataGridViewSuppliers";
-            // 
-            // btn_Fechar
-            // 
-            resources.ApplyResources(btn_Fechar, "btn_Fechar");
-            btn_Fechar.Name = "btn_Fechar";
-            btn_Fechar.TabStop = false;
-            btn_Fechar.Click += btn_Fechar_Click;
+            dataGridViewSuppliers.CellContentClick += dataGridViewSuppliers_CellContentClick;
             // 
             // lbl_CadastrarFornecedor
             // 
             resources.ApplyResources(lbl_CadastrarFornecedor, "lbl_CadastrarFornecedor");
             lbl_CadastrarFornecedor.Name = "lbl_CadastrarFornecedor";
             // 
+            // btn_Voltar
+            // 
+            btn_Voltar.Image = Properties.Resources.seta_voltar;
+            resources.ApplyResources(btn_Voltar, "btn_Voltar");
+            btn_Voltar.Name = "btn_Voltar";
+            btn_Voltar.TabStop = false;
+            btn_Voltar.Click += btn_Voltar_Click;
+            // 
             // FormListSuppliers
             // 
             resources.ApplyResources(this, "$this");
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.FromArgb(84, 110, 122);
+            Controls.Add(btn_Voltar);
             Controls.Add(lbl_CadastrarFornecedor);
-            Controls.Add(btn_Fechar);
             Controls.Add(dataGridViewSuppliers);
             FormBorderStyle = FormBorderStyle.None;
             Name = "FormListSuppliers";
             Opacity = 0.9D;
             Load += FormListSuppliers_Load;
             ((System.ComponentModel.ISupportInitialize)dataGridViewSuppliers).EndInit();
-            ((System.ComponentModel.ISupportInitialize)btn_Fechar).EndInit();
+            ((System.ComponentModel.ISupportInitialize)btn_Voltar).EndInit();
             ResumeLayout(false);
             PerformLayout();
         }
@@ -76,7 +78,7 @@
         #endregion
 
         private DataGridView dataGridViewSuppliers;
-        private PictureBox btn_Fechar;
         private Label lbl_CadastrarFornecedor;
+        private PictureBox btn_Voltar;
     }
 }

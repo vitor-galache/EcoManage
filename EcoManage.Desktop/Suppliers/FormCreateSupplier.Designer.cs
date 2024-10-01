@@ -45,6 +45,8 @@
             txt_Contact = new TextBox();
             btn_SalvarFornecedor = new Button();
             txt_Number = new TextBox();
+            btn_Voltar = new PictureBox();
+            ((System.ComponentModel.ISupportInitialize)btn_Voltar).BeginInit();
             SuspendLayout();
             // 
             // lbl_CadastrarFornecedor
@@ -70,7 +72,7 @@
             // 
             txt_CompanyName.Location = new Point(34, 81);
             txt_CompanyName.Name = "txt_CompanyName";
-            txt_CompanyName.Size = new Size(123, 23);
+            txt_CompanyName.Size = new Size(188, 23);
             txt_CompanyName.TabIndex = 2;
             // 
             // lbl_DocumentNumber
@@ -141,14 +143,14 @@
             // 
             txt_DocumentNumber.Location = new Point(35, 135);
             txt_DocumentNumber.Name = "txt_DocumentNumber";
-            txt_DocumentNumber.Size = new Size(123, 23);
+            txt_DocumentNumber.Size = new Size(187, 23);
             txt_DocumentNumber.TabIndex = 10;
             // 
             // txt_Street
             // 
             txt_Street.Location = new Point(39, 226);
             txt_Street.Name = "txt_Street";
-            txt_Street.Size = new Size(123, 23);
+            txt_Street.Size = new Size(183, 23);
             txt_Street.TabIndex = 11;
             // 
             // txt_ZipCode
@@ -162,7 +164,7 @@
             // 
             txt_Email.Location = new Point(343, 81);
             txt_Email.Name = "txt_Email";
-            txt_Email.Size = new Size(123, 23);
+            txt_Email.Size = new Size(293, 23);
             txt_Email.TabIndex = 13;
             // 
             // txt_Contact
@@ -195,12 +197,24 @@
             txt_Number.Size = new Size(54, 23);
             txt_Number.TabIndex = 16;
             // 
+            // btn_Voltar
+            // 
+            btn_Voltar.Image = Properties.Resources.seta_voltar;
+            btn_Voltar.Location = new Point(12, 9);
+            btn_Voltar.Name = "btn_Voltar";
+            btn_Voltar.Size = new Size(31, 28);
+            btn_Voltar.SizeMode = PictureBoxSizeMode.Zoom;
+            btn_Voltar.TabIndex = 17;
+            btn_Voltar.TabStop = false;
+            btn_Voltar.Click += pictureBox1_Click;
+            // 
             // FormCreateSupplier
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.FromArgb(117, 117, 117);
             ClientSize = new Size(800, 450);
+            Controls.Add(btn_Voltar);
             Controls.Add(txt_Number);
             Controls.Add(btn_SalvarFornecedor);
             Controls.Add(txt_Contact);
@@ -222,6 +236,7 @@
             Name = "FormCreateSupplier";
             StartPosition = FormStartPosition.CenterScreen;
             Text = "FormCreateSupplier";
+            ((System.ComponentModel.ISupportInitialize)btn_Voltar).EndInit();
             ResumeLayout(false);
             PerformLayout();
         }
@@ -245,5 +260,6 @@
         private TextBox txt_Contact;
         private Button btn_SalvarFornecedor;
         private TextBox txt_Number;
+        private PictureBox btn_Voltar;
     }
 }

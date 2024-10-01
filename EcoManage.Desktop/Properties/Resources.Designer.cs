@@ -59,5 +59,15 @@ namespace EcoManage.Desktop.Properties {
                 resourceCulture = value;
             }
         }
+        
+        /// <summary>
+        ///   Consulta um recurso localizado do tipo System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap seta_voltar {
+            get {
+                object obj = ResourceManager.GetObject("seta_voltar", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
     }
 }
