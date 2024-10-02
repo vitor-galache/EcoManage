@@ -34,32 +34,23 @@ namespace EcoManage.Desktop
                 Password = txt_Password.Text
             };
 
+            var client = ApiClient.Instance.Client;
 
-            var handler = new HttpClientHandler()
+            var response = await client.PostAsJsonAsync(DesktopConfiguration.ApiUrl + "v1/identity/login?useCookies=true", request);
+            if (response.IsSuccessStatusCode)
             {
-                CookieContainer = cookieContainer,
-                UseCookies = true,
-                AutomaticDecompression = DecompressionMethods.GZip | DecompressionMethods.Deflate
-            };
+                var result = await response.Content.ReadAsStringAsync();
+                FormPrincipal principal = new FormPrincipal();
 
-            using (HttpClient client = new HttpClient(handler))
-            {
-
-                var response = await client.PostAsJsonAsync(DesktopConfiguration.ApiUrl + "v1/identity/login?useCookies=true", request);
-                if (response.IsSuccessStatusCode)
-                {
-                    var result = await response.Content.ReadAsStringAsync();
-                    FormPrincipal principal = new FormPrincipal();
-
-                    principal.Show();
-                    this.Hide();
-                }
-
-                else
-                {
-                    MessageBox.Show("Falha no login");
-                }
+                principal.Show();
+                this.Hide();
             }
+
+            else
+            {
+                MessageBox.Show("Falha no login");
+            }
+
         }
 
         private void FormLogin_Load(object sender, EventArgs e)
@@ -117,12 +108,12 @@ namespace EcoManage.Desktop
 
         private void FormLogin_MouseDown(object sender, MouseEventArgs e)
         {
-            
+
         }
 
         private void panel1_MouseDown(object sender, MouseEventArgs e)
         {
-           
+
         }
     }
 }
