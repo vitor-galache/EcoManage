@@ -1,0 +1,50 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="EcoManage.Mobile.Pages.MainPage"
+             Title="EcoManage"
+             NavigationPage.HasBackButton="False">
+
+    <ScrollView>
+        <VerticalStackLayout
+            Padding="30,0"
+            Spacing="25"
+            BackgroundColor="#659157">
+            <Image
+                Source="eco_manage_logo"
+                HeightRequest="300"
+                Aspect="AspectFit"
+                SemanticProperties.Description="logo eco manage" />
+
+            <Label
+                Text="Bem Vindo ao EcoManage!"
+                Style="{StaticResource Headline}"
+                SemanticProperties.HeadingLevel="Level1" />
+
+            <Label
+                Text="Sistema de Gerenciamento de Fazenda Urbana"
+                Style="{StaticResource SubHeadline}"
+                SemanticProperties.HeadingLevel="Level2"
+                SemanticProperties.Description="Bem Vindo ao EcoManage" />
+
+            <Button
+                x:Name="RedirectBtn"
+                Text="LISTA DE PRODUTOS" 
+                Clicked="OnClicked"
+                HorizontalOptions="Fill" 
+                BackgroundColor="DarkGray"
+                />
+
+            <Button
+                Margin="15"
+                x:Name="BtnAddProduct"
+                Text="ADICIONAR PRODUTO +" 
+                Clicked="BtnAddProduct_Clicked"
+                HorizontalOptions="Fill" 
+                TextColor="Black"
+                BackgroundColor="Beige"
+     />
+        </VerticalStackLayout>
+    </ScrollView>
+
+</ContentPage>

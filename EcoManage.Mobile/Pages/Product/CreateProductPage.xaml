@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="EcoManage.Mobile.Pages.Product.CreateProductPage">
+
+    <ContentPage.Content>
+        <!-- Usando um StackLayout como contêiner -->
+        <StackLayout Padding="20" BackgroundColor="#659157">
+            <Label
+                Margin="30"
+                Text="ADICIONAR PRODUTO +"
+                FontSize="Title"
+                FontAttributes="Bold"
+                TextColor="Black" />
+
+            <Frame
+                Margin="0,50"
+                BackgroundColor="Transparent"
+                CornerRadius="10"
+                BorderColor="White"
+                HasShadow="True"
+                Padding="0">
+                <Entry
+                    x:Name="InputTitle"
+                    WidthRequest="300"
+                    Placeholder="Nome do produto"
+                    PlaceholderColor="White"
+                    TextColor="White"
+                    Background="Transparent"
+                    HorizontalOptions="Fill" />
+            </Frame>
+
+            <Frame
+                Margin="0,15"
+                BackgroundColor="Transparent"
+                CornerRadius="10"
+                BorderColor="White"
+                HasShadow="True"
+                Padding="0">
+                <Editor
+                    HeightRequest="150"
+                    Placeholder="Descrição"
+                    PlaceholderColor="White"
+                    MaxLength="500"
+                    AutoSize="TextChanges"
+                    x:Name="InputDescription"
+                    BackgroundColor="Transparent"
+                    WidthRequest="300"
+                    TextColor="White"
+                    HorizontalOptions="Fill" />
+            </Frame>
+
+            <Button
+    x:Name="btn_SaveProduct"
+    Clicked="btn_SaveProduct_Clicked"
+    Text="SALVAR PRODUTO +"
+    Margin="30"
+    BackgroundColor="White"
+    TextColor="#659157"
+    FontAttributes="Bold"
+    FontSize="Small"
+    WidthRequest="350"
+    CornerRadius="10"
+    HorizontalOptions="Center"/>
+        </StackLayout>
+    </ContentPage.Content>
+
+</ContentPage>

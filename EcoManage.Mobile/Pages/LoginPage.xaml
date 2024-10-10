@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="EcoManage.Mobile.Pages.LoginPage"
+             Title="Eco-Manage">
+    <VerticalStackLayout
+        BackgroundColor="#659157"
+        Padding="10">
+        <Label 
+            Margin="20"
+            Padding="20"
+            Text="LOGIN"
+            FontSize="Title"
+            FontAttributes="Bold"
+            VerticalOptions="Center" 
+            HorizontalOptions="Center" />
+        
+        <Frame
+            Margin="0,50"
+            BackgroundColor="Transparent"
+            CornerRadius="10"
+            BorderColor="White"
+            HasShadow="True"
+            Padding="0">
+
+            <Entry
+      x:Name="InputEmail"
+      WidthRequest="300"
+      Placeholder="E-MAIL"
+      PlaceholderColor="White"
+      TextColor="White"
+      Background="Transparent"
+      HorizontalOptions="Fill"
+      />
+
+        </Frame>
+
+
+        <Frame
+    Margin="0,15"
+    BackgroundColor="Transparent"
+    CornerRadius="10"
+    BorderColor="White"
+    HasShadow="True"
+    Padding="0">
+
+            <Entry
+                x:Name="InputPassword"
+            ClearButtonVisibility="Never"
+            BackgroundColor="Transparent"
+            WidthRequest="300"
+            Placeholder="SENHA"
+            PlaceholderColor="White"
+            HorizontalOptions="Fill"
+            IsPassword="True"
+                />
+
+        </Frame>
+
+
+        <Button
+            x:Name="btn_Login"
+            Clicked="btn_Login_Clicked"
+            Text="ENTRAR"
+            Margin="30"
+            BackgroundColor="White"
+            TextColor="#659157"
+            FontAttributes="Bold"
+            FontSize="Small"
+            WidthRequest="350"
+            CornerRadius="10"
+            HorizontalOptions="Center"/>
+        
+    </VerticalStackLayout>
+</ContentPage>
