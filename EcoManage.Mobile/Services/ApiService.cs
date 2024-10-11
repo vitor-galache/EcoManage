@@ -17,7 +17,7 @@ namespace EcoManage.Mobile.Services
         {
             cookieContainer = new CookieContainer();
             var handler = new HttpClientHandler() { CookieContainer = cookieContainer };
-            client = new HttpClient(handler) { BaseAddress = new Uri("http://10.0.2.2:5017") };
+            client = new HttpClient(handler) { BaseAddress = new Uri("http://192.168.15.8:5017") };
         }
 
         public static ApiService Instance => instance.Value;

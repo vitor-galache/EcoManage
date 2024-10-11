@@ -8,7 +8,7 @@
             <CollectionView.ItemTemplate>
                 <DataTemplate>
                     <StackLayout Padding="10">
-                        <Label Text="{Binding Title}" FontSize="20" TextColor="Black" />
+                        <Label Text="{Binding Title}" FontSize="20"/>
                         <Label Text="{Binding Description}" FontSize="16" TextColor="Gray" />
                     </StackLayout>
                 </DataTemplate>
