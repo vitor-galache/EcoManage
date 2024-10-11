@@ -28,8 +28,11 @@ public partial class LoginPage : ContentPage
         var result = await _accountHandler.LoginAsync(request);
 
         if (!result.IsSuccess)
-           await DisplayAlert("ERRO", result.Message, "OK");
-        
+        {
+            await DisplayAlert("ERRO", result.Message, "OK");
+            return;
+        }
+
         await Navigation.PushAsync(new MainPage());
     }
 }
