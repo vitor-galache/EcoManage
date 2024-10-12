@@ -31,7 +31,7 @@ public static class Endpoint
         
         app.MapGroup("v1/suppliers")
             .WithTags("Suppliers")
-            //.RequireAuthorization()
+            .RequireAuthorization()
             .MapEndpoint<CreateSupplierEndpoint>()
             .MapEndpoint<GetSupplierByIdEndpoint>()
             .MapEndpoint<GetAllSupplierEndpoint>()

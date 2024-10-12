@@ -16,68 +16,72 @@ namespace EcoManage.Desktop.Handlers
 
         public async Task<Response<Supplier?>> CreateAsync(CreateSupplierRequest request)
         {
-            using (HttpClient client = new HttpClient())
-            {
-                var result = await client.PostAsJsonAsync($"{DesktopConfiguration.ApiUrl}v1/suppliers", request);
-                return await result.Content.ReadFromJsonAsync<Response<Supplier?>>()
-                       ?? new Response<Supplier?>(null, 400, "Falha ao cadastrar fornecedor");
-            }
+            var client = ApiClient.Instance.Client;
+
+
+            var response = await client.PostAsJsonAsync($"{DesktopConfiguration.ApiUrl}v1/suppliers", request);
+            var result = await response.Content.ReadFromJsonAsync<Response<Supplier?>>()
+                   ?? new Response<Supplier?>(null, 400, "Não foi possível processar a resposta");
+            return response.IsSuccessStatusCode ? result : new Response<Supplier?>(null, 400, result.Message);
+
         }
 
         public async Task<Response<Supplier?>> DeleteAsync(DeleteSupplierRequest request)
         {
-            using (var client = new HttpClient())
-            {
-                var result = await client.DeleteAsync($"{DesktopConfiguration.ApiUrl}v1/suppliers/{request.Id}");
+            var client = ApiClient.Instance.Client;
 
-                return await result.Content.ReadFromJsonAsync<Response<Supplier?>>()
-                       ?? new Response<Supplier?>(null, 400, "Não foi possível excluir fornecedor");
-            }
+
+            var result = await client.DeleteAsync($"{DesktopConfiguration.ApiUrl}v1/suppliers/{request.Id}");
+
+            return await result.Content.ReadFromJsonAsync<Response<Supplier?>>()
+                   ?? new Response<Supplier?>(null, 400, "Não foi possível excluir fornecedor");
+
         }
 
         public async Task<PagedResponse<List<Supplier>>> GetAllAsync(GetAllSupplierRequest request)
         {
-            using (HttpClient client = new HttpClient())
+            var client = ApiClient.Instance.Client;
+
+
+            try
             {
-                try
-                {
-                    return await client.GetFromJsonAsync<PagedResponse<List<Supplier>?>>(DesktopConfiguration.ApiUrl + "v1/suppliers");
-                }
-                catch
-                {
-                    var result = new PagedResponse<List<Supplier>>(null, 400, "Não foi possivel obter fornecedores");
-                    MessageBox.Show(result.Message);
-                    return result;
-                }
+                return await client.GetFromJsonAsync<PagedResponse<List<Supplier>?>>(DesktopConfiguration.ApiUrl + "v1/suppliers");
             }
+            catch
+            {
+                var result = new PagedResponse<List<Supplier>>(null, 400, "Não foi possivel obter fornecedores");
+                MessageBox.Show(result.Message);
+                return result;
+            }
+
         }
 
         public async Task<Response<Supplier?>> GetByIdAsync(GetSupplierByIdRequest request)
         {
-            using (HttpClient client = new HttpClient())
+            var client = ApiClient.Instance.Client;
+
+
+            try
             {
-                try
-                {
-                    return await client.GetFromJsonAsync<Response<Supplier?>>(DesktopConfiguration.ApiUrl + "v1/suppliers/" + request.Id);
-                }
-                catch
-                {
-                    var result = new Response<Supplier?>(null, 400, "Não foi possivel obter fornecedores");
-                    MessageBox.Show(result.Message);
-                    return result;
-                }
+                return await client.GetFromJsonAsync<Response<Supplier?>>(DesktopConfiguration.ApiUrl + "v1/suppliers/" + request.Id);
             }
+            catch
+            {
+                var result = new Response<Supplier?>(null, 400, "Não foi possivel obter fornecedores");
+                MessageBox.Show(result.Message);
+                return result;
+            }
+
         }
 
         public async Task<Response<Supplier?>> UpdateAsync(UpdateSupplierRequest request)
         {
-            using (HttpClient client = new HttpClient())
-            {
-                var result = await client.PutAsJsonAsync($"{DesktopConfiguration.ApiUrl}v1/suppliers/{request.Id}", request);
+            var client = ApiClient.Instance.Client;
 
-                return await result.Content.ReadFromJsonAsync<Response<Supplier?>>()
-                       ?? new Response<Supplier?>(null, 400, "Não foi possível atualizar fornecedor");
-            }
+            var result = await client.PutAsJsonAsync($"{DesktopConfiguration.ApiUrl}v1/suppliers/{request.Id}", request);
+
+            return await result.Content.ReadFromJsonAsync<Response<Supplier?>>()
+                   ?? new Response<Supplier?>(null, 400, "Não foi possível atualizar fornecedor");
         }
     }
 }

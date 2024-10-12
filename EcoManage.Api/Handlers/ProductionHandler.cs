@@ -17,6 +17,7 @@ public class ProductionHandler(AppDbContext context) : IProductionHandler
         {
             Production? production;
             Product? product = await context.Products.FirstOrDefaultAsync(x => x.Id == request.ProductId);
+            
             if (product is null)
                 return new Response<Production?>(null, 400, "Produto inválido");
             

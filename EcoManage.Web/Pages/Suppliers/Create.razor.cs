@@ -31,13 +31,16 @@ public partial class CreateSupplierPage  : ComponentBase
         try
         {
             var result = await Handler.CreateAsync(InputModel);
+            
             if (result.IsSuccess)
             {
                 Snackbar.Add(result.Message, Severity.Success);
                 NavigationManager.NavigateTo("/fornecedores");
             }
             else
+            {
                 Snackbar.Add(result.Message, Severity.Error);
+            }
 
         }
         catch (Exception ex)

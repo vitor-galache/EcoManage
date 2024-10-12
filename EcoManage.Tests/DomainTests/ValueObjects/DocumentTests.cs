@@ -14,7 +14,7 @@ public class DocumentTests
     }
 
     [TestMethod]
-    public void Deve_retornar_erro_ao_inserir_cnpj_vazior()
+    public void Deve_retornar_erro_ao_inserir_cnpj_vazio()
     {
         var document = new Document("", EDocumentType.Cnpj);
         Assert.AreEqual(document.Invalid,true);

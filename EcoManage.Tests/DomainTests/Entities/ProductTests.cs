@@ -48,7 +48,7 @@ public class ProductTests
     [TestMethod]
     public void RetornarErroAoCadastrarProdutoSemDescricao()
     {
-        var product = new Product("Produto Teste", " ");
+        var product = new Product(TitleValid, " ");
         Assert.AreEqual(product.Invalid,true);
     }
 }

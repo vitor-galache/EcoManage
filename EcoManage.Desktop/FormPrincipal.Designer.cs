@@ -30,9 +30,7 @@
         {
             fornecedoresToolStripMenuItem = new ToolStripMenuItem();
             toolStripMenuItem1 = new ToolStripMenuItem();
-            ediitarToolStripMenuItem = new ToolStripMenuItem();
             listarFornecedoresToolStripMenuItem = new ToolStripMenuItem();
-            excluirToolStripMenuItem = new ToolStripMenuItem();
             btnSair_menu = new ToolStripMenuItem();
             menuStrip1 = new MenuStrip();
             menuStrip1.SuspendLayout();
@@ -40,7 +38,7 @@
             // 
             // fornecedoresToolStripMenuItem
             // 
-            fornecedoresToolStripMenuItem.DropDownItems.AddRange(new ToolStripItem[] { toolStripMenuItem1, ediitarToolStripMenuItem, listarFornecedoresToolStripMenuItem, excluirToolStripMenuItem });
+            fornecedoresToolStripMenuItem.DropDownItems.AddRange(new ToolStripItem[] { toolStripMenuItem1, listarFornecedoresToolStripMenuItem });
             fornecedoresToolStripMenuItem.Font = new Font("Microsoft Sans Serif", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
             fornecedoresToolStripMenuItem.ForeColor = Color.LightGray;
             fornecedoresToolStripMenuItem.Name = "fornecedoresToolStripMenuItem";
@@ -53,12 +51,7 @@
             toolStripMenuItem1.Name = "toolStripMenuItem1";
             toolStripMenuItem1.Size = new Size(239, 24);
             toolStripMenuItem1.Text = "Cadastrar";
-            // 
-            // ediitarToolStripMenuItem
-            // 
-            ediitarToolStripMenuItem.Name = "ediitarToolStripMenuItem";
-            ediitarToolStripMenuItem.Size = new Size(239, 24);
-            ediitarToolStripMenuItem.Text = "Editar";
+            toolStripMenuItem1.Click += toolStripMenuItem1_Click;
             // 
             // listarFornecedoresToolStripMenuItem
             // 
@@ -66,12 +59,6 @@
             listarFornecedoresToolStripMenuItem.Size = new Size(239, 24);
             listarFornecedoresToolStripMenuItem.Text = "Listar Fornecedores";
             listarFornecedoresToolStripMenuItem.Click += listarFornecedoresToolStripMenuItem_Click;
-            // 
-            // excluirToolStripMenuItem
-            // 
-            excluirToolStripMenuItem.Name = "excluirToolStripMenuItem";
-            excluirToolStripMenuItem.Size = new Size(239, 24);
-            excluirToolStripMenuItem.Text = "Excluir";
             // 
             // btnSair_menu
             // 
@@ -117,9 +104,7 @@
 
         private ToolStripMenuItem fornecedoresToolStripMenuItem;
         private ToolStripMenuItem toolStripMenuItem1;
-        private ToolStripMenuItem ediitarToolStripMenuItem;
         private ToolStripMenuItem listarFornecedoresToolStripMenuItem;
-        private ToolStripMenuItem excluirToolStripMenuItem;
         private ToolStripMenuItem btnSair_menu;
         private MenuStrip menuStrip1;
     }

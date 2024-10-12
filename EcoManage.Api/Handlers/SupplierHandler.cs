@@ -90,9 +90,7 @@ public class SupplierHandler(AppDbContext context) : ISupplierHandler
         try
         {
             supplier.ChangeCompanyName(request.CompanyName);
-
             supplier.ChangeEmail(request.Email);
-
             supplier.ChangeContact(request.Contact);
 
             if (supplier.Invalid)

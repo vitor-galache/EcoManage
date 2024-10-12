@@ -17,28 +17,36 @@ public class ProductionProgrammed : Production
         EndDate = endDate;
         Status = status;
         HarvestType = harvestType;
-        if (endDate >= DateTime.UtcNow)
-            AddNotification("Production.EndDate","A data prevista para conclusão não pode estar no futuro");
     }
 
     private ProductionProgrammed()
     {
-        
     }
+
+    private ProductionProgrammed(string title, Product product, decimal quantityInKg,
+        DateTime? endDate)
+    {
+        Title = title;
+        HarvestType = EHarvestType.Programmed;
+        EndDate = endDate;
+        Product = product;
+        QuantityInKg = quantityInKg;
+        if (QuantityInKg <= 0)
+            AddNotification("Production.QuantityInKg", "A quantidade não pode ser menor que 0");
+        if (endDate <= DateTime.UtcNow.AddDays(15))
+            AddNotification("", "A produção deve ser agendada no mínimo 15 dias no futuro");
+    }
+
+    #region Factories
 
     public static class Factories
     {
         public static ProductionProgrammed Create(string title, Product product, decimal quantityInKg,
             DateTime? endDate)
         {
-            return new ProductionProgrammed
-            {
-                Title = title,
-                HarvestType = EHarvestType.Programmed,
-                EndDate = endDate,
-                Product = product,
-                QuantityInKg = quantityInKg
-            };
+            return new ProductionProgrammed(title, product, quantityInKg, endDate);
         }
     }
+
+    #endregion
 }

@@ -31,10 +31,18 @@
                 <CellTemplate>
 
                     <MudStack Row Class="justify-end">
-                        
-                        <MudButton StartIcon="@Icons.Material.TwoTone.ChangeCircle" Href="@($"/producoes/{context.Item.Number}")" Color="Color.Info">
-                            Atualizar Status
-                        </MudButton>
+                        @if (context.Item.Status != EProductionStatus.CropLoss)
+                        {
+                            <MudButton StartIcon="@Icons.Material.TwoTone.ChangeCircle" Href="@($"/producoes/{context.Item.Number}")" Color="Color.Info">
+                                Atualizar Status
+                            </MudButton>
+                        }
+                        else
+                        {
+                            <MudButton StartIcon="@Icons.Material.TwoTone.Info" Href="@($"/producoes/{context.Item.Number}")" Color="Color.Error">
+                                Mais Detalhes
+                            </MudButton>
+                        }
                         
                     </MudStack>
                 </CellTemplate>

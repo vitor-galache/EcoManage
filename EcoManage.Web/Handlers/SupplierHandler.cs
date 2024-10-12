@@ -12,9 +12,9 @@ public class SupplierHandler(IHttpClientFactory httpClientFactory) : ISupplierHa
 
     public async Task<Response<Supplier?>> CreateAsync(CreateSupplierRequest request)
     {
-        var result = await _client.PostAsJsonAsync("v1/suppliers", request);
-        return await result.Content.ReadFromJsonAsync<Response<Supplier?>>()
-               ?? new Response<Supplier?>(null, 400, "Falha ao cadastrar fornecedor");
+        var  response = await _client.PostAsJsonAsync("v1/suppliers", request);
+        var result = await response.Content.ReadFromJsonAsync<Response<Supplier?>>()?? new Response<Supplier?>(null,400,"Não foi possível processar a resposta");
+        return response.IsSuccessStatusCode ? result : new Response<Supplier?>(null, 400, result.Message);
     }
 
     public async Task<PagedResponse<List<Supplier>>> GetAllAsync(GetAllSupplierRequest request)

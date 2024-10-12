@@ -16,7 +16,5 @@ public class CreateProductionRequest : Request
     
     [Required (ErrorMessage = "Digite um número")]
     public decimal QuantityInKg { get; set; }
-    
-    [Required (ErrorMessage = "Insira a data prevista para conclusão")]
-    public DateTime? EndDate { get; set; } 
+    public DateTime? EndDate { get; set; }  
 }
