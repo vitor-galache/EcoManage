@@ -6,23 +6,32 @@ namespace EcoManage.Tests.DomainTests.ValueObjects;
 public class EmailTests
 {
     [TestMethod]
-    public void Deve_retornar_erro_ao_inserir_email_invalido()
+    
+    [DataRow("email@invalid",true)]
+    [DataRow("email.com",true)]
+    [DataRow("emailteste",true)]
+    [DataRow("   ",true)]
+    public void Deve_retornar_erro_ao_inserir_email_invalido(string address,bool expectedResult)
     {
-        var email = new Email("email.invalido");
-        Assert.AreEqual(email.Invalid,true);
+        var email = new Email(address);
+
+        var result = email.Invalid; 
+        
+        Assert.AreEqual(expectedResult,result);
     }
 
     [TestMethod]
-    public void Deve_retornar_sucesso_ao_inserir_email_valido()
+    [DataRow("teste@gmail.com",true)]
+    [DataRow("teste@hotmail.com",true)]
+    [DataRow("emailteste@yahoo.com",true)]
+    [DataRow("email@outlook.com.br",true)]
+    public void Deve_retornar_sucesso_ao_inserir_email_valido(string address,bool expectedResult)
     {
-        var email = new Email("teste@gmail.com");
-        Assert.AreEqual(email.Valid,true);
+        var email = new Email(address);
+
+        var result = email.Valid;
+        
+        Assert.AreEqual(expectedResult,result);
     }
     
-    [TestMethod]
-    public void Deve_retornar_erro_ao_inserir_email_vazio()
-    {
-        var email = new Email("  ");
-        Assert.AreEqual(email.Invalid,true);
-    }
 }
