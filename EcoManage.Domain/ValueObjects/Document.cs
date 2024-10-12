@@ -15,7 +15,7 @@ public class Document : ValueObject
             .Requires()
             .IsNotNullOrEmpty(number,"Document.Number","Documento Inválido")
             .IsTrue(Validate(),"Document.Type","Documento inválido")
-            //.IsNotNullOrWhiteSpace(number,"Document.Number","Documento vazio ou com espaços")
+            .IsNotNullOrWhiteSpace(number,"Document.Number","Documento vazio ou com espaços")
         );
     }
     public string Number { get; private set; }
