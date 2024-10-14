@@ -1,61 +1,47 @@
-using EcoManage.Domain.Enums;
-using EcoManage.Domain.ValueObjects;
-
 namespace EcoManage.Tests.DomainTests.ValueObjects;
 
-[TestClass]
+[Trait("Document","UnitTest")]
 public class DocumentTests
 {
-    [TestMethod]
-    [DataRow("  ",true)]
-    [DataRow("",true)]
-    [DataRow("           ",true)]
-    public void Deve_retornar_erro_ao_inserir_cpf_vazio_(string number,bool expectedResult)
+    [Theory]
+    [InlineData(" ",true)]
+    [InlineData("           ",true)]
+    [InlineData("   ",true)]
+    public void Deve_retornar_erro_ao_inserir_cpf_vazio_(string nullEmpty,bool expectedResult)
     {
-        var cpf = new Document(number,EDocumentType.Cpf);
-
-        var result = cpf.Invalid;
+        var document = new Document(nullEmpty,EDocumentType.Cpf);
         
-        Assert.AreEqual(expectedResult,result);
-    }
-
-    [TestMethod]
-    [DataRow("  ",true)]
-    [DataRow("",true)]
-    [DataRow("           ",true)]
-    public void Deve_retornar_erro_ao_inserir_cnpj_vazio(string number, bool expectedResult)
-    {
-        var cnpj = new Document(number, EDocumentType.Cnpj);
-
-        var result = cnpj.Invalid;
-        
-        Assert.AreEqual(expectedResult,result);
-    }
-
-    [TestMethod]
-    [DataRow("12345678910",true)]
-    [DataRow("11987654321",true)]
-    
-    public void Deve_retornar_sucesso_ao_inserir_cpf_com_11_caracteres(string number,bool expectedResult)
-    {
-        var cpf = new Document(number,EDocumentType.Cpf);
-
-        var result = cpf.Valid;
-        
-        Assert.AreEqual(expectedResult,result);
-    }
-
-    [TestMethod]
-    [DataRow("29398282000109",true)]
-    [DataRow("12345678912345",true)]
-    [DataRow("23023982000132",true)]
-    public void Deve_retornar_sucesso_ao_inserir_cnpj_com_14_caracteres(string number,bool expectedResult)
-    {
-        var cnpj = new Document(number,EDocumentType.Cnpj);
-
-        var result = cnpj.Valid;
-        
-        Assert.AreEqual(expectedResult,result);
+        Assert.Equal(expectedResult,document.Invalid);
     }
     
+    [Theory]
+    [InlineData(" ",true)]
+    [InlineData("            ",true)]
+    [InlineData("    ",true)]
+    public void Deve_retornar_erro_ao_inserir_cnpj_vazio(string nullEmpty,bool expectedResult)
+    {
+        var document = new Document(nullEmpty, EDocumentType.Cnpj);
+        
+        Assert.Equal(expectedResult,document.Invalid);
+    }
+    
+    [Theory]
+    [InlineData("12345678910",true)]
+    [InlineData("11987654321",true)]
+    public void Deve_retornar_sucesso_ao_inserir_cpf_com_11_caracteres(string cpfNumber,bool expectedResult)
+    {
+        var document = new Document(cpfNumber,EDocumentType.Cpf);
+        
+        Assert.Equal(expectedResult,document.Valid);
+    }
+    
+    [Theory]
+    [InlineData("12345678912345",true)]
+    [InlineData("67894721000163",true)]
+    [InlineData("18386325000110",true)]
+    public void Deve_retornar_sucesso_ao_inserir_cnpj_com_14_caracteres(string cnpjNumber,bool expectedResult)
+    {
+        var document = new Document(cnpjNumber,EDocumentType.Cnpj);
+        Assert.Equal(expectedResult,document.Valid);
+    }
 }

@@ -1,37 +1,31 @@
-using EcoManage.Domain.ValueObjects;
 
 namespace EcoManage.Tests.DomainTests.ValueObjects;
 
-[TestClass]
+[Trait("Email","UnitTest")]
 public class EmailTests
 {
-    [TestMethod]
-    
-    [DataRow("email@invalid",true)]
-    [DataRow("email.com",true)]
-    [DataRow("emailteste",true)]
-    [DataRow("   ",true)]
-    public void Deve_retornar_erro_ao_inserir_email_invalido(string address,bool expectedResult)
+    [Theory]
+    [InlineData("email.invalido",true)]
+    [InlineData("email.invalido.com",true)]
+    [InlineData("email@invalido",true)]
+    [InlineData("",true)]
+    [InlineData(" ",true)]
+    public void Deve_retornar_erro_ao_inserir_email_invalido_ou_vazio(string emailAddress,bool expectedResult)
     {
-        var email = new Email(address);
-
-        var result = email.Invalid; 
+        var email = new Email(emailAddress);
         
-        Assert.AreEqual(expectedResult,result);
-    }
-
-    [TestMethod]
-    [DataRow("teste@gmail.com",true)]
-    [DataRow("teste@hotmail.com",true)]
-    [DataRow("emailteste@yahoo.com",true)]
-    [DataRow("email@outlook.com.br",true)]
-    public void Deve_retornar_sucesso_ao_inserir_email_valido(string address,bool expectedResult)
-    {
-        var email = new Email(address);
-
-        var result = email.Valid;
-        
-        Assert.AreEqual(expectedResult,result);
-    }
+        Assert.Equal(expectedResult,email.Invalid);
+    } 
     
+    [Theory]
+    [InlineData("email@teste.io",true)]
+    [InlineData("email@gmail.com",true)]
+    [InlineData("email@hotmail.com",true)]
+    [InlineData("email@yahoo.com",true)]
+    public void Deve_retornar_sucesso_ao_inserir_email_valido(string emailAddress,bool expectedResult)
+    {
+        var email = new Email(emailAddress);
+        
+        Assert.Equal(expectedResult,email.Valid);
+    }
 }
