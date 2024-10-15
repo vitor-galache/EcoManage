@@ -1,4 +1,5 @@
 global using Xunit;
+global using Bogus;
 global using EcoManage.Domain.Entities;
 global using EcoManage.Domain.Entities.Productions;
 global using EcoManage.Domain.ValueObjects;
