@@ -13,6 +13,9 @@ public class ProductTests
     {
         var product = new Product(TitleValid,DescriptionValid);
         
+        Assert.Equal(TitleValid,product.Title);
+        Assert.Equal(DescriptionValid,product.Description);
+        
         Assert.True(product.Valid);
     }
 
@@ -21,6 +24,8 @@ public class ProductTests
     {
         _productValid.ChangeInfo("Produto Teste Atualizado","Descrição do Produto Teste Atualizada");
         Assert.True(_productValid.Valid);
+        Assert.Equal("Produto Teste Atualizado",_productValid.Title);
+        Assert.Equal("Descrição do Produto Teste Atualizada",_productValid.Description);
     }
     
     [Fact]
