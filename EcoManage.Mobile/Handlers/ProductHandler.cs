@@ -14,14 +14,11 @@ namespace EcoManage.Mobile.Handlers
 {
     public class ProductHandler : IProductHandler
     {
-        private HttpClient client = ApiService.Instance.Client;
+        private HttpClient _client = ApiService.Instance.Client;
 
         public async Task<Response<Product?>> CreateAsync(CreateProductRequest request)
         {
-            var client = ApiService.Instance.Client;
-
-
-            var response = await client.PostAsJsonAsync($"v1/products", request);
+            var response = await _client.PostAsJsonAsync($"v1/products", request);
             var result = await response.Content.ReadFromJsonAsync<Response<Product?>>()
                    ?? new Response<Product?>(null, 400, "Não foi possível processar a resposta");
             return response.IsSuccessStatusCode ? result : new Response<Product?>(null, 400, result.Message);
@@ -29,7 +26,8 @@ namespace EcoManage.Mobile.Handlers
 
         public async Task<PagedResponse<List<Product>?>> GetAllAsync(GetAllProductsRequest request)
         { 
-            return await client.GetFromJsonAsync<PagedResponse<List<Product>?>>("v1/products");
+            return await _client.GetFromJsonAsync<PagedResponse<List<Product>?>>("v1/products") 
+                   ?? new PagedResponse<List<Product>?>(null, 400, "Não foi possível obter os produtos");
         }
 
         public Task<Response<Product?>> GetByIdAsync(GetProductByIdRequest request)
