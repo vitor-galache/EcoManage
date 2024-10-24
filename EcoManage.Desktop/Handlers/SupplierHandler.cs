@@ -17,8 +17,7 @@ namespace EcoManage.Desktop.Handlers
         public async Task<Response<Supplier?>> CreateAsync(CreateSupplierRequest request)
         {
             var client = ApiClient.Instance.Client;
-
-
+            
             var response = await client.PostAsJsonAsync($"{DesktopConfiguration.ApiUrl}v1/suppliers", request);
             var result = await response.Content.ReadFromJsonAsync<Response<Supplier?>>()
                    ?? new Response<Supplier?>(null, 400, "Não foi possível processar a resposta");
