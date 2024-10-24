@@ -18,7 +18,7 @@ public static class BuilderExtension
     }
     public static void AddDbContexts(this WebApplicationBuilder builder)
     {
-        Persistence.Dependencies.ConfigureServices(builder.Configuration,builder.Services);
+        Persistence.Dependencies.ConfigureDataServices(builder.Configuration,builder.Services);
         builder.Services.AddIdentityCore<User>()
             .AddRoles<IdentityRole<long>>()
             .AddEntityFrameworkStores<AppDbContext>()

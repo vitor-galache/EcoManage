@@ -7,7 +7,7 @@ namespace EcoManage.Persistence;
 
 public static class Dependencies
 {
-    public static void ConfigureServices(IConfiguration configuration, IServiceCollection services)
+    public static void ConfigureDataServices(IConfiguration configuration, IServiceCollection services)
     {
         bool useInMemoryDatabase = false;
         if (configuration["UseInMemoryDatabase"] != null)
