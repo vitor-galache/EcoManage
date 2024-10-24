@@ -80,10 +80,6 @@
 	</ItemGroup>
 
 	<ItemGroup>
-	  <ProjectReference Include="..\EcoManage.Domain\EcoManage.Domain.csproj" />
-	</ItemGroup>
-
-	<ItemGroup>
 	  <Compile Update="Pages\Product\ProductsPage.xaml.cs">
 	    <DependentUpon>ProductsPage.xaml</DependentUpon>
 	    <SubType>Code</SubType>
@@ -96,6 +92,10 @@
 	    <DependentUpon>LoginPage.xaml</DependentUpon>
 	    <SubType>Code</SubType>
 	  </Compile>
+	</ItemGroup>
+
+	<ItemGroup>
+	  <ProjectReference Include="..\EcoManage.Domain\EcoManage.Domain.csproj" />
 	</ItemGroup>
 
 </Project>
