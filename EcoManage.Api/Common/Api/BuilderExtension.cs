@@ -1,10 +1,9 @@
-using EcoManage.Api.Data;
 using EcoManage.Api.Handlers;
-using EcoManage.Api.Models;
 using EcoManage.Domain;
 using EcoManage.Domain.Handlers;
+using EcoManage.Persistence.Data;
+using EcoManage.Persistence.Models;
 using Microsoft.AspNetCore.Identity;
-using Microsoft.EntityFrameworkCore;
 
 namespace EcoManage.Api.Common.Api;
 
@@ -19,7 +18,7 @@ public static class BuilderExtension
     }
     public static void AddDbContexts(this WebApplicationBuilder builder)
     {
-        builder.Services.AddDbContext<AppDbContext>(x => { x.UseSqlServer(Configuration.ConnectionString); });
+        Persistence.Dependencies.ConfigureServices(builder.Configuration,builder.Services);
         builder.Services.AddIdentityCore<User>()
             .AddRoles<IdentityRole<long>>()
             .AddEntityFrameworkStores<AppDbContext>()

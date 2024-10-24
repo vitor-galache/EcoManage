@@ -1,8 +1,8 @@
-using EcoManage.Api.Data;
 using EcoManage.Domain.Entities.Reports;
 using EcoManage.Domain.Handlers;
 using EcoManage.Domain.Requests.Reports;
 using EcoManage.Domain.Responses;
+using EcoManage.Persistence.Data;
 using Microsoft.EntityFrameworkCore;
 
 namespace EcoManage.Api.Handlers;

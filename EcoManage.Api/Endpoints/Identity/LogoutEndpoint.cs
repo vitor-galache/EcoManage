@@ -1,5 +1,5 @@
 using EcoManage.Api.Common.Api;
-using EcoManage.Api.Models;
+using EcoManage.Persistence.Models;
 using Microsoft.AspNetCore.Identity;
 
 namespace EcoManage.Api.Endpoints.Identity;
