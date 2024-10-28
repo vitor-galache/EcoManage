@@ -57,3 +57,9 @@ Vale ressaltar que foi utilizada a biblioteca MudBlazor, que possui suporte a di
 
 https://github.com/user-attachments/assets/40d1b3bb-b20c-49a0-b6e4-8c34fb849fd1
 
+
+### Aplicação Mobile (EcoManage.Mobile)
+Segue um vídeo do projeto mobile feito com .NET MAUI que consome a API
+
+https://github.com/user-attachments/assets/0ff345af-6cfe-4e36-8913-365d2982ce2b
+
