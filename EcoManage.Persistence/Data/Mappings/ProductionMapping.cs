@@ -3,7 +3,7 @@ using EcoManage.Domain.Enums;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
 
-namespace EcoManage.Api.Data.Mappings;
+namespace EcoManage.Persistence.Data.Mappings;
 
 public class ProductionMapping : IEntityTypeConfiguration<Production>
 {

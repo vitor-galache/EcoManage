@@ -1,10 +1,10 @@
-using EcoManage.Api.Data;
 using EcoManage.Domain.Entities;
 using EcoManage.Domain.Enums;
 using EcoManage.Domain.Handlers;
 using EcoManage.Domain.Requests.Supplier;
 using EcoManage.Domain.Responses;
 using EcoManage.Domain.ValueObjects;
+using EcoManage.Persistence.Data;
 using Microsoft.EntityFrameworkCore;
 using Document = EcoManage.Domain.ValueObjects.Document;
 

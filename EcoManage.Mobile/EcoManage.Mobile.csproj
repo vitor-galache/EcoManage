@@ -67,6 +67,9 @@
 	</ItemGroup>
 
 	<ItemGroup>
+	  <MauiXaml Update="Pages\Product\EditProductPage.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
 	  <MauiXaml Update="Pages\Product\ProductsPage.xaml">
 	    <SubType>Designer</SubType>
 	  </MauiXaml>
@@ -77,10 +80,6 @@
 	    <SubType>Designer</SubType>
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
-	</ItemGroup>
-
-	<ItemGroup>
-	  <ProjectReference Include="..\EcoManage.Domain\EcoManage.Domain.csproj" />
 	</ItemGroup>
 
 	<ItemGroup>
@@ -96,6 +95,10 @@
 	    <DependentUpon>LoginPage.xaml</DependentUpon>
 	    <SubType>Code</SubType>
 	  </Compile>
+	</ItemGroup>
+
+	<ItemGroup>
+	  <ProjectReference Include="..\EcoManage.Domain\EcoManage.Domain.csproj" />
 	</ItemGroup>
 
 </Project>

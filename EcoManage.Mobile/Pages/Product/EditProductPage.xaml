@@ -2,16 +2,16 @@
 
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             x:Class="EcoManage.Mobile.Pages.Product.CreateProductPage"
-             Title="EcoManage - Produtos">
+             x:Class="EcoManage.Mobile.Pages.Product.EditProductPage"
+             Title="EcoManage - Atualizar Produto">
 
     <ContentPage.Content>
         <!-- Usando um StackLayout como contêiner -->
         <StackLayout Padding="20" BackgroundColor="#659157">
             <Label
                 Margin="30"
+                Text="ATUALIZAR PRODUTO"
                 HorizontalTextAlignment="Center"
-                Text="ADICIONAR PRODUTO +"
                 FontSize="Title"
                 FontAttributes="Bold"
                 TextColor="Black" />
@@ -54,9 +54,9 @@
             </Frame>
 
             <Button
-    x:Name="btn_SaveProduct"
-    Clicked="btn_SaveProduct_Clicked"
-    Text="SALVAR PRODUTO +"
+    x:Name="btn_UpdateProduct"
+                Clicked="btn_UpdateProduct_Clicked"
+    Text="ATUALIZAR PRODUTO"
     Margin="30"
     BackgroundColor="White"
     TextColor="#659157"
@@ -65,6 +65,19 @@
     WidthRequest="350"
     CornerRadius="10"
     HorizontalOptions="Center"/>
+
+            <Button
+x:Name="btn_InactiveProduct"
+Clicked="btn_InactiveProduct_Clicked"
+Text="INATIVAR PRODUTO"
+Margin="30"
+BackgroundColor="#69A2B0"
+TextColor="White"
+FontAttributes="Bold"
+FontSize="Small"
+WidthRequest="350"
+CornerRadius="10"
+HorizontalOptions="Center"/>
         </StackLayout>
     </ContentPage.Content>
 

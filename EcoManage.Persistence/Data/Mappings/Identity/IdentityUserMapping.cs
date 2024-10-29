@@ -1,9 +1,9 @@
-using EcoManage.Api.Models;
+using EcoManage.Persistence.Models;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
 
-namespace EcoManage.Api.Data.Mappings.Identity;
+namespace EcoManage.Persistence.Data.Mappings.Identity;
 
 public class IdentityUserMapping : IEntityTypeConfiguration<User>
 {

@@ -3,13 +3,13 @@ using EcoManage.Domain.ValueObjects;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
 
-namespace EcoManage.Api.Data.Mappings;
+namespace EcoManage.Persistence.Data.Mappings;
 
 public class SupplierMapping : IEntityTypeConfiguration<Supplier>
 {
     public void Configure(EntityTypeBuilder<Supplier> builder)
     {
-        builder.ToTable("Supplier");
+         builder.ToTable("Supplier");
         builder.HasKey(x => x.Id);
         
         builder.Property(x=>x.Id)

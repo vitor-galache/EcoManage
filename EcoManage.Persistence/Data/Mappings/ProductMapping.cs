@@ -2,10 +2,11 @@ using EcoManage.Domain.Entities;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
 
-namespace EcoManage.Api.Data.Mappings;
+namespace EcoManage.Persistence.Data.Mappings;
 
 public class ProductMapping : IEntityTypeConfiguration<Product>
 {
+   
     public void Configure(EntityTypeBuilder<Product> builder)
     {
         builder.ToTable("Product");
@@ -34,6 +35,5 @@ public class ProductMapping : IEntityTypeConfiguration<Product>
 
         builder.HasIndex(x => x.Slug, "IX_Product_Slug")
             .IsUnique();
-        
     }
 }

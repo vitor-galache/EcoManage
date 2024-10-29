@@ -5,7 +5,7 @@ namespace EcoManage.Mobile.Pages;
 
 public partial class LoginPage : ContentPage
 {
-    private readonly IAccountHandler _accountHandler = null!;
+    private readonly IAccountHandler _accountHandler;
     public LoginPage()
     {
         _accountHandler = IPlatformApplication.Current.Services.GetService<IAccountHandler>();

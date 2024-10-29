@@ -31,5 +31,20 @@ namespace EcoManage.Desktop
             FormCreateSupplier formCreateSupplier = new FormCreateSupplier();
             formCreateSupplier.ShowDialog();
         }
+
+        private void FormPrincipal_Load(object sender, EventArgs e)
+        {
+            BackColor = Color.White;
+        }
+
+        private void label2_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void h1_lbl_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }

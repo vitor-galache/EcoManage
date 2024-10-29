@@ -2,7 +2,7 @@ using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
 
-namespace EcoManage.Api.Data.Mappings.Identity;
+namespace EcoManage.Persistence.Data.Mappings.Identity;
 
 public class IdentityUserLoginMapping : IEntityTypeConfiguration<IdentityUserLogin<long>>
 {

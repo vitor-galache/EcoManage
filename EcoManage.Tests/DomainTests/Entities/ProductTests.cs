@@ -1,9 +1,6 @@
-using EcoManage.Domain.Entities;
-
 namespace EcoManage.Tests.DomainTests.Entities;
 
-[TestClass]
-[TestCategory("Products")]
+[Trait("Product","UnitTest")]
 public class ProductTests
 {
     private const string TitleValid = "Produto Teste";
@@ -11,44 +8,52 @@ public class ProductTests
     private readonly Product _productValid = new Product(TitleValid,DescriptionValid);
     private readonly Product _productInvalid = new Product("","Descrição Teste");
     
-    [TestMethod]
-    public void CadastrarProdutoComTituloValido()
+    [Fact]
+    public void Deve_Instanciar_Produto_Valido_Ao_Cadastrar_Produto_Com_Titulo_Valido()
     {
         var product = new Product(TitleValid,DescriptionValid);
-        Assert.AreEqual(product.Valid,true);
+        
+        Assert.Equal(TitleValid,product.Title);
+        Assert.Equal(DescriptionValid,product.Description);
+        
+        Assert.True(product.Valid);
     }
 
-    [TestMethod]
-    public void AlterarInformacoesDeProdutoExistente()
+    [Fact]
+    public void Deve_Alterar_Informacoes_De_Produto_Existente()
     {
         _productValid.ChangeInfo("Produto Teste Atualizado","Descrição do Produto Teste Atualizada");
-        Assert.AreEqual(_productValid.Valid,true);
+        Assert.True(_productValid.Valid);
+        Assert.Equal("Produto Teste Atualizado",_productValid.Title);
+        Assert.Equal("Descrição do Produto Teste Atualizada",_productValid.Description);
     }
     
-    [TestMethod]
-    public void AlterarInformacoesDeProdutoExistenteComDadosInvalidos()
+    [Fact]
+    public void Deve_Tornar_ProdutoValido_Em_Invalido_Ao_Alterar_Informacoes_De_Produto_Existente_Com_Dados_Invalidos()
     {
         _productValid.ChangeInfo("P"," ");
-        Assert.AreEqual(_productValid.Invalid,true);
+        Assert.True(_productValid.Invalid);
     }
 
-    [TestMethod]
-    public void InativarProdutoExistente()
+    [Fact]
+    public void Deve_Inativar_Produto_Existente()
     {
         _productValid.Inactivate();
-        Assert.AreEqual(_productValid.IsActive,false);
+        
+        Assert.False(_productValid.IsActive);
     }
     
-    [TestMethod]
-    public void RetornarErroAoCadastrarProdutoComTituloInvalido()
+    [Fact]
+    public void Deve_Retornar_Produto_Invalido_Ao_Cadastrar_Produto_Com_Titulo_Invalido()
     {
-        Assert.AreEqual(_productInvalid.Invalid,true);
+        Assert.True(_productInvalid.Invalid);
     }
 
-    [TestMethod]
-    public void RetornarErroAoCadastrarProdutoSemDescricao()
+    [Fact]
+    public void Deve_Retornar_Produto_Invalido_Ao_Cadastrar_Produto_Sem_Descricao()
     {
         var product = new Product(TitleValid, " ");
-        Assert.AreEqual(product.Invalid,true);
+        
+        Assert.True(product.Invalid);
     }
 }

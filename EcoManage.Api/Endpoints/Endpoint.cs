@@ -4,7 +4,7 @@ using EcoManage.Api.Endpoints.Productions;
 using EcoManage.Api.Endpoints.Products;
 using EcoManage.Api.Endpoints.Reports;
 using EcoManage.Api.Endpoints.Suppliers;
-using EcoManage.Api.Models;
+using EcoManage.Persistence.Models;
 using EcoManage.Domain.Requests.Production;
 
 namespace EcoManage.Api.Endpoints;

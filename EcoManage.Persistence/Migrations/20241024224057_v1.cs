@@ -3,10 +3,10 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 #nullable disable
 
-namespace EcoManage.Api.Migrations
+namespace EcoManage.Persistence.Migrations
 {
     /// <inheritdoc />
-    public partial class v2 : Migration
+    public partial class v1 : Migration
     {
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)
@@ -50,6 +50,42 @@ namespace EcoManage.Api.Migrations
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_IdentityUser", x => x.Id);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "Product",
+                columns: table => new
+                {
+                    Id = table.Column<long>(type: "bigint", nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    Title = table.Column<string>(type: "NVARCHAR(80)", maxLength: 80, nullable: false),
+                    Description = table.Column<string>(type: "NVARCHAR(255)", maxLength: 255, nullable: true),
+                    Slug = table.Column<string>(type: "VARCHAR(80)", maxLength: 80, nullable: false),
+                    IsActive = table.Column<bool>(type: "BIT", nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Product", x => x.Id);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "Supplier",
+                columns: table => new
+                {
+                    Id = table.Column<long>(type: "bigint", nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    Name = table.Column<string>(type: "NVARCHAR(255)", maxLength: 255, nullable: false),
+                    Document = table.Column<string>(type: "VARCHAR(14)", maxLength: 14, nullable: false),
+                    DocumentType = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    Street = table.Column<string>(type: "NVARCHAR(150)", maxLength: 150, nullable: false),
+                    Number = table.Column<string>(type: "VARCHAR(20)", maxLength: 20, nullable: false),
+                    ZipCode = table.Column<string>(type: "VARCHAR(8)", maxLength: 8, nullable: false),
+                    Email = table.Column<string>(type: "VARCHAR(255)", maxLength: 255, nullable: false),
+                    Contact = table.Column<string>(type: "NVARCHAR(160)", maxLength: 160, nullable: true)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Supplier", x => x.Id);
                 });
 
             migrationBuilder.CreateTable(
@@ -152,6 +188,32 @@ namespace EcoManage.Api.Migrations
                         onDelete: ReferentialAction.Cascade);
                 });
 
+            migrationBuilder.CreateTable(
+                name: "Production",
+                columns: table => new
+                {
+                    Id = table.Column<long>(type: "bigint", nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    Number = table.Column<string>(type: "CHAR(8)", maxLength: 8, nullable: false),
+                    Title = table.Column<string>(type: "NVARCHAR(80)", maxLength: 80, nullable: false),
+                    Status = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    HarvestType = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    StartDate = table.Column<DateTime>(type: "DATETIME2", nullable: false),
+                    EndDate = table.Column<DateTime>(type: "DATETIME2", nullable: true),
+                    ProductId = table.Column<long>(type: "bigint", nullable: false),
+                    QuantityInKg = table.Column<decimal>(type: "DECIMAL(18,2)", nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Production", x => x.Id);
+                    table.ForeignKey(
+                        name: "FK_Production_Product_ProductId",
+                        column: x => x.ProductId,
+                        principalTable: "Product",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Cascade);
+                });
+
             migrationBuilder.CreateIndex(
                 name: "IX_IdentityClaim_UserId",
                 table: "IdentityClaim",
@@ -187,6 +249,23 @@ namespace EcoManage.Api.Migrations
                 name: "IX_IdentityUserLogin_UserId",
                 table: "IdentityUserLogin",
                 column: "UserId");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_Product_Slug",
+                table: "Product",
+                column: "Slug",
+                unique: true);
+
+            migrationBuilder.CreateIndex(
+                name: "IX_Production_Number",
+                table: "Production",
+                column: "Number",
+                unique: true);
+
+            migrationBuilder.CreateIndex(
+                name: "IX_Production_ProductId",
+                table: "Production",
+                column: "ProductId");
         }
 
         /// <inheritdoc />
@@ -211,7 +290,16 @@ namespace EcoManage.Api.Migrations
                 name: "IdentityUserToken");
 
             migrationBuilder.DropTable(
+                name: "Production");
+
+            migrationBuilder.DropTable(
+                name: "Supplier");
+
+            migrationBuilder.DropTable(
                 name: "IdentityUser");
+
+            migrationBuilder.DropTable(
+                name: "Product");
         }
     }
 }

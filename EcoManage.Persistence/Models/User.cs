@@ -1,6 +1,6 @@
 using Microsoft.AspNetCore.Identity;
 
-namespace EcoManage.Api.Models;
+namespace EcoManage.Persistence.Models;
 
 public class User : IdentityUser<long>
 {

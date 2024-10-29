@@ -8,8 +8,13 @@
             <CollectionView.ItemTemplate>
                 <DataTemplate>
                     <StackLayout Padding="10">
+                        <StackLayout.GestureRecognizers>
+                            <TapGestureRecognizer Command="{Binding Source={x:Reference ProdutosCollectionView}, Path=BindingContext.NavigateToEditCommand}" CommandParameter="{Binding .}" />
+                        </StackLayout.GestureRecognizers>
                         <Label Text="{Binding Title}" FontSize="20"/>
-                        <Label Text="{Binding Description}" FontSize="16" TextColor="Gray" />
+                        <Label Text="{Binding Description}" FontSize="16" TextColor="Gray"/>
+                        <Label Text="Clique para mais detalhes" TextColor="#69A2B0" Margin="0,10,0,0"/>
+                        <BoxView HeightRequest="1" Color="LightGray" Margin="0,10,0,0"/>
                     </StackLayout>
                 </DataTemplate>
             </CollectionView.ItemTemplate>

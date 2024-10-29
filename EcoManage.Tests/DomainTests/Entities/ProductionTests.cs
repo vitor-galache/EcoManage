@@ -1,15 +1,10 @@
-using EcoManage.Domain.Entities;
-using EcoManage.Domain.Entities.Productions;
-using EcoManage.Domain.Enums;
-
 namespace EcoManage.Tests.DomainTests.Entities;
 
-[TestClass]
-[TestCategory("Productions")]
+[Trait("Production","UnitTest")]
 public class ProductionTests
 {
-    [TestMethod]
-    public void Cadastrar_Producao_Agendada_Com_EndDate_Valido()
+ [Fact]
+    public void Deve_Instanciar_Production_Valida_Ao_Criar_Production_Programmed_Com_EndDate_Valido()
     {
         var title = "Produção Teste";
         var product = new Product("Produto Teste","Descrição de Produto Teste");
@@ -17,33 +12,35 @@ public class ProductionTests
         var endDate = DateTime.UtcNow.AddMonths(6);
         
         var productionProgrammed = ProductionProgrammed.Factories.Create(title,product,quantityInKg,endDate);
-        Assert.AreEqual(productionProgrammed.Valid,true);
+        
+        Assert.True(productionProgrammed.Valid);
     }
 
-    [TestMethod]
-    public void Cadastrar_Producao_Imprevista_Sem_EndDate()
+    [Fact]
+    public void Deve_Instanciar_Production_Valida_Ao_Criar_Production_Unexpected_Sem_EndDate()
     {
         var title = "Produção Imprevista Teste";
         var product = new Product("Produto Teste","Descrição de Produto Teste");
         var quantityInKg = 50.000m;
 
         var productionUnexpected = ProductionUnexpected.Factories.Create(title,product,quantityInKg);
-        Assert.AreEqual(productionUnexpected.Valid,true);
+        Assert.True(productionUnexpected.Valid);
     }
 
-    [TestMethod]
-    public void Ao_Criar_Producao_Atribuir_Status_Planting()
+    [Fact]
+    public void Deve_Atribuir_Status_Planting_Ao_Instanciar_Production()
     {
         var title = "Produção Imprevista Teste";
         var product = new Product("Produto Teste","Descrição de Produto Teste");
         var quantityInKg = 50.000m;
 
         var productionUnexpected = ProductionUnexpected.Factories.Create(title,product,quantityInKg);
-        Assert.AreEqual(productionUnexpected.Status,EProductionStatus.Planting);
+        
+        Assert.Equal(EProductionStatus.Planting,productionUnexpected.Status);
     }
     
-    [TestMethod]
-    public void Alterar_Status_Para_Cultivation()
+    [Fact]
+    public void Deve_Alterar_Status_Para_Cultivation_Ao_Chamar_Metodo_ToCultivation()
     {
         var title = "Produção Imprevista Teste";
         var product = new Product("Produto Teste","Descrição de Produto Teste");
@@ -52,11 +49,11 @@ public class ProductionTests
         var productionUnexpected = ProductionUnexpected.Factories.Create(title,product,quantityInKg);
         productionUnexpected.ToCultivation();
         
-        Assert.AreEqual(productionUnexpected.Status,EProductionStatus.Cultivation);
+        Assert.Equal(EProductionStatus.Cultivation,productionUnexpected.Status);
     }
     
-    [TestMethod]
-    public void Alterar_Status_Para_Harvesting()
+    [Fact]
+    public void Deve_Alterar_Status_Para_Harvesting_Ao_Chamar_Metodo_ToHarvesting()
     {
         var title = "Produção Imprevista Teste";
         var product = new Product("Produto Teste","Descrição de Produto Teste");
@@ -65,11 +62,11 @@ public class ProductionTests
         var productionUnexpected = ProductionUnexpected.Factories.Create(title,product,quantityInKg);
         productionUnexpected.ToHarvesting();
         
-        Assert.AreEqual(productionUnexpected.Status,EProductionStatus.Harvesting);
+        Assert.Equal(EProductionStatus.Harvesting,productionUnexpected.Status);
     }
        
-    [TestMethod]
-    public void Alterar_Status_Para_Finished_Ao_Finalizar_Producao()
+    [Fact]
+    public void Deve_Alterar_Status_Para_Finished_Ao_Chamar_Metodo_Finish()
     {
         var title = "Produção Imprevista Teste";
         var product = new Product("Produto Teste","Descrição de Produto Teste");
@@ -78,11 +75,11 @@ public class ProductionTests
         var productionUnexpected = ProductionUnexpected.Factories.Create(title,product,quantityInKg);
         productionUnexpected.Finish();
         
-        Assert.AreEqual(productionUnexpected.Status,EProductionStatus.Finished);
+        Assert.Equal(EProductionStatus.Finished,productionUnexpected.Status);
     }
     
-    [TestMethod]
-    public void Alterar_Status_Para_CropLoss_Ao_Cancelar_Producao()
+    [Fact]
+    public void Deve_Alterar_Status_Para_CropLoss_Ao_Chamar_Metodo_Cancel()
     {
         var title = "Produção Imprevista Teste";
         var product = new Product("Produto Teste","Descrição de Produto Teste");
@@ -91,7 +88,6 @@ public class ProductionTests
         var productionUnexpected = ProductionUnexpected.Factories.Create(title,product,quantityInKg);
         productionUnexpected.Cancel();
         
-        Assert.AreEqual(productionUnexpected.Status,EProductionStatus.CropLoss);
-    }
-    
+        Assert.Equal(EProductionStatus.CropLoss,productionUnexpected.Status);
+    }   
 }

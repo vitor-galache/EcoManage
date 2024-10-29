@@ -15,7 +15,7 @@ namespace EcoManage.Desktop.Suppliers
 {
     public partial class FormEditSupplier : Form
     {
-        private Supplier _supplier;
+        private Supplier _supplier = null!;
         private SupplierHandler _handler = new SupplierHandler();
         public FormEditSupplier(Supplier supplier)
         {
@@ -26,6 +26,7 @@ namespace EcoManage.Desktop.Suppliers
         private void LoadSupplierData()
         {
             txt_CompanyName.Text = _supplier.CompanyName;
+            txt_Email.Text = _supplier.Email.Address;
             txt_Contact.Text = _supplier.Contact;
         }
 

@@ -1,15 +1,10 @@
-using EcoManage.Domain.Entities;
-using EcoManage.Domain.Enums;
-using EcoManage.Domain.ValueObjects;
-
 namespace EcoManage.Tests.DomainTests.Entities;
 
-[TestClass]
-[TestCategory("Suppliers")]
+[Trait("Supplier","UnitTest")]
 public class SupplierTests
 {
-    [TestMethod]
-    public void CriarFornecedorComValueObjectsValidos()
+    [Fact]
+    public void Deve_retornar_fornecedor_valido_ao_intanciar_fornecedor_com_value_objects_validos()
     {
         var name = "Fornecedor Teste";
         var email = new Email("fornecedorteste@ecomanage.io");
@@ -18,38 +13,44 @@ public class SupplierTests
         var document = new Document("12345678901234",EDocumentType.Cnpj);
         var contact = "12345678910";
         
+        
         var supplier = new Supplier(name,document,address,zipCode,email,contact);
-        Assert.AreEqual(supplier.Valid,true);
+        
+        Assert.True(supplier.Valid);
     }
     
-    [TestMethod]
-    public void Retornar_Fornecedor_Invalido_Ao_Criar_Fornecedor_Com_Email_Invalido()
+    [Fact]
+    public void Deve_retornar_fornecedor_invalido_ao_intanciar_fornecedor_com_email_invalido()
     {
         var name = "Fornecedor Teste";
-        var email = new Email("fornecedorteste");
+        
+        var email = new Email("EmailInvalidoTeste");
+        
         var address = new Address("Rua dos Anjos","198");
         var zipCode = new ZipCode("12345123");
         var document = new Document("12345678901234",EDocumentType.Cnpj);
         var contact = "12345678910";
-
+        
+        
         var supplier = new Supplier(name,document,address,zipCode,email,contact);
         
-        Assert.AreEqual(supplier.Invalid,true);
+        Assert.True(supplier.Invalid);
     }
     
-    
-    [TestMethod]
-    public void Retornar_Fornecedor_Invalido_Ao_Tentar_Criar_Fornecedor_Com_Documento_Cpf()
+    [Fact]
+    public void Deve_retornar_fornecedor_invalido_ao_intanciar_fornecedor_com_documento_cpf()
     {
         var name = "Fornecedor Teste";
         var email = new Email("fornecedorteste@ecomanage.io");
         var address = new Address("Rua dos Anjos","198");
-        var zipCode = new ZipCode("12345-123");
+        var zipCode = new ZipCode("12345123");
         var document = new Document("12345678901",EDocumentType.Cpf);
         var contact = "12345678910";
-
+        
+        
         var supplier = new Supplier(name,document,address,zipCode,email,contact);
         
-        Assert.AreEqual(supplier.Valid,false);
+        Assert.True(supplier.Invalid);
     }
+    
 }
