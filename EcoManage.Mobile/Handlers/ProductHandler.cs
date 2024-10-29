@@ -30,24 +30,32 @@ namespace EcoManage.Mobile.Handlers
                    ?? new PagedResponse<List<Product>?>(null, 400, "Não foi possível obter os produtos");
         }
 
-        public Task<Response<Product?>> GetByIdAsync(GetProductByIdRequest request)
+        public async Task<Response<Product?>> GetByIdAsync(GetProductByIdRequest request)
         {
-            throw new NotImplementedException();
+            return await _client.GetFromJsonAsync<Response<Product?>>($"v1/products/{request.Id}")
+                    ?? new Response<Product?>(null, 400, "Não foi possível obter os produtos");
         }
 
-        public Task<Response<Product?>> GetBySlugAsync(GetProductBySlugRequest request)
+        public async Task<Response<Product?>> GetBySlugAsync(GetProductBySlugRequest request)
         {
-            throw new NotImplementedException();
+            return await _client.GetFromJsonAsync<Response<Product?>>($"v1/products/{request.Slug}")
+                    ?? new Response<Product?>(null, 400, "Não foi possível obter os produtos");
         }
 
-        public Task<Response<Product?>> InactiveAsync(InactivateProductRequest request)
+        public async Task<Response<Product?>> InactiveAsync(InactivateProductRequest request)
         {
-            throw new NotImplementedException();
+            var response = await _client.PutAsJsonAsync($"v1/products/{request.Id}/inactivate",request);
+            var result = await response.Content.ReadFromJsonAsync<Response<Product?>>()
+                   ?? new Response<Product?>(null, 400, "Não foi possível processar a resposta");
+            return response.IsSuccessStatusCode ? result : new Response<Product?>(null, 400, result.Message);
         }
 
-        public Task<Response<Product?>> UpdateAsync(UpdateProductRequest request)
+        public async Task<Response<Product?>> UpdateAsync(UpdateProductRequest request)
         {
-            throw new NotImplementedException();
+            var response = await _client.PutAsJsonAsync($"v1/products/{request.Id}", request);
+            var result = await response.Content.ReadFromJsonAsync<Response<Product?>>()
+                   ?? new Response<Product?>(null, 400, "Não foi possível processar a resposta");
+            return response.IsSuccessStatusCode ? result : new Response<Product?>(null, 400, result.Message);
         }
     }
 }

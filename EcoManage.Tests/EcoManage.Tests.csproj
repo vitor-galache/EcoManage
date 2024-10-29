@@ -28,4 +28,8 @@
       <ProjectReference Include="..\EcoManage.Api\EcoManage.Api.csproj" />
     </ItemGroup>
 
+    <ItemGroup>
+      <Folder Include="DomainTests\Handlers\" />
+    </ItemGroup>
+
 </Project>

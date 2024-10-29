@@ -32,7 +32,7 @@ public partial class CreateProductPage : ContentPage
         {
             await DisplayAlert("SUCESSO",result.Message, "OK");
             Navigation.RemovePage(this);
-            Navigation.PushAsync(new ProductsPage());
+            await Navigation.PushAsync(new MainPage());
         }
     }
 }
