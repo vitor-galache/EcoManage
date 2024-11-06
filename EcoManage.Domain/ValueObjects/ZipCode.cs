@@ -12,10 +12,13 @@ public class ZipCode : ValueObject
             .HasLen(Code,8,"ZipCode.Number","CEP INVÁLIDO"));
     }
 
-    public string Code { get; set; } 
+    public string Code { get; private set; } 
 
+    #region Overrides
     public override string ToString()
     {
         return $"{Code}";
     }
+    
+    #endregion
 }

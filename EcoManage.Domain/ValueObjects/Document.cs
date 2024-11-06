@@ -6,6 +6,8 @@ namespace EcoManage.Domain.ValueObjects;
 
 public class Document : ValueObject
 {
+    #region Constructors
+
     public Document(string number,EDocumentType type)
     {
         Number = number;
@@ -18,9 +20,15 @@ public class Document : ValueObject
             .IsNotNullOrWhiteSpace(number,"Document.Number","Documento vazio ou com espaços")
         );
     }
+
+    #endregion
+    
+    #region Properties
     public string Number { get; private set; }
     public EDocumentType Type { get; private set; }
+    #endregion
 
+    #region Private Methods
     private bool Validate()
     {
         if (Type == EDocumentType.Cnpj && Number.Length == 14)
@@ -31,9 +39,12 @@ public class Document : ValueObject
         
         return false;
     }
+    #endregion
 
-    public override string ToString()
-    {
-        return Convert.ToUInt64(Number).ToString(@"00\.000\.000\/0000\-00");
-    }
+    #region Overrides 
+   public override string ToString()
+   {
+       return Convert.ToUInt64(Number).ToString(@"00\.000\.000\/0000\-00");
+   }
+   #endregion
 }

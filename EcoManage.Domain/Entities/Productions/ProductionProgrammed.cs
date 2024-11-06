@@ -5,6 +5,8 @@ namespace EcoManage.Domain.Entities.Productions;
 
 public class ProductionProgrammed : Production
 {
+    #region Constructors
+
     [JsonConstructor]
     private ProductionProgrammed(string title, Product product, long productId, decimal quantityInKg, DateTime? endDate,
         DateTime startDate, EHarvestType harvestType, EProductionStatus status)
@@ -36,6 +38,8 @@ public class ProductionProgrammed : Production
         if (endDate <= DateTime.UtcNow.AddDays(15))
             AddNotification("", "A produção deve ser agendada no mínimo 15 dias no futuro");
     }
+
+    #endregion
 
     #region Factories
 
