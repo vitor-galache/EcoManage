@@ -60,5 +60,4 @@ https://github.com/user-attachments/assets/95704589-4de2-44ff-a98c-061a457559b6
 ### Aplicação Mobile (EcoManage.Mobile)
 Segue um vídeo do projeto mobile feito com .NET MAUI que consome a API
 
-https://github.com/user-attachments/assets/0ff345af-6cfe-4e36-8913-365d2982ce2b
-
+https://github.com/user-attachments/assets/37306c29-46c4-4df0-85c7-6b4c8260bd5f
