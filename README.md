@@ -55,8 +55,7 @@ A camada de front-end foi implementada utilizando Blazor WebAssembly (WASM). A a
 
 Vale ressaltar que foi utilizada a biblioteca MudBlazor, que possui suporte a diversos componentes e customização que possibilitaram que a aplicação web ficasse atrativa e agradavel ao olhos. 
 
-https://github.com/user-attachments/assets/40d1b3bb-b20c-49a0-b6e4-8c34fb849fd1
-
+https://github.com/user-attachments/assets/95704589-4de2-44ff-a98c-061a457559b6
 
 ### Aplicação Mobile (EcoManage.Mobile)
 Segue um vídeo do projeto mobile feito com .NET MAUI que consome a API
