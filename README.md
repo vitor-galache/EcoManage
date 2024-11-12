@@ -61,3 +61,9 @@ https://github.com/user-attachments/assets/95704589-4de2-44ff-a98c-061a457559b6
 Segue um vídeo do projeto mobile feito com .NET MAUI que consome a API
 
 https://github.com/user-attachments/assets/37306c29-46c4-4df0-85c7-6b4c8260bd5f
+
+### Aplicação Desktop (EcoManage.Desktop)
+Segue um vídeo do projeto mobile feito com Windows Forms que também consome a API
+
+https://github.com/user-attachments/assets/8585cbcc-ddfb-4311-bb30-8c3a2431fc5c
+
