@@ -17,4 +17,14 @@ public static class AppExtension
         app.UseAuthentication();
         app.UseAuthorization();
     }
+    
+    public static void ApllyMigrations(this IApplicationBuilder app)
+    {
+        using (var serviceScope = app.ApplicationServices.CreateScope())
+        {
+            var serviceDb = serviceScope.ServiceProvider.GetService<AppDbContext>();
+            
+            serviceDb!.Database.EnsureCreated();
+        }
+    }
 }

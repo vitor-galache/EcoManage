@@ -1,0 +1,28 @@
+
+services:
+  api:
+    build:
+      context: .
+      dockerfile: EcoManage.Api/Dockerfile
+    container_name: eco_manage_api
+    ports:
+      - "5017:8080"
+    environment:
+      - ASPNETCORE_ENVIRONMENT=Development
+      - ConnectionStrings__DefaultConnection=Server=server_ecomanage;Database=eco-manage;User ID=sa;Password=1q2w3e4r@#$;Trusted_Connection=False; TrustServerCertificate=True;
+    depends_on:
+      - sqlserver
+
+  sqlserver:
+    image: mcr.microsoft.com/mssql/server:2022-latest
+    container_name: server_ecomanage
+    ports:
+      - "1433:1433"
+    environment:
+      - ACCEPT_EULA=Y
+      - SA_PASSWORD=1q2w3e4r@#$
+    volumes:
+      - sqlserver_data:/var/opt/mssql
+
+volumes:
+  sqlserver_data:
