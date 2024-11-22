@@ -9,6 +9,8 @@ namespace EcoManage.Domain.Entities.Productions;
 [JsonDerivedType(typeof(ProductionUnexpected),"Unexpected")]
 public abstract class Production : Entity
 {
+    #region Constructors
+
     [JsonConstructor]
     private Production(string title, Product product, long productId, decimal quantityInKg, DateTime? endDate,
         DateTime startDate, EHarvestType harvestType, EProductionStatus status)
@@ -28,6 +30,10 @@ public abstract class Production : Entity
     {
         
     }
+
+    #endregion
+    
+    #region Properties
     public string Number { get; init; } = Guid.NewGuid().ToString("N")[..8];
     public string Title { get; protected set; } = string.Empty;
     public EProductionStatus Status { get; protected set; } = EProductionStatus.Planting;
@@ -39,6 +45,7 @@ public abstract class Production : Entity
     public long ProductId { get; protected set; }
     public Product Product { get; protected set; } = null!;
     public decimal QuantityInKg { get; protected set; }
+    #endregion
 
     #region Public Methods
 

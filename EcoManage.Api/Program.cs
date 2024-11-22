@@ -21,10 +21,11 @@ if (app.Environment.IsDevelopment())
     app.ConfigureDevEnviroment();
 
 app.UseCors(ApiConfiguration.CorsPolicyName);
-
 app.UseAuthentication();
 app.UseAuthorization();
 app.UseSecurity();
+
+app.ApllyMigrations();
 
 app.MapEndpoints();
 

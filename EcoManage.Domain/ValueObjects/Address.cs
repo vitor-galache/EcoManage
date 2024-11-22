@@ -11,8 +11,11 @@ public class Address : ValueObject
     }
     public string Street { get; private set; } 
     public string Number { get; private set; }
+    
+    #region Overrides
     public override string ToString()
     {
         return $"{Street},{Number}";
     }
+    #endregion
 }

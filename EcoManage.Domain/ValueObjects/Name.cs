@@ -19,8 +19,12 @@ public class Name : ValueObject
     public string LastName { get; private set; }
 
 
+    #region Overrides
+
     public override string ToString()
     {
         return $"{FirstName} + {LastName}";
     }
+
+    #endregion
 }

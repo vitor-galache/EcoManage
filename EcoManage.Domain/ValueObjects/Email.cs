@@ -16,8 +16,10 @@ public class Email : ValueObject
     }
     public string Address { get; private set; }
 
+    #region Overrides 
     public override string ToString()
     {
         return $"{Address}";
     }
+    #endregion
 }

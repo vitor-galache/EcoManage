@@ -12,6 +12,10 @@ public static class BuilderExtension
 
     public static void AddConfiguration(this WebApplicationBuilder builder)
     {
+        if (builder.Environment.IsDevelopment())
+        {
+            builder.Configuration.AddUserSecrets<Program>();
+        }
         Configuration.ConnectionString = builder.Configuration.GetConnectionString("DefaultConnection") ?? string.Empty;
         Configuration.BackendUrl = builder.Configuration.GetValue<string>("BackendUrl")?? string.Empty;
         Configuration.FrontendUrl = builder.Configuration.GetValue<string>("FrontendUrl") ?? string.Empty;
@@ -19,7 +23,13 @@ public static class BuilderExtension
     public static void AddDbContexts(this WebApplicationBuilder builder)
     {
         Persistence.Dependencies.ConfigureDataServices(builder.Configuration,builder.Services);
-        builder.Services.AddIdentityCore<User>()
+        builder.Services.AddIdentityCore<User>(opt =>
+            {
+                opt.Password.RequireDigit = false;
+                opt.Password.RequireLowercase = true;
+                opt.Password.RequireNonAlphanumeric = false;
+                opt.Password.RequireUppercase = false;
+            })
             .AddRoles<IdentityRole<long>>()
             .AddEntityFrameworkStores<AppDbContext>()
             .AddApiEndpoints();

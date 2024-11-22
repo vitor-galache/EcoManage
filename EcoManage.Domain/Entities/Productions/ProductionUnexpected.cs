@@ -5,6 +5,8 @@ namespace EcoManage.Domain.Entities.Productions;
 
 public class ProductionUnexpected : Production
 {
+    #region Constructors
+
     private ProductionUnexpected()
     {
         
@@ -34,6 +36,8 @@ public class ProductionUnexpected : Production
         Status = status;
         HarvestType = harvestType;
     }
+
+    #endregion
 
     #region Factories
 

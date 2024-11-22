@@ -7,6 +7,8 @@ namespace EcoManage.Domain.Entities;
 
 public class Supplier : Entity
 {
+    #region Constructors
+
     public Supplier(string companyName,Document document,Address address,ZipCode zipCode,Email email,string? contact = "")
     {
         CompanyName = companyName;
@@ -27,6 +29,11 @@ public class Supplier : Entity
     {
         
     }
+
+    #endregion
+
+    #region Properties
+
     public string CompanyName { get; private set; } = string.Empty;
     public Document Document { get; private set; } = null!;
     public Address Address { get; private set; } = null!;
@@ -34,6 +41,9 @@ public class Supplier : Entity
     public Email Email { get; private set; } = null!;
     public string? Contact { get; private set; }
 
+    #endregion
+
+    #region Public Methods
 
     public void ChangeCompanyName(string newValue)
     {
@@ -50,4 +60,6 @@ public class Supplier : Entity
         Email = new Email(newAddress);
         AddNotifications(new Contract().Requires().IsTrue(Email.Valid, "Supplier.Email", "Email Inválido"));
     }
+
+    #endregion
 }
