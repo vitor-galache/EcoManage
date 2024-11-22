@@ -23,7 +23,13 @@ public static class BuilderExtension
     public static void AddDbContexts(this WebApplicationBuilder builder)
     {
         Persistence.Dependencies.ConfigureDataServices(builder.Configuration,builder.Services);
-        builder.Services.AddIdentityCore<User>()
+        builder.Services.AddIdentityCore<User>(opt =>
+            {
+                opt.Password.RequireDigit = false;
+                opt.Password.RequireLowercase = true;
+                opt.Password.RequireNonAlphanumeric = false;
+                opt.Password.RequireUppercase = false;
+            })
             .AddRoles<IdentityRole<long>>()
             .AddEntityFrameworkStores<AppDbContext>()
             .AddApiEndpoints();
