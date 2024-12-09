@@ -8,6 +8,10 @@
               Width="100%"
               Height="450px"/>
 }
+@if (Data.Count == 0)
+{
+    <MudText Color="Color.Primary">Não há dados para serem exibidos.</MudText>
+}
 else
 {
     <div class="d-flex align-center justify-center" style="height: 350px">

@@ -1,4 +1,11 @@
 @inherits ProductionsByPeriodComponent
-<MudChart ChartType="ChartType.Pie" InputData="@Data.ToArray()" InputLabels="@Labels.ToArray()" Width="100%"
-          Height="450px"/>
-<MudText Style="font-weight: bolder;" Color="Color.Info">Total de produções programadas : @Productions.Sum(p=>p.TotalProductions)</MudText>
+@if (Productions.Count == 0)
+{
+    <MudText Typo="Typo.subtitle1" Color="Color.Primary">Não há produções registradas no sistema.</MudText>
+}
+else
+{
+    <MudChart ChartType="ChartType.Pie" InputData="@Data.ToArray()" InputLabels="@Labels.ToArray()" Width="100%"
+              Height="450px"/>
+    <MudText Style="font-weight: bolder;" Color="Color.Info">Total de produções programadas : @Productions.Sum(p=>p.TotalProductions)</MudText>
+}
