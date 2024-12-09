@@ -1,7 +1,7 @@
 # EcoManage
 ![Logo](https://github.com/user-attachments/assets/3d0442e7-5a17-441d-bbea-3adee8627213)
 
-<b>O EcoManage é um sistema integrado para controle de operações de uma fazenda urbana </b>
+<b>O EcoManage é um sistema integrado para controle de operações de uma fazenda urbana. </b>
 
 O projeto foi desenvolvido com o objetivo de proporcionar uma solução completa para gestão de fornecedores, produtos,produção e relatórios. 
 
@@ -18,7 +18,7 @@ Este sistema foi concebido como parte de um Projeto Integrado Multidisciplinar p
 - Gestão de Produção: Controle completo da produção agrícola da fazenda incluindo data de inicio, tipo de colheita, status de progresso da produção e quantidade do produto que será produzido.
 
 ## Arquitetura e Implementação
-  ### Class Library (EcoManage.Domain)
+  ### Domínio (EcoManage.Domain)
   O núcleo do projeto é composto por uma Class Library que encapsula toda a lógica de domínio e modelo de dados. 
   
   Esta classlib serve como base para todos os outros projetos promovendo a reutilização de código e separação de   responsabilidades atráves de interfaces como os Handlers.
@@ -27,19 +27,24 @@ Este sistema foi concebido como parte de um Projeto Integrado Multidisciplinar p
 
 - Regras de Negócio: Implementa a lógica de negócio, validando e processando as regras de produção e fornecedores, como validar um CNPJ quando um objeto da classe Fornecedor for instanciado por exemplo.
 
+### Persistência de Dados (EcoManage.Persistence)
+O projeto EcoManage.Persistence foi criado para isolar a camada de acesso a dados, alinhado às boas práticas de organização de código e separação de responsabilidades. Ele serve como um ponto centralizado para gerenciar interações com o banco de dados, garantindo maior flexibilidade e manutenção.
+
+- O projeto tem referência ao domínio (EcoManage.Domain)
+- Segurança: Apenas o projeto de persistência gerencia a conexão direta com o banco de dados, minimizando o risco de acesso não autorizado ou não intencional a dados críticos.
+- ORM Entity Framework Core: Utilizado como ferramenta principal para mapear os dados entre as entidades do domínio e o banco de dados relacional, simplificando operações CRUD e garantindo robustez no acesso aos dados.
+  
 ### API (EcoManage.API)
 
-A API foi desenvolvida utilizando ASP.NET Core (Minimal API), sendo ela responsável por expor os dados e serviços da aplicação. Ela possuí referencia ao projeto Class Library para processar e fornecer os dados de forma padronizada.
+A API foi desenvolvida utilizando ASP.NET Core (Minimal API), sendo ela responsável por expor os dados e serviços da aplicação. Ela possuí referencia ao projeto EcoManage.Domain e ao projeto EcoManage.Persistence para processar e fornecer os dados de forma padronizada.
   
-Dentro da API foi utilizado o ORM EntityFramework para o acesso a dados.
-
 - Arquitetura REST: A API segue princípios RESTful, garantindo fácil integração e consumo dos dados.
 
 - Validação dos Dados: A API garante que apenas dados que estiverem de acordo com as regras de negócio definidas pelo dominio sejam persistidos na base de dados.
 
 - Segurança: A API utiliza autenticação baseada em cookies através do AspNet Identity.
 
-- Apenas o projeto da API possui conexão direta com o banco de dados, garantindo assim a segurança de todos dados de produção e de fornecedores.
+- Apenas o projeto da API interage com a camada de persistência de dados, garantindo assim a segurança de todos dados de produção e de fornecedores.
 
 #### EndPoints
 
