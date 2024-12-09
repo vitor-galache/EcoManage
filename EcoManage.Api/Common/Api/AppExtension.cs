@@ -1,4 +1,5 @@
 using EcoManage.Persistence.Data;
+using Microsoft.EntityFrameworkCore;
 
 namespace EcoManage.Api.Common.Api;
 
@@ -23,7 +24,7 @@ public static class AppExtension
         {
             var serviceDb = serviceScope.ServiceProvider.GetService<AppDbContext>();
             
-            serviceDb!.Database.EnsureCreated();
+            serviceDb!.Database.Migrate();
         }
     }
 }
